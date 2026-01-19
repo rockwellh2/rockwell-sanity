@@ -1,0 +1,8 @@
+# Robots.txt for Next.js + Sanity Starter
+# TODO: Update sitemap URL when deployed
+
+User-agent: *
+Allow: /
+
+# Sitemap (update with your domain)
+# Sitemap: https://yourdomain.com/sitemap.xml

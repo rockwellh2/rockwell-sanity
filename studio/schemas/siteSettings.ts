@@ -1,0 +1,179 @@
+import { defineType, defineField } from 'sanity'
+import { i18nString, i18nText } from './helpers/i18n'
+
+export default defineType({
+    name: 'siteSettings',
+    title: '⚙️ Site Settings',
+    type: 'document',
+    groups: [
+        { name: 'announcement', title: '📢 Announcement Banner' },
+        { name: 'seo', title: '🔍 SEO' },
+        { name: 'contact', title: '📞 Contact' },
+        { name: 'social', title: '🔗 Social' },
+    ],
+    fields: [
+        // ANNOUNCEMENT BANNER
+        defineField({
+            name: 'announcement',
+            title: 'Announcement Banner',
+            type: 'object',
+            group: 'announcement',
+            description: 'Emergency or promotional banner shown at the top of every page.',
+            fields: [
+                defineField({ name: 'active', title: 'Is Active?', type: 'boolean' }),
+                defineField({
+                    name: 'scrollSpeed',
+                    title: 'Scroll Speed',
+                    type: 'number',
+                    description: 'Controls how fast the banner moves. Lower number = Faster. Default is 150.',
+                    initialValue: 150,
+                    validation: Rule => Rule.min(10).max(500)
+                }),
+                defineField({
+                    name: 'size',
+                    title: 'Banner Scale',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Normal', value: 'normal' },
+                            { title: 'Large', value: 'large' },
+                            { title: 'Extra Large', value: 'xl' },
+                        ],
+                        layout: 'radio'
+                    },
+                    initialValue: 'normal'
+                }),
+                defineField({
+                    name: 'textColor',
+                    title: 'Text Color',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Black', value: '#000000' },
+                            { title: 'White', value: '#FFFFFF' },
+                            { title: 'Brand Yellow', value: '#FFB81C' },
+                        ],
+                        layout: 'radio'
+                    },
+                    initialValue: '#000000'
+                }),
+                defineField({
+                    name: 'backgroundColor',
+                    title: 'Background Color',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Brand Yellow', value: '#FFB81C' },
+                            { title: 'Black', value: '#000000' },
+                            { title: 'White', value: '#FFFFFF' },
+                            { title: 'Emergency Red', value: '#EF4444' },
+                        ],
+                        layout: 'radio'
+                    },
+                    initialValue: '#FFB81C'
+                }),
+                i18nString('label', 'Top Small Label (e.g. "Urgent:")'),
+                i18nText('text', 'Banner Text'),
+                i18nString('linkText', 'Link Text (e.g. "Learn More")'),
+                defineField({
+                    name: 'linkType',
+                    title: 'Link To',
+                    type: 'string',
+                    options: {
+                        list: [
+                            { title: 'Internal Page', value: 'internal' },
+                            { title: 'External URL', value: 'external' },
+                        ],
+                        layout: 'radio',
+                    },
+                    initialValue: 'internal',
+                }),
+                defineField({
+                    name: 'internalRoute',
+                    title: 'Internal Route',
+                    type: 'string',
+                    hidden: ({ parent }) => parent?.linkType !== 'internal',
+                    options: {
+                        list: [
+                            { title: 'Volunteer', value: 'volunteer' },
+                            { title: 'Programs', value: 'programs' },
+                            { title: 'Resources', value: 'resources' },
+                            { title: 'About', value: 'about' },
+                            { title: 'Host Homes', value: 'hosthomes' },
+                            { title: 'Collaborate', value: 'collaborate' },
+                        ],
+                    },
+                }),
+                defineField({
+                    name: 'externalUrl',
+                    title: 'External URL',
+                    type: 'url',
+                    hidden: ({ parent }) => parent?.linkType !== 'external',
+                }),
+            ],
+        }),
+
+        // SEO
+        i18nString('title', 'Base Site Title', 'seo'),
+        i18nText('description', 'Default Site Description', 'seo'),
+        defineField({
+            name: 'ogImage',
+            title: 'Default Share Image (OG Image)',
+            type: 'image',
+            group: 'seo',
+            options: { hotspot: true },
+        }),
+        defineField({
+            name: 'favicon',
+            title: 'Favicon',
+            type: 'image',
+            group: 'seo',
+        }),
+
+        // CONTACT
+        defineField({
+            name: 'contact',
+            title: 'Contact Information',
+            type: 'object',
+            group: 'contact',
+            fields: [
+                defineField({ name: 'email', title: 'Email', type: 'email' }),
+                defineField({ name: 'phone', title: 'Phone', type: 'string' }),
+                defineField({ name: 'address', title: 'Address', type: 'text', rows: 2 }),
+            ],
+        }),
+
+        // DONATION
+        defineField({
+            name: 'donation',
+            title: 'Donation Settings',
+            type: 'object',
+            group: 'contact',
+            fields: [
+                defineField({
+                    name: 'paypalUrl',
+                    title: 'PayPal Donation URL',
+                    type: 'url',
+                    description: 'The PayPal donation button link. All donate buttons will use this URL.',
+                }),
+            ],
+        }),
+
+        // SOCIAL
+        defineField({
+            name: 'social',
+            title: 'Social Media',
+            type: 'object',
+            group: 'social',
+            fields: [
+                defineField({ name: 'instagram', title: 'Instagram URL', type: 'url' }),
+                defineField({ name: 'facebook', title: 'Facebook URL', type: 'url' }),
+            ],
+        }),
+    ],
+    preview: {
+        prepare() {
+            return { title: 'Site Settings' }
+        },
+    },
+})
