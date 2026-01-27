@@ -19,6 +19,7 @@ import { ValueChain } from "@/components/homepage/ValueChain";
 import { HomeShader } from "@/components/effects/HomeShader";
 import { SystemFlow } from "@/components/homepage/SystemFlow";
 import { ImpactBand } from "@/components/homepage/ImpactBand";
+import { SafetyStrip } from "@/components/homepage/SafetyStrip";
 
 export default function Home() {
   const features = [
@@ -158,6 +159,9 @@ export default function Home() {
       <div id="value">
         <ValueChain />
       </div>
+
+      {/* 5.5 SAFETY STRIP */}
+      <SafetyStrip />
 
       {/* 6. CREDIBILITY / TRUST (Narrative Step 6) */}
       <section className="py-20 bg-white border-t border-slate-100">

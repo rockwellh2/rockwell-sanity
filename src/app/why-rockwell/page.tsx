@@ -1,92 +1,121 @@
 "use client";
 
 import Link from "next/link";
-import { Users, ShieldCheck, Settings, Phone } from "lucide-react";
+import { Users, ShieldCheck, Settings, Phone, History, FileCheck } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HUDLabel } from "@/components/ui/HUDLabel";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-const TeamCard = ({ name, role, phone }: { name: string, role: string, phone: string }) => (
-    <div className="bg-white border border-slate-200 p-8 hover:border-emerald-500 transition-all group">
-        <div className="w-12 h-12 bg-slate-950 text-white flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors">
-            <Users size={24} />
-        </div>
-        <h4 className="text-xl font-bold mb-1 text-slate-950">{name}</h4>
-        <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-6">{role}</p>
-        <a href={`tel:${phone.replace(/\D/g, '')}`} className="text-sm font-mono font-bold text-slate-400 hover:text-slate-950 transition-colors flex items-center gap-2">
-            <Phone size={14} /> {phone}
-        </a>
-    </div>
-);
-
-const ValueCard = ({ title, desc }: { title: string, desc: string }) => (
-    <div className="p-10 bg-white border border-slate-100 relative group overflow-hidden hover:shadow-lg transition-all">
-        <div className="absolute top-0 left-0 w-1 h-0 bg-emerald-500 group-hover:h-full transition-all duration-700" />
-        <h4 className="font-bold text-xl mb-4 text-slate-950">{title}</h4>
-        <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
-    </div>
-);
+// New Components
+import { HeritageTimeline } from "@/components/about/HeritageTimeline";
+import { CertificationGrid } from "@/components/about/CertificationGrid";
+import { EngineerProfile } from "@/components/about/EngineerProfile";
 
 export default function WhyRockwellPage() {
     return (
-        <div className="flex flex-col w-full overflow-hidden">
+        <div className="flex flex-col w-full overflow-hidden bg-slate-50">
             {/* HERO */}
-            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
+            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden bg-white border-b border-slate-200">
+                <div className="absolute inset-0 bg-grid-pattern opacity-30" />
                 <div className="container mx-auto px-6 relative z-10">
                     <FadeIn>
-                        <SectionHeader
-                            subtitle="Generational Engineering"
-                            title="30 Years of Innovation."
-                            description="Rockwell H2 Systems is a family-owned engineering firm built on the standard of industrial reliability. We aren't a startup. We're a builder."
-                        />
+                        <div className="max-w-4xl">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-slate-50 mb-6">
+                                <History size={14} className="text-slate-500" />
+                                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-500">
+                                    Est. 1994
+                                </span>
+                            </div>
+                            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-slate-950">
+                                Generational <br />
+                                <span className="text-emerald-600">Engineering.</span>
+                            </h1>
+                            <p className="text-xl text-slate-500 max-w-2xl leading-relaxed">
+                                We aren't a startup selling a render. We are a family-owned engineering firm with 30 years of industrial deployment experience.
+                            </p>
+                        </div>
                     </FadeIn>
                 </div>
             </section>
 
-            {/* STORY & TEAM */}
-            <section className="bg-slate-50 border-y border-slate-200 py-24">
+            {/* TIMELINE SECTION */}
+            <section className="py-24 bg-white">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
-                        <div className="relative">
-                            <div className="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-slate-200" />
-                            <h3 className="text-4xl font-bold tracking-tight mb-8 text-slate-950">Engineering Lineage.</h3>
-                            <div className="space-y-6 text-slate-500 text-lg leading-relaxed mb-8">
-                                <p>
-                                    Founded by Brad and Nick Rockwell, we've spent decades in the industrial engineering sector.
-                                </p>
-                                <p>
-                                    We watched the "Green Energy" boom bring a lot of promises and very little hardware. We saw companies selling renderings instead of reactors.
-                                </p>
-                                <p>
-                                    So we built Rockwell H2 to be different. We don't care about venture capital hype cycles. We care about building infrastructure that lasts for 25+ years in harsh conditions.
-                                </p>
-                            </div>
-                            <div className="space-y-4">
-                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
-                                    <ShieldCheck className="text-emerald-500" /> ASME & ISO Certified Design
-                                </div>
-                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
-                                    <Users className="text-emerald-500" /> Veteran Deployment Teams
-                                </div>
-                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
-                                    <Settings className="text-emerald-500" /> Proprietary Resilience Controllers
+                    <div className="grid lg:grid-cols-12 gap-16">
+                        <div className="lg:col-span-4">
+                            <div className="sticky top-32">
+                                <SectionHeader
+                                    subtitle="Our Lineage"
+                                    title="Built to Last."
+                                    description="We watched the 'Green Energy' boom bring a lot of promises and very little hardware. So we built Rockwell H2 to be different."
+                                />
+                                <div className="mt-8 p-6 bg-slate-50 border border-slate-200 rounded-sm">
+                                    <h4 className="font-bold text-slate-900 mb-2">The Rockwell Standard</h4>
+                                    <p className="text-sm text-slate-500">
+                                        Every system we deploy is backed by our generational promise: we will service it, we will maintain it, and we will ensure it runs for decades.
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                        <div className="lg:col-span-8">
+                            <HeritageTimeline />
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        <div className="grid sm:grid-cols-2 gap-6">
-                            <TeamCard name="Brad Rockwell" role="Principal Engineer" phone="(714) 305-3300" />
-                            <TeamCard name="Nick Rockwell" role="Operations Director" phone="(510) 960-0261" />
+            {/* TEAM SECTION */}
+            <section className="py-24 bg-slate-50 border-t border-slate-200">
+                <div className="container mx-auto px-6">
+                    <div className="mb-12 flex items-end justify-between">
+                        <div>
+                            <HUDLabel color="emerald">Command Staff</HUDLabel>
+                            <h3 className="text-3xl font-bold text-slate-900 mt-4">Operational Leadership.</h3>
                         </div>
                     </div>
 
-                    <div className="mb-12">
-                        <HUDLabel color="emerald">Core Principles</HUDLabel>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <EngineerProfile
+                            name="Brad Rockwell"
+                            role="Principal Engineer"
+                            id="ENG-001"
+                            phone="(714) 305-3300"
+                        />
+                        <EngineerProfile
+                            name="Nick Rockwell"
+                            role="Operations Director"
+                            id="OPS-001"
+                            phone="(510) 960-0261"
+                        />
+                        {/* Placeholder for future expansion */}
+                        <div className="bg-slate-100 border border-dashed border-slate-300 flex items-center justify-center p-8 opacity-50">
+                            <span className="font-mono text-xs uppercase tracking-widest text-slate-400">
+                                Field Units Deployed
+                            </span>
+                        </div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-10">
-                        <ValueCard title="Integrity First" desc="We give you honest ROI modeling, including potential risks and infrastructure requirements. If hydrogen isn't right for you, we'll tell you." />
-                        <ValueCard title="Practical Innovation" desc="We focus on deployment-ready technology, not experimental lab-bench prototypes. Our gear runs in the mud, rain, and heat." />
-                        <ValueCard title="Generational Value" desc="We build systems for the long haul. Our goal is to make your facility energy independent for the next generation of ownership." />
+                </div>
+            </section>
+
+            {/* CERTIFICATIONS */}
+            <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+                <div className="absolute inset-0 bg-noise opacity-10" />
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-16 items-center">
+                        <div className="lg:col-span-5">
+                            <h3 className="text-3xl font-bold mb-6">Compliance is Verification.</h3>
+                            <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                                Hydrogen systems require rigorous adherence to safety codes. We don't cut corners on compliance. We define the standard.
+                            </p>
+                            <div className="flex gap-4">
+                                <div className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold uppercase tracking-widest rounded-sm">
+                                    Zero Safety Incidents
+                                </div>
+                            </div>
+                        </div>
+                        <div className="lg:col-span-7">
+                            <CertificationGrid />
+                        </div>
                     </div>
                 </div>
             </section>

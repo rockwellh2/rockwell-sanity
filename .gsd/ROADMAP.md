@@ -113,3 +113,13 @@ Transform the site from a "Glade-inspired template" into a **Bespoke Industrial 
 - [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
 - [ ] **Incentives Page**: "Financial Engineering" aesthetic, stack snapshot, ROI modeling, qualification checklist.
 - [ ] **Contact Page**: Engineering Intake layout, 2-column technical form, process timeline, FAQ.
+
+---
+
+### Phase 11: Content Deepening & Distinct Identities
+**Status**: ⬜ Not Started
+**Objective**: Give each page a unique "theme" and increase information density.
+**Requirements**:
+- [ ] **Solutions Page**: "Operational Command" Theme. Logistics Tab (Simulator), Industrial Tab (Load Viz).
+- [ ] **About Page**: "Industrial Heritage" Theme. Visual Timeline, Certification Matrix, Engineer Profiles.
+- [ ] **Homepage**: "Fleshing Out". Safety Strip, Deployment Map.
