@@ -1,163 +1,216 @@
+"use client";
+
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import { Truck, Factory, ChevronRight, Clock, Battery, Zap } from "lucide-react";
+import { motion } from "framer-motion";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
-import { Leaf, Sun, Battery, ArrowRight, CheckCircle } from "lucide-react";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Solutions | Rockwell H2",
-    description: "Hydrogen solutions for biomass, renewable energy storage, and reliable backup power.",
-};
+function SolutionsContent() {
+    const searchParams = useSearchParams();
+    const [activeTab, setActiveTab] = useState<'logistics' | 'industrial'>('logistics');
 
-export default function SolutionsPage() {
+    useEffect(() => {
+        const section = searchParams.get('section'); // Not strictly used by next/link standard anchor, but good for linking state
+        // Hash handling is usually client-side only, simple toggle here for demo
+        if (window.location.hash.includes('industrial')) {
+            setActiveTab('industrial');
+        } else {
+            setActiveTab('logistics');
+        }
+    }, [searchParams]);
+
     return (
-        <div className="pt-20">
-            {/* Hero */}
-            <section className="py-24 bg-[#F3F4F6] border-b border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="max-w-3xl">
-                        <h1 className="text-h1 font-bold text-[#111827] mb-6">
-                            Hydrogen Solutions
-                        </h1>
-                        <p className="text-xl text-[#6B7280]">
-                            Much of the power production and storage to date is unsustainable. Our hydrogen solution delivers cleaner, more economical energy than fossil fuels.
-                        </p>
-                    </div>
-                </div>
-            </section>
+        <div className="flex flex-col w-full overflow-hidden">
+            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <FadeIn>
+                        <SectionHeader
+                            subtitle="Industry Solutions"
+                            title="Built for your Sector."
+                            description="Whether you are moving pallets or powering a plant, we have a configured hydrogen system for you."
+                        />
+                    </FadeIn>
 
-            {/* Biomass Solution */}
-            <section id="biomass" className="py-24 border-b border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 text-[#00CC66] mb-4">
-                                <Leaf className="w-6 h-6" />
-                                <span className="text-label uppercase tracking-wider">Biomass Solution</span>
+                    <FadeIn delay={0.2}>
+                        {/* Tab Switcher */}
+                        <div className="flex flex-col md:flex-row gap-0 mb-20 border-b border-slate-200">
+                            <button
+                                onClick={() => setActiveTab('logistics')}
+                                className={`px-12 py-6 font-black uppercase tracking-[0.2em] text-xs transition-all border-b-4 ${activeTab === 'logistics' ? 'bg-slate-50 border-emerald-500 text-slate-950' : 'bg-white border-transparent text-slate-400 hover:text-slate-900'}`}
+                            >
+                                <div className="flex items-center gap-4">
+                                    <Truck size={20} />
+                                    Logistics & Fleets
+                                </div>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('industrial')}
+                                className={`px-12 py-6 font-black uppercase tracking-[0.2em] text-xs transition-all border-b-4 ${activeTab === 'industrial' ? 'bg-slate-50 border-emerald-500 text-slate-950' : 'bg-white border-transparent text-slate-400 hover:text-slate-900'}`}
+                            >
+                                <div className="flex items-center gap-4">
+                                    <Factory size={20} />
+                                    Industrial & Utility
+                                </div>
+                            </button>
+                        </div>
+
+                        {/* LOGISTICS CONTENT */}
+                        {activeTab === 'logistics' && (
+                            <div className="grid lg:grid-cols-2 gap-20 items-center animate-in slide-in-from-bottom-4 duration-500 fade-in">
+                                <div>
+                                    <h3 className="text-5xl font-bold tracking-tighter mb-8 text-slate-950">Keep Moving.</h3>
+                                    <div className="prose prose-slate prose-lg text-slate-500 mb-10">
+                                        <p>
+                                            In high-throughput warehouses, every minute of downtime costs money. Lead-acid batteries require 8 hours to charge and cool. Hydrogen fuel cells refuel in minutes.
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-6 mb-10">
+                                        <div className="flex items-start gap-4 p-6 border border-slate-100 bg-emerald-50/20">
+                                            <Clock className="text-emerald-600 mt-1 shrink-0" />
+                                            <div>
+                                                <h4 className="font-bold text-slate-900">Refuel in 3 Minutes</h4>
+                                                <p className="text-sm text-slate-500">Fast-fill dispensing matches diesel speeds. One driver, one fill, back to work.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-4 p-6 border border-slate-100 bg-emerald-50/20">
+                                            <Battery className="text-emerald-600 mt-1 shrink-0" />
+                                            <div>
+                                                <h4 className="font-bold text-slate-900">Eliminate Battery Rooms</h4>
+                                                <p className="text-sm text-slate-500">Reclaim thousands of square feet of facility space previously used for charging racks.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link href="/contact">
+                                        <Button size="lg" className="bg-slate-950 uppercase tracking-widest text-xs font-bold">
+                                            Request Forklift Kit Info
+                                        </Button>
+                                    </Link>
+                                </div>
+
+                                <div className="bg-slate-100 p-12 border border-slate-200">
+                                    <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">Comparison Data</h4>
+
+                                    <div className="space-y-8">
+                                        <div>
+                                            <div className="flex justify-between text-sm font-bold text-slate-900 mb-2">
+                                                <span>H2 Refuel Time</span>
+                                                <span className="text-emerald-600">3 mins</span>
+                                            </div>
+                                            <div className="h-4 bg-slate-200 w-full overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: "5%" }}
+                                                    transition={{ duration: 1, ease: "easeOut" }}
+                                                    viewport={{ once: true }}
+                                                    className="h-full bg-emerald-500"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div className="flex justify-between text-sm font-bold text-slate-900 mb-2">
+                                                <span>Battery Charge Time</span>
+                                                <span className="text-red-500">480 mins (8 hrs)</span>
+                                            </div>
+                                            <div className="h-4 bg-slate-200 w-full overflow-hidden">
+                                                <motion.div
+                                                    initial={{ width: 0 }}
+                                                    whileInView={{ width: "100%" }}
+                                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                                    viewport={{ once: true }}
+                                                    className="h-full bg-red-400"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-8 border-t border-slate-200">
+                                            <div className="flex items-center gap-4">
+                                                <Zap className="text-emerald-500" />
+                                                <p className="text-sm font-bold text-slate-900">Zero performance drop-off as fuel tank empties.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                Turn Waste Into Value
-                            </h2>
-                            <p className="text-lg text-[#6B7280] mb-6">
-                                Convert organic waste and biomass into valuable hydrogen fuel. Reduce disposal costs while generating clean energy for your operations.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Eliminate waste disposal costs</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Generate revenue from byproducts</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Reduce carbon footprint significantly</span>
-                                </li>
-                            </ul>
-                            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                                DISCUSS YOUR WASTE <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-                        <div className="bg-gradient-to-br from-[#00CC66]/10 to-[#0057B7]/10 p-12 flex items-center justify-center min-h-[400px]">
-                            <Leaf className="w-32 h-32 text-[#00CC66] opacity-50" />
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        )}
 
-            {/* Renewables Solution */}
-            <section id="renewables" className="py-24 border-b border-[#E5E7EB] bg-[#F3F4F6]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 lg:order-1 bg-gradient-to-br from-[#0057B7]/10 to-[#00CC66]/10 p-12 flex items-center justify-center min-h-[400px]">
-                            <Sun className="w-32 h-32 text-[#00CC66] opacity-50" />
-                        </div>
-                        <div className="order-1 lg:order-2">
-                            <div className="inline-flex items-center gap-2 text-[#00CC66] mb-4">
-                                <Sun className="w-6 h-6" />
-                                <span className="text-label uppercase tracking-wider">Renewables Solution</span>
+                        {/* INDUSTRIAL CONTENT */}
+                        {activeTab === 'industrial' && (
+                            <div className="grid lg:grid-cols-2 gap-20 items-center animate-in slide-in-from-bottom-4 duration-500 fade-in">
+                                <div>
+                                    <h3 className="text-5xl font-bold tracking-tighter mb-8 text-slate-950">Energy Dispatch.</h3>
+                                    <div className="prose prose-slate prose-lg text-slate-500 mb-10">
+                                        <p>
+                                            For utilities and heavy industry, the challenge isn't generation—it's storage. Our modular PowerPods turn intermittent renewables into baseload power.
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-6 mb-10">
+                                        <div className="flex items-start gap-4 p-6 border border-slate-100 bg-sky-50/20">
+                                            <Zap className="text-sky-600 mt-1 shrink-0" />
+                                            <div>
+                                                <h4 className="font-bold text-slate-900">200kW - 10MW Scalability</h4>
+                                                <p className="text-sm text-slate-500">Stackable containerized units allow you to start small and expand capacity.</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-4 p-6 border border-slate-100 bg-sky-50/20">
+                                            <Factory className="text-sky-600 mt-1 shrink-0" />
+                                            <div>
+                                                <h4 className="font-bold text-slate-900">Decarbonize Heat</h4>
+                                                <p className="text-sm text-slate-500">Inject hydrogen into natural gas boilers or kilns to lower facility carbon intensity.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Link href="/technology">
+                                        <Button size="lg" className="bg-slate-950 uppercase tracking-widest text-xs font-bold">
+                                            View Tech Specs
+                                        </Button>
+                                    </Link>
+                                </div>
+
+                                <div className="bg-slate-950 p-12 text-white border border-slate-800 relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+                                    <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400 mb-8">PowerPod Capabilities</h4>
+                                    <ul className="space-y-6 text-sm">
+                                        <li className="flex items-center gap-4">
+                                            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                                            <span>Long-Duration Energy Storage (LDES)</span>
+                                        </li>
+                                        <li className="flex items-center gap-4">
+                                            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                                            <span>Grid Frequency Regulation</span>
+                                        </li>
+                                        <li className="flex items-center gap-4">
+                                            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                                            <span>Emergency Backup Power (UPS)</span>
+                                        </li>
+                                        <li className="flex items-center gap-4">
+                                            <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                                            <span>Green Ammonia Feedstock</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                Maximize Your Solar & Wind
-                            </h2>
-                            <p className="text-lg text-[#6B7280] mb-6">
-                                Utility companies are paying less and less for solar power. Store and use onsite renewable energy as H2 instead of selling back at declining rates.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Recover lost solar revenue from hydrogen production</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Production tax credits: $3/kg of green hydrogen</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Investment tax credit of 30%</span>
-                                </li>
-                            </ul>
-                            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                                OPTIMIZE YOUR RENEWABLES <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        )}
 
-            {/* Resilience Solution */}
-            <section id="resilience" className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 text-[#00CC66] mb-4">
-                                <Battery className="w-6 h-6" />
-                                <span className="text-label uppercase tracking-wider">Resilience Solution</span>
-                            </div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                Reliable Backup Power
-                            </h2>
-                            <p className="text-lg text-[#6B7280] mb-6">
-                                Fuel cells take hydrogen and convert it to electricity on demand. Hydrogen can be stored for weeks or months with no loss of energy, unlike batteries.
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Long-term storage without energy loss</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Electricity easily conditioned to different voltages</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Energy independence from the grid</span>
-                                </li>
-                            </ul>
-                            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
-                                SECURE YOUR POWER <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-                        <div className="bg-gradient-to-br from-[#00CC66]/10 to-[#0057B7]/10 p-12 flex items-center justify-center min-h-[400px]">
-                            <Battery className="w-32 h-32 text-[#00CC66] opacity-50" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-24 bg-[#111827]">
-                <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-                    <h2 className="text-h1 font-bold text-white mb-6">
-                        Which Solution Fits Your Needs?
-                    </h2>
-                    <p className="text-xl text-neutral-400 mb-8">
-                        Let our team help you identify the right hydrogen solution for your situation.
-                    </p>
-                    <Link href="/contact" className="btn-primary">
-                        GET PERSONALIZED RECOMMENDATION
-                    </Link>
+                    </FadeIn>
                 </div>
             </section>
         </div>
+    );
+}
+
+export default function SolutionsPage() {
+    return (
+        <Suspense fallback={<div className="min-h-screen"></div>}>
+            <SolutionsContent />
+        </Suspense>
     );
 }

@@ -2,122 +2,115 @@ import { Sun, Wind, Droplets, Zap, Database, Fuel, BatteryCharging, ArrowRight }
 
 export function SystemDiagram() {
     return (
-        <div className="w-full overflow-x-auto">
-            <div className="min-w-[800px] p-8">
+        <div className="w-full overflow-x-auto py-8">
+            <div className="min-w-[800px] px-8">
                 {/* Desktop horizontal flow */}
-                <div className="hidden md:flex items-center justify-between gap-4">
+                <div className="hidden md:flex items-center justify-between gap-6">
                     {/* Inputs */}
-                    <div className="flex flex-col gap-4 p-6 border border-[#E5E7EB] bg-white min-w-[180px]">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-2">Energy Input</h4>
-                        <div className="flex items-center gap-3">
-                            <Sun className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Solar Power</span>
+                    <div className="flex flex-col gap-3 p-6 border border-border/50 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm min-w-[200px]">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Energy Input</h4>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <Sun className="w-5 h-5 text-amber-500" />
+                            <span className="text-sm font-medium text-foreground">Solar Power</span>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Wind className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Wind Power</span>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <Wind className="w-5 h-5 text-blue-500" />
+                            <span className="text-sm font-medium text-foreground">Wind Power</span>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Droplets className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Hydropower</span>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <Droplets className="w-5 h-5 text-cyan-500" />
+                            <span className="text-sm font-medium text-foreground">Hydropower</span>
                         </div>
                     </div>
 
-                    <ArrowRight className="w-8 h-8 text-[#E5E7EB] flex-shrink-0" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 flex-shrink-0" />
 
-                    {/* Electrolyzer */}
-                    <div className="p-6 border-2 border-[#00CC66] bg-white min-w-[180px]">
-                        <h4 className="text-label uppercase tracking-wider text-[#00CC66] mb-2">Production</h4>
+                    {/* Electrolyzer - Highlighted */}
+                    <div className="p-6 border-2 border-primary/20 bg-primary/5 rounded-2xl shadow-md min-w-[200px] relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-bl-full -mr-8 -mt-8" />
+
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Production</h4>
                         <div className="flex items-center gap-3 mb-4">
-                            <Zap className="w-8 h-8 text-[#00CC66]" />
-                            <span className="text-lg font-medium text-[#111827]">Electrolyzer</span>
+                            <Zap className="w-8 h-8 text-primary fill-primary/20" />
+                            <span className="text-lg font-bold text-foreground">Electrolyzer</span>
                         </div>
-                        <p className="text-sm text-[#6B7280]">
-                            Convert water + renewable energy into hydrogen at 90-225 kg/day
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                            Convert water + renewable energy into hydrogen at 90-225 kg/day.
                         </p>
                     </div>
 
-                    <ArrowRight className="w-8 h-8 text-[#E5E7EB] flex-shrink-0" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 flex-shrink-0" />
 
                     {/* Storage */}
-                    <div className="p-6 border border-[#E5E7EB] bg-white min-w-[180px]">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-2">Storage</h4>
+                    <div className="p-6 border border-border/50 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm min-w-[200px]">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-3">Storage</h4>
                         <div className="flex items-center gap-3 mb-4">
-                            <Database className="w-8 h-8 text-[#00CC66]" />
-                            <span className="text-lg font-medium text-[#111827]">H2 Storage</span>
+                            <Database className="w-8 h-8 text-primary" />
+                            <span className="text-lg font-bold text-foreground">H2 Storage</span>
                         </div>
-                        <p className="text-sm text-[#6B7280]">
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                             Store safely until needed or sold. No energy loss over time.
                         </p>
                     </div>
 
-                    <ArrowRight className="w-8 h-8 text-[#E5E7EB] flex-shrink-0" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 flex-shrink-0" />
 
                     {/* Outputs */}
-                    <div className="flex flex-col gap-4 p-6 border border-[#E5E7EB] bg-white min-w-[180px]">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-2">Output</h4>
-                        <div className="flex items-center gap-3">
-                            <BatteryCharging className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Fuel Cell Power</span>
+                    <div className="flex flex-col gap-3 p-6 border border-border/50 bg-white/50 backdrop-blur-sm rounded-2xl shadow-sm min-w-[200px]">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Output</h4>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <BatteryCharging className="w-5 h-5 text-green-600" />
+                            <span className="text-sm font-medium text-foreground">Fuel Cell Power</span>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Fuel className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Vehicle Fueling</span>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <Fuel className="w-5 h-5 text-blue-600" />
+                            <span className="text-sm font-medium text-foreground">Vehicle Fueling</span>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Zap className="w-6 h-6 text-[#00CC66]" />
-                            <span className="text-sm text-[#111827]">Grid Power</span>
+                        <div className="flex items-center gap-3 p-2 rounded-lg bg-white border border-border/50">
+                            <Zap className="w-5 h-5 text-yellow-600" />
+                            <span className="text-sm font-medium text-foreground">Grid Power</span>
                         </div>
                     </div>
                 </div>
 
                 {/* Mobile vertical flow */}
                 <div className="md:hidden flex flex-col items-center gap-4">
-                    <div className="w-full p-6 border border-[#E5E7EB] bg-white">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-4">Energy Input</h4>
-                        <div className="flex flex-wrap gap-4">
-                            <div className="flex items-center gap-2">
-                                <Sun className="w-5 h-5 text-[#00CC66]" />
-                                <span className="text-sm">Solar</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Wind className="w-5 h-5 text-[#00CC66]" />
-                                <span className="text-sm">Wind</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Droplets className="w-5 h-5 text-[#00CC66]" />
-                                <span className="text-sm">Hydro</span>
-                            </div>
+                    <div className="p-6 border border-border/50 bg-white rounded-xl w-full">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Energy Input</h4>
+                        <div className="flex gap-4">
+                            <Sun className="w-6 h-6 text-amber-500" />
+                            <Wind className="w-6 h-6 text-blue-500" />
+                            <Droplets className="w-6 h-6 text-cyan-500" />
                         </div>
                     </div>
 
-                    <ArrowRight className="w-6 h-6 text-[#E5E7EB] rotate-90" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 rotate-90" />
 
-                    <div className="w-full p-6 border-2 border-[#00CC66] bg-white">
-                        <h4 className="text-label uppercase tracking-wider text-[#00CC66] mb-2">Electrolyzer</h4>
-                        <p className="text-sm text-[#6B7280]">90-225 kg H2/day</p>
+                    <div className="p-6 border-2 border-primary/20 bg-primary/5 rounded-xl w-full">
+                        <div className="flex items-center gap-3 mb-2">
+                            <Zap className="w-6 h-6 text-primary" />
+                            <span className="font-bold">Electrolyzer</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">90-225 kg H2/day</p>
                     </div>
 
-                    <ArrowRight className="w-6 h-6 text-[#E5E7EB] rotate-90" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 rotate-90" />
 
-                    <div className="w-full p-6 border border-[#E5E7EB] bg-white">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-2">H2 Storage</h4>
-                        <p className="text-sm text-[#6B7280]">Long-term, no loss</p>
+                    <div className="p-6 border border-border/50 bg-white rounded-xl w-full">
+                        <div className="flex items-center gap-3 mb-2">
+                            <Database className="w-6 h-6 text-primary" />
+                            <span className="font-bold">Storage</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">Long-term buffer</p>
                     </div>
 
-                    <ArrowRight className="w-6 h-6 text-[#E5E7EB] rotate-90" />
+                    <ArrowRight className="w-6 h-6 text-muted-foreground/30 rotate-90" />
 
-                    <div className="w-full p-6 border border-[#E5E7EB] bg-white">
-                        <h4 className="text-label uppercase tracking-wider text-[#6B7280] mb-4">Output</h4>
-                        <div className="flex flex-wrap gap-4">
-                            <div className="flex items-center gap-2">
-                                <BatteryCharging className="w-5 h-5 text-[#00CC66]" />
-                                <span className="text-sm">Power</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Fuel className="w-5 h-5 text-[#00CC66]" />
-                                <span className="text-sm">Fueling</span>
-                            </div>
+                    <div className="p-6 border border-border/50 bg-white rounded-xl w-full">
+                        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">Output</h4>
+                        <div className="flex gap-4">
+                            <BatteryCharging className="w-6 h-6 text-green-600" />
+                            <Fuel className="w-6 h-6 text-blue-600" />
                         </div>
                     </div>
                 </div>

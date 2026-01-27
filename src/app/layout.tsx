@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Outfit, JetBrains_Mono } from "next/font/google"; // Changed font imports
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackgroundController } from "@/components/effects/BackgroundController";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Body font - Clean, readable
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  display: 'swap',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Heading font - Premium, geometric
+const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--font-outfit",
+  display: 'swap',
+});
+
+// Tech font - HUD, Data, Specs
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -25,12 +37,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased flex flex-col min-h-screen bg-background text-foreground`}
+        className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased flex flex-col min-h-screen bg-background text-foreground`}
       >
+        <BackgroundController />
+        {/* Contrast Overlay - Subtle tint to ensure text readability */}
+        <div className="fixed inset-0 bg-slate-50/60 -z-10 pointer-events-none mix-blend-multiply" />
         <Navbar />
-        <main className="flex-1 w-full flex flex-col items-center">
+        <main className="flex-1 w-full flex flex-col">
           {children}
         </main>
         <Footer />

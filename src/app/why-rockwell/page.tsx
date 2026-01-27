@@ -1,220 +1,93 @@
-import Link from "next/link";
-import { Users, Award, Clock, Target, CheckCircle } from "lucide-react";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-    title: "Why Rockwell H2 | Rockwell H2",
-    description: "Learn why Rockwell H2 is the right choice for your hydrogen infrastructure needs.",
-};
+import Link from "next/link";
+import { Users, ShieldCheck, Settings, Phone } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { HUDLabel } from "@/components/ui/HUDLabel";
+import { FadeIn } from "@/components/ui/FadeIn";
+
+const TeamCard = ({ name, role, phone }: { name: string, role: string, phone: string }) => (
+    <div className="bg-white border border-slate-200 p-8 hover:border-emerald-500 transition-all group">
+        <div className="w-12 h-12 bg-slate-950 text-white flex items-center justify-center mb-6 group-hover:bg-emerald-600 transition-colors">
+            <Users size={24} />
+        </div>
+        <h4 className="text-xl font-bold mb-1 text-slate-950">{name}</h4>
+        <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-6">{role}</p>
+        <a href={`tel:${phone.replace(/\D/g, '')}`} className="text-sm font-mono font-bold text-slate-400 hover:text-slate-950 transition-colors flex items-center gap-2">
+            <Phone size={14} /> {phone}
+        </a>
+    </div>
+);
+
+const ValueCard = ({ title, desc }: { title: string, desc: string }) => (
+    <div className="p-10 bg-white border border-slate-100 relative group overflow-hidden hover:shadow-lg transition-all">
+        <div className="absolute top-0 left-0 w-1 h-0 bg-emerald-500 group-hover:h-full transition-all duration-700" />
+        <h4 className="font-bold text-xl mb-4 text-slate-950">{title}</h4>
+        <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
+    </div>
+);
 
 export default function WhyRockwellPage() {
     return (
-        <div className="pt-20">
-            {/* Hero */}
-            <section className="py-24 bg-[#F3F4F6] border-b border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="max-w-3xl">
-                        <h1 className="text-h1 font-bold text-[#111827] mb-6">
-                            Why Rockwell H2
-                        </h1>
-                        <p className="text-xl text-[#6B7280]">
-                            With our green hydrogen system, we help to increase energy independence, decarbonize the world, and secure a future for generations to come.
-                        </p>
-                    </div>
+        <div className="flex flex-col w-full overflow-hidden">
+            {/* HERO */}
+            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <FadeIn>
+                        <SectionHeader
+                            subtitle="Generational Engineering"
+                            title="30 Years of Innovation."
+                            description="Rockwell H2 Systems is a family-owned engineering firm built on the standard of industrial reliability. We aren't a startup. We're a builder."
+                        />
+                    </FadeIn>
                 </div>
             </section>
 
-            {/* Leadership */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-h2 font-semibold text-[#111827] mb-4">
-                            Leadership Team
-                        </h2>
-                        <p className="text-lg text-[#6B7280]">
-                            Experienced professionals dedicated to advancing hydrogen infrastructure.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                        <div className="feature-card text-center">
-                            <div className="w-24 h-24 bg-[#E5E7EB] mx-auto mb-6 flex items-center justify-center">
-                                <Users className="w-12 h-12 text-[#9CA3AF]" />
+            {/* STORY & TEAM */}
+            <section className="bg-slate-50 border-y border-slate-200 py-24">
+                <div className="container mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center mb-24">
+                        <div className="relative">
+                            <div className="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-slate-200" />
+                            <h3 className="text-4xl font-bold tracking-tight mb-8 text-slate-950">Engineering Lineage.</h3>
+                            <div className="space-y-6 text-slate-500 text-lg leading-relaxed mb-8">
+                                <p>
+                                    Founded by Brad and Nick Rockwell, we've spent decades in the industrial engineering sector.
+                                </p>
+                                <p>
+                                    We watched the "Green Energy" boom bring a lot of promises and very little hardware. We saw companies selling renderings instead of reactors.
+                                </p>
+                                <p>
+                                    So we built Rockwell H2 to be different. We don't care about venture capital hype cycles. We care about building infrastructure that lasts for 25+ years in harsh conditions.
+                                </p>
                             </div>
-                            <h3 className="text-h3 font-medium text-[#111827] mb-2">Brad Rockwell</h3>
-                            <p className="text-[#00CC66] font-medium mb-4">Co-Founder</p>
-                            <p className="text-[#6B7280] text-sm mb-4">
-                                Leading the development and deployment of industrial-grade hydrogen solutions.
-                            </p>
-                            <a
-                                href="tel:7143053300"
-                                className="text-[#0057B7] hover:underline text-sm"
-                            >
-                                (714) 305-3300
-                            </a>
-                        </div>
-
-                        <div className="feature-card text-center">
-                            <div className="w-24 h-24 bg-[#E5E7EB] mx-auto mb-6 flex items-center justify-center">
-                                <Users className="w-12 h-12 text-[#9CA3AF]" />
-                            </div>
-                            <h3 className="text-h3 font-medium text-[#111827] mb-2">Nick Rockwell</h3>
-                            <p className="text-[#00CC66] font-medium mb-4">Co-Founder</p>
-                            <p className="text-[#6B7280] text-sm mb-4">
-                                Driving innovation in modular hydrogen systems and renewable energy integration.
-                            </p>
-                            <a
-                                href="tel:5109600261"
-                                className="text-[#0057B7] hover:underline text-sm"
-                            >
-                                (510) 960-0261
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Company Values */}
-            <section className="py-24 bg-[#F3F4F6] border-y border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-h2 font-semibold text-[#111827] mb-4">
-                            Our Approach
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="feature-card">
-                            <Target className="w-8 h-8 text-[#00CC66] mb-4" />
-                            <h3 className="font-medium text-[#111827] mb-2">Turnkey Solutions</h3>
-                            <p className="text-sm text-[#6B7280]">
-                                One-stop shopping for solar, energy storage, hydrogen equipment, and installation.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <Clock className="w-8 h-8 text-[#00CC66] mb-4" />
-                            <h3 className="font-medium text-[#111827] mb-2">Rapid Deployment</h3>
-                            <p className="text-sm text-[#6B7280]">
-                                Deploy in days, not months or years with our modular approach.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <Award className="w-8 h-8 text-[#00CC66] mb-4" />
-                            <h3 className="font-medium text-[#111827] mb-2">Proven Technology</h3>
-                            <p className="text-sm text-[#6B7280]">
-                                Industry-leading efficiency and reliability in hydrogen production.
-                            </p>
-                        </div>
-                        <div className="feature-card">
-                            <Users className="w-8 h-8 text-[#00CC66] mb-4" />
-                            <h3 className="font-medium text-[#111827] mb-2">Expert Support</h3>
-                            <p className="text-sm text-[#6B7280]">
-                                Dedicated team supporting you from evaluation to operation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Benefits */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                Benefits with Hydrogen
-                            </h2>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Lower, stable energy costs and recovery of lost solar revenue from hydrogen production</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Production tax credits: $3/kg of green hydrogen</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Flexibility in configuration with modular plug and play units</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Reducing your carbon footprint and monetizing carbon credits</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Integrated monitoring and control system for production tax credits, environmental reporting and financial metrics</span>
-                                </li>
-                                <li className="flex items-start gap-3">
-                                    <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                    <span className="text-[#374151]">Turning your energy needs into a financial asset</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="space-y-6">
-                            <div className="p-6 border border-[#E5E7EB] bg-white">
-                                <div className="text-4xl font-bold text-[#00CC66] mb-2">$3</div>
-                                <div className="text-[#6B7280]">Per kg production tax credit</div>
-                            </div>
-                            <div className="p-6 border border-[#E5E7EB] bg-white">
-                                <div className="text-4xl font-bold text-[#00CC66] mb-2">30%</div>
-                                <div className="text-[#6B7280]">Investment tax credit</div>
-                            </div>
-                            <div className="p-6 border border-[#E5E7EB] bg-white">
-                                <div className="text-4xl font-bold text-[#00CC66] mb-2">Days</div>
-                                <div className="text-[#6B7280]">Deployment time, not months</div>
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
+                                    <ShieldCheck className="text-emerald-500" /> ASME & ISO Certified Design
+                                </div>
+                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
+                                    <Users className="text-emerald-500" /> Veteran Deployment Teams
+                                </div>
+                                <div className="flex items-center gap-4 text-sm font-bold text-slate-950">
+                                    <Settings className="text-emerald-500" /> Proprietary Resilience Controllers
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Problems We Solve */}
-            <section className="py-24 bg-[#F3F4F6] border-y border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                        <div className="feature-card">
-                            <h3 className="text-h3 font-medium text-[#111827] mb-4">The Problems</h3>
-                            <ul className="space-y-3 text-[#6B7280]">
-                                <li>Energy from fossil fuels is costly</li>
-                                <li>We are dependent on unreliable energy sources</li>
-                                <li>Diesel poses significant toxic and fire hazards</li>
-                                <li>Current energy systems produce greenhouse gasses</li>
-                                <li>Utility companies are paying less for solar power</li>
-                            </ul>
-                        </div>
-                        <div className="feature-card border-[#00CC66]">
-                            <h3 className="text-h3 font-medium text-[#00CC66] mb-4">The Solution</h3>
-                            <ul className="space-y-3 text-[#6B7280]">
-                                <li>Turnkey modular solution to the reliable energy problem</li>
-                                <li>Store and use onsite renewable energy as H2</li>
-                                <li>One-stop shopping: solar equipment, energy storage, hydrogen equipment and installation</li>
-                            </ul>
-                        </div>
-                        <div className="feature-card">
-                            <h3 className="text-h3 font-medium text-[#111827] mb-4">The Benefits</h3>
-                            <ul className="space-y-3 text-[#6B7280]">
-                                <li>Cleaner alternative to fossil fuels with significant financial gains</li>
-                                <li>Turning your energy needs into a financial asset</li>
-                                <li>Energy independence - Non-toxic and safer than diesel and batteries</li>
-                            </ul>
+                        <div className="grid sm:grid-cols-2 gap-6">
+                            <TeamCard name="Brad Rockwell" role="Principal Engineer" phone="(714) 305-3300" />
+                            <TeamCard name="Nick Rockwell" role="Operations Director" phone="(510) 960-0261" />
                         </div>
                     </div>
-                </div>
-            </section>
 
-            {/* CTA */}
-            <section className="py-24 bg-[#111827]">
-                <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-                    <h2 className="text-h1 font-bold text-white mb-6">
-                        Join the Hydrogen Revolution
-                    </h2>
-                    <p className="text-xl text-neutral-400 mb-8">
-                        Let&apos;s talk H2 and discuss how we can help transform your energy infrastructure.
-                    </p>
-                    <Link href="/contact" className="btn-primary">
-                        CONTACT US TODAY
-                    </Link>
+                    <div className="mb-12">
+                        <HUDLabel color="emerald">Core Principles</HUDLabel>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <ValueCard title="Integrity First" desc="We give you honest ROI modeling, including potential risks and infrastructure requirements. If hydrogen isn't right for you, we'll tell you." />
+                        <ValueCard title="Practical Innovation" desc="We focus on deployment-ready technology, not experimental lab-bench prototypes. Our gear runs in the mud, rain, and heat." />
+                        <ValueCard title="Generational Value" desc="We build systems for the long haul. Our goal is to make your facility energy independent for the next generation of ownership." />
+                    </div>
                 </div>
             </section>
         </div>

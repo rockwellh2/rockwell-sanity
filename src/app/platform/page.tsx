@@ -1,170 +1,119 @@
-import Link from "next/link";
-import { Box, Layers, Settings, Shield, Gauge, Wifi } from "lucide-react";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-    title: "Platform | Rockwell H2",
-    description: "Modular PowerPod Platform: integrated turnkey systems for green hydrogen production, storage, and energy output.",
-};
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { HUDLabel } from "@/components/ui/HUDLabel";
+import { ProductModule } from "@/components/ui/ProductModule";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export default function PlatformPage() {
     return (
-        <div className="pt-20">
-            {/* Hero */}
-            <section className="py-24 bg-[#F3F4F6] border-b border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="max-w-3xl">
-                        <h1 className="text-h1 font-bold text-[#111827] mb-6">
-                            Modular PowerPod Platform
-                        </h1>
-                        <p className="text-xl text-[#6B7280]">
-                            Integrated turnkey systems that generate and store green energy, with H2 or electricity as outputs. Deploy in days, not months or years.
-                        </p>
+        <div className="flex flex-col w-full overflow-hidden">
+            {/* HER0 */}
+            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <FadeIn>
+                        <SectionHeader
+                            subtitle="PowerPod Platform"
+                            title="Integrated Ecosystem."
+                            description="The PowerPod platform is a collection of containerized, modular components that function as a single unified energy system. Deploy in days, not months."
+                        />
+                    </FadeIn>
+                </div>
+            </section>
+
+            {/* PRODUCT MODULES */}
+            <section className="bg-slate-50 border-y border-slate-200 py-20">
+                <div className="container mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-10 mb-20">
+                        <FadeIn delay={0.1}>
+                            <ProductModule
+                                name="PowerPack"
+                                tag="Electrolyzers"
+                                specs="200kW / 500kW Variants"
+                                desc="High-efficiency proton exchange membrane (PEM) stacks designed for 24/7 industrial production. Turns water and power into gas."
+                            />
+                        </FadeIn>
+                        <FadeIn delay={0.2}>
+                            <ProductModule
+                                name="PowerBank"
+                                tag="H2 Storage"
+                                specs="300kg+ Capacity"
+                                desc="Safe, low-pressure containment arrays with multi-stage compression and monitoring. Stores energy indefinitely without degradation."
+                            />
+                        </FadeIn>
+                        <FadeIn delay={0.3}>
+                            <ProductModule
+                                name="PowerOnDemand"
+                                tag="Fuel Cells"
+                                specs="60kW / 300kW Output"
+                                desc="Modular fuel cell units that convert stored hydrogen back to electricity with zero latency. Seamless backup power."
+                            />
+                        </FadeIn>
+                        <FadeIn delay={0.4}>
+                            <ProductModule
+                                name="Fueling Module"
+                                tag="Dispensing"
+                                specs="350 / 700 Bar"
+                                desc="Industrial-grade dispensing systems for onsite heavy-duty fleets and equipment. Fill a forklift in 3 minutes."
+                            />
+                        </FadeIn>
                     </div>
                 </div>
             </section>
 
-            {/* Architecture */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                Plug-and-Play Architecture
-                            </h2>
-                            <p className="text-lg text-[#6B7280] mb-6">
-                                Our modular design allows you to scale from 200kW to 10+ MW by stacking standardized modules. Each unit handles power input, H2 generation (electrolyzers, pyrolysis, SMR), storage, and energy dispatch.
-                            </p>
-                            <p className="text-lg text-[#6B7280] mb-8">
-                                The lineup connects easily to renewable energy sources and can be tailored to meet any demand through our modular design.
-                            </p>
-                            <div className="flex flex-wrap gap-4">
-                                <Link href="/industries" className="btn-primary">
-                                    VIEW INDUSTRIES
-                                </Link>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="feature-card">
-                                <Box className="w-8 h-8 text-[#00CC66] mb-4" />
-                                <h3 className="font-medium text-[#111827] mb-2">Modular Units</h3>
-                                <p className="text-sm text-[#6B7280]">200kW - 1,000kW modules</p>
-                            </div>
-                            <div className="feature-card">
-                                <Layers className="w-8 h-8 text-[#00CC66] mb-4" />
-                                <h3 className="font-medium text-[#111827] mb-2">Stackable</h3>
-                                <p className="text-sm text-[#6B7280]">Scale to 10+ MW</p>
-                            </div>
-                            <div className="feature-card">
-                                <Settings className="w-8 h-8 text-[#00CC66] mb-4" />
-                                <h3 className="font-medium text-[#111827] mb-2">Configurable</h3>
-                                <p className="text-sm text-[#6B7280]">Flexible configurations</p>
-                            </div>
-                            <div className="feature-card">
-                                <Wifi className="w-8 h-8 text-[#00CC66] mb-4" />
-                                <h3 className="font-medium text-[#111827] mb-2">Connected</h3>
-                                <p className="text-sm text-[#6B7280]">Integrated monitoring</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* SPECS TABLE */}
+            <section id="specs" className="bg-white py-20">
+                <div className="container mx-auto px-6">
+                    <HUDLabel color="slate">System Specification Sheet</HUDLabel>
 
-            {/* Tech Specs */}
-            <section className="py-24 bg-[#F3F4F6] border-y border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <h2 className="text-h2 font-semibold text-[#111827] mb-12 text-center">
-                        Technical Specifications
-                    </h2>
-
-                    <div className="overflow-x-auto">
-                        <table className="w-full border-collapse">
-                            <thead>
-                                <tr className="bg-[#E5E7EB]">
-                                    <th className="border border-[#D1D5DB] px-6 py-4 text-left text-sm font-bold text-[#111827]">Specification</th>
-                                    <th className="border border-[#D1D5DB] px-6 py-4 text-left text-sm font-bold text-[#111827]">Value</th>
-                                    <th className="border border-[#D1D5DB] px-6 py-4 text-left text-sm font-bold text-[#111827]">Notes</th>
+                    <div className="bg-white border border-slate-200 p-8 md:p-12 overflow-x-auto shadow-xl mt-8">
+                        <table className="w-full text-left font-mono text-xs uppercase tracking-widest text-slate-500">
+                            <thead className="border-b-2 border-slate-950 text-slate-950">
+                                <tr>
+                                    <th className="pb-4 pt-2 pl-4">Metric</th>
+                                    <th className="pb-4 pt-2">Standard Unit</th>
+                                    <th className="pb-4 pt-2">Operational Range</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr className="bg-white">
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#111827]">Power Input Range</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm font-mono text-[#111827]">200kW - 10+ MW</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#6B7280]">Scalable via module stacking</td>
+                            <tbody className="divide-y divide-slate-100">
+                                <tr className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">H2 Production</td>
+                                    <td className="py-4 text-emerald-600">90 - 225 kg/day</td>
+                                    <td className="py-4 text-slate-400">Variable Load</td>
                                 </tr>
-                                <tr className="bg-[#F9FAFB]">
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#111827]">H2 Output Range</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm font-mono text-[#111827]">90 - 225 kg/day</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#6B7280]">Per electrolyzer module</td>
+                                <tr className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Purity</td>
+                                    <td className="py-4 text-emerald-600">99.999%</td>
+                                    <td className="py-4 text-slate-400">ISO 14687-2</td>
                                 </tr>
-                                <tr className="bg-white">
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#111827]">Module Size</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm font-mono text-[#111827]">200kW - 1,000kW</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#6B7280]">Standard container format</td>
+                                <tr className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Water Input</td>
+                                    <td className="py-4 text-emerald-600">Deionized</td>
+                                    <td className="py-4 text-slate-400">~2 gal/kg H2</td>
                                 </tr>
-                                <tr className="bg-[#F9FAFB]">
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#111827]">Deployment Time</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm font-mono text-[#111827]">Days</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#6B7280]">Not months or years</td>
+                                <tr className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Temp Range</td>
+                                    <td className="py-4 text-emerald-600">-20°C to +50°C</td>
+                                    <td className="py-4 text-slate-400">All Climate</td>
                                 </tr>
-                                <tr className="bg-white">
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#111827]">Energy Sources</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm font-mono text-[#111827]">Solar, Wind, Hydro</td>
-                                    <td className="border border-[#E5E7EB] px-6 py-4 text-sm text-[#6B7280]">Green power inputs</td>
+                                <tr className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Footprint</td>
+                                    <td className="py-4 text-emerald-600">20' ISO Container</td>
+                                    <td className="py-4 text-slate-400">Modular Stackable</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </section>
 
-            {/* Safety */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-h2 font-semibold text-[#111827] mb-4">
-                            Safety & Monitoring
-                        </h2>
-                        <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-                            Unlike diesel and batteries, H2 storage is safer and non-toxic.
-                        </p>
+                    <div className="mt-12 text-center">
+                        <Link href="/contact">
+                            <Button className="h-14 px-10 bg-slate-950 text-white hover:bg-emerald-600 text-xs font-bold uppercase tracking-[0.2em] rounded-none shadow-xl transition-all">
+                                Request Full Datasheets
+                            </Button>
+                        </Link>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="feature-card text-center">
-                            <Shield className="w-12 h-12 text-[#00CC66] mx-auto mb-4" />
-                            <h3 className="text-h3 font-medium text-[#111827] mb-2">Non-Toxic</h3>
-                            <p className="text-[#6B7280]">
-                                Only pure water as exhaust. No harmful emissions or toxic materials.
-                            </p>
-                        </div>
-                        <div className="feature-card text-center">
-                            <Gauge className="w-12 h-12 text-[#00CC66] mx-auto mb-4" />
-                            <h3 className="text-h3 font-medium text-[#111827] mb-2">Continuous Monitoring</h3>
-                            <p className="text-[#6B7280]">
-                                Integrated monitoring and control system for real-time oversight.
-                            </p>
-                        </div>
-                        <div className="feature-card text-center">
-                            <Settings className="w-12 h-12 text-[#00CC66] mx-auto mb-4" />
-                            <h3 className="text-h3 font-medium text-[#111827] mb-2">Fire Safety</h3>
-                            <p className="text-[#6B7280]">
-                                Advanced fire safety protocols built into every module.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-24 bg-[#111827]">
-                <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-                    <h2 className="text-h1 font-bold text-white mb-6">
-                        See Our Platform in Action
-                    </h2>
-                    <Link href="/contact" className="btn-primary">
-                        SCHEDULE A DEMO
-                    </Link>
                 </div>
             </section>
         </div>

@@ -1,191 +1,86 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { Factory, Warehouse, Building2, Truck, Tractor, CheckCircle } from "lucide-react";
+import { Factory, Truck, Database, Globe } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FadeIn } from "@/components/ui/FadeIn";
 
-const industries = [
-    {
-        id: "agriculture",
-        icon: Tractor,
-        name: "Agriculture",
-        description: "Power your farming operations with clean hydrogen. From tractors to irrigation pumps, reduce diesel dependency and operating costs.",
-        benefits: [
-            "Lower fuel costs compared to diesel",
-            "Zero emissions operation",
-            "Energy independence for remote locations",
-            "Production tax credits available"
-        ]
-    },
-    {
-        id: "warehousing",
-        icon: Warehouse,
-        name: "Warehousing & Logistics",
-        description: "Hydrogen forklifts offer speedy refueling, allowing you to cut your electric forklift fleet in half. Quiet, no pollution - only pure water as exhaust.",
-        benefits: [
-            "Speedy refueling vs battery charging",
-            "Reduce forklift fleet size by 50%",
-            "Quiet, zero-emission operation",
-            "Production tax credits mean free fuel"
-        ]
-    },
-    {
-        id: "municipal",
-        icon: Building2,
-        name: "Municipal",
-        description: "Cities and municipalities can achieve sustainability goals while reducing long-term energy costs. Power public facilities and fleet vehicles with green hydrogen.",
-        benefits: [
-            "Meet sustainability mandates",
-            "Reduce carbon footprint",
-            "Energy security for critical facilities",
-            "Long-term cost savings"
-        ]
-    },
-    {
-        id: "manufacturing",
-        icon: Factory,
-        name: "Manufacturing",
-        description: "Reliable backup power and process energy for manufacturing facilities. Hydrogen storage provides weeks of backup unlike batteries.",
-        benefits: [
-            "Reliable backup power",
-            "Process energy applications",
-            "Energy cost stabilization",
-            "Carbon footprint reduction"
-        ]
-    },
-    {
-        id: "transportation",
-        icon: Truck,
-        name: "Transportation",
-        description: "Fleet operators can transition to hydrogen-powered vehicles with on-site fueling capabilities. Future-proof your fleet while reducing operating costs.",
-        benefits: [
-            "On-site hydrogen fueling",
-            "Reduced fuel costs",
-            "Fleet range flexibility",
-            "Regulatory compliance"
-        ]
-    }
-];
+type IndustryKey = 'Agriculture' | 'Logistics' | 'Critical Facilities' | 'Heavy Transport';
 
 export default function IndustriesPage() {
-    const [activeTab, setActiveTab] = useState("warehousing");
-    const activeIndustry = industries.find(i => i.id === activeTab) || industries[0];
+    const [activeTab, setActiveTab] = useState<IndustryKey>('Agriculture');
+
+    const ind = {
+        'Agriculture': {
+            icon: Factory,
+            stat: '100%',
+            benefit: 'Diesel replaced by onsite biomass-to-H2.',
+            text: 'Turn winery or crop waste into energy independence. Secure your facility against grid outages with your own fuel supply.'
+        },
+        'Logistics': {
+            icon: Truck,
+            stat: '< 5 min',
+            benefit: 'Refueling time vs. 8hr battery charging.',
+            text: 'Keep your forklifts and heavy vehicles moving 24/7 with rapid onsite H2 fueling stations. No more battery swapping rooms.'
+        },
+        'Critical Facilities': {
+            icon: Database,
+            stat: '99.98%',
+            benefit: 'Backup power uptime with zero noise.',
+            text: 'Ideal for hospitals and data centers requiring mission-critical power without toxic diesel emissions or loud generators.'
+        },
+        'Heavy Transport': {
+            icon: Globe,
+            stat: '400+ mi',
+            benefit: 'Range achieved with high payload capacity.',
+            text: 'Long-haul decarbonization for heavy-duty trucking and public transport municipal agencies. Replaces diesel 1:1.'
+        }
+    };
+
+    const ActiveIcon = ind[activeTab].icon;
 
     return (
-        <div className="pt-20">
-            {/* Hero */}
-            <section className="py-24 bg-[#F3F4F6] border-b border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="max-w-3xl">
-                        <h1 className="text-h1 font-bold text-[#111827] mb-6">
-                            Industries We Serve
-                        </h1>
-                        <p className="text-xl text-[#6B7280]">
-                            From warehousing to agriculture, our hydrogen solutions help organizations achieve energy independence and reduce their carbon footprint.
-                        </p>
-                    </div>
-                </div>
-            </section>
+        <div className="flex flex-col w-full overflow-hidden">
+            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
+                <div className="container mx-auto px-6 relative z-10">
+                    <FadeIn>
+                        <SectionHeader
+                            subtitle="Market Verticals"
+                            title="Industrial Fit."
+                            description="We understand the unique operational constraints of your environment."
+                        />
+                    </FadeIn>
 
-            {/* Tabbed Content */}
-            <section className="py-24">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    {/* Tabs */}
-                    <div className="flex flex-wrap gap-2 mb-12 border-b border-[#E5E7EB] pb-4">
-                        {industries.map((industry) => {
-                            const Icon = industry.icon;
-                            return (
+                    <FadeIn delay={0.2}>
+                        <div className="flex flex-wrap gap-2 mb-12">
+                            {Object.keys(ind).map((t) => (
                                 <button
-                                    key={industry.id}
-                                    onClick={() => setActiveTab(industry.id)}
-                                    className={`px-6 py-3 text-sm font-medium transition-all duration-150 ${activeTab === industry.id
-                                            ? "bg-[#00CC66] text-[#111827]"
-                                            : "bg-white border border-[#E5E7EB] text-[#6B7280] hover:border-[#00CC66]"
-                                        }`}
+                                    key={t}
+                                    onClick={() => setActiveTab(t as IndustryKey)}
+                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === t ? 'bg-slate-950 text-white border-slate-950' : 'bg-white text-slate-400 border-slate-100 hover:border-slate-300'}`}
                                 >
-                                    <span className="flex items-center gap-2">
-                                        <Icon className="w-4 h-4" />
-                                        {industry.name}
-                                    </span>
+                                    {t}
                                 </button>
-                            );
-                        })}
-                    </div>
+                            ))}
+                        </div>
 
-                    {/* Active Tab Content */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <div className="inline-flex items-center gap-2 text-[#00CC66] mb-4">
-                                <activeIndustry.icon className="w-6 h-6" />
-                                <span className="text-label uppercase tracking-wider">Industry</span>
+                        <div className="bg-white border border-slate-200 p-12 shadow-xl flex flex-col md:flex-row gap-16 items-center">
+                            <div className="md:w-1/3">
+                                <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mb-8">
+                                    <ActiveIcon size={40} strokeWidth={1} />
+                                </div>
+                                <div className="text-5xl font-black tracking-tighter text-slate-950 mb-2">{ind[activeTab].stat}</div>
+                                <div className="text-xs font-bold uppercase tracking-widest text-emerald-600">{ind[activeTab].benefit}</div>
                             </div>
-                            <h2 className="text-h2 font-semibold text-[#111827] mb-6">
-                                {activeIndustry.name}
-                            </h2>
-                            <p className="text-lg text-[#6B7280] mb-8">
-                                {activeIndustry.description}
-                            </p>
-                            <ul className="space-y-4 mb-8">
-                                {activeIndustry.benefits.map((benefit, i) => (
-                                    <li key={i} className="flex items-start gap-3">
-                                        <CheckCircle className="w-5 h-5 text-[#00CC66] mt-0.5 flex-shrink-0" />
-                                        <span className="text-[#374151]">{benefit}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/contact" className="btn-primary">
-                                DISCUSS YOUR INDUSTRY
-                            </Link>
+                            <div className="md:w-2/3">
+                                <h3 className="text-3xl font-bold mb-6 tracking-tight text-slate-950">{activeTab} Focus</h3>
+                                <p className="text-xl text-slate-500 leading-relaxed">{ind[activeTab].text}</p>
+                                <button className="mt-10 px-8 py-3 bg-slate-50 text-slate-950 font-bold uppercase tracking-widest text-[10px] border border-slate-100 hover:bg-slate-100 transition-all">
+                                    Request {activeTab} Whitepaper
+                                </button>
+                            </div>
                         </div>
-                        <div className="feature-card flex items-center justify-center min-h-[400px]">
-                            <activeIndustry.icon className="w-32 h-32 text-[#00CC66] opacity-30" />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Use Case: Forklifts */}
-            <section className="py-24 bg-[#F3F4F6] border-y border-[#E5E7EB]">
-                <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-h2 font-semibold text-[#111827] mb-4">
-                            Featured: Hydrogen Forklifts
-                        </h2>
-                        <p className="text-lg text-[#6B7280] max-w-2xl mx-auto">
-                            Hydrogen forklifts are transforming warehouse operations across the country.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div className="feature-card text-center">
-                            <div className="text-4xl font-bold text-[#00CC66] mb-2">50%</div>
-                            <div className="text-sm text-[#6B7280]">Fleet reduction possible</div>
-                        </div>
-                        <div className="feature-card text-center">
-                            <div className="text-4xl font-bold text-[#00CC66] mb-2">$3/kg</div>
-                            <div className="text-sm text-[#6B7280]">Production tax credit</div>
-                        </div>
-                        <div className="feature-card text-center">
-                            <div className="text-4xl font-bold text-[#00CC66] mb-2">30%</div>
-                            <div className="text-sm text-[#6B7280]">Investment tax credit</div>
-                        </div>
-                        <div className="feature-card text-center">
-                            <div className="text-4xl font-bold text-[#00CC66] mb-2">0</div>
-                            <div className="text-sm text-[#6B7280]">Emissions</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-24 bg-[#111827]">
-                <div className="max-w-4xl mx-auto px-4 lg:px-8 text-center">
-                    <h2 className="text-h1 font-bold text-white mb-6">
-                        See How We Can Help Your Industry
-                    </h2>
-                    <Link href="/contact" className="btn-primary">
-                        SCHEDULE CONSULTATION
-                    </Link>
+                    </FadeIn>
                 </div>
             </section>
         </div>
