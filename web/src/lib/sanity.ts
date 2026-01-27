@@ -1,0 +1,39 @@
+import { createClient } from 'next-sanity'
+import imageUrlBuilder from '@sanity/image-url'
+
+// Sanity configuration - set these in your .env.local file
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
+export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+export const apiVersion = '2024-01-01'
+
+if (!projectId) {
+    throw new Error('Missing NEXT_PUBLIC_SANITY_PROJECT_ID environment variable')
+}
+
+export const client = createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: false,
+})
+
+// For fetching draft content in preview mode
+export const previewClient = createClient({
+    projectId,
+    dataset,
+    apiVersion,
+    useCdn: false,
+    token: process.env.SANITY_API_TOKEN,
+})
+
+export function getClient(preview = false) {
+    return preview ? previewClient : client
+}
+
+// Image URL builder
+const builder = imageUrlBuilder(client)
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function urlFor(source: any) {
+    return builder.image(source)
+}
