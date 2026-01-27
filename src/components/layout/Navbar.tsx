@@ -10,11 +10,12 @@ import { motion } from "framer-motion";
 import { ShinyButton } from "@/components/magicui/shiny-button";
 
 const navLinks = [
-    { path: "/", label: "Overview" },
-    { path: "/solutions", label: "Solutions" },
+    { path: "#overview", label: "Overview" },
+    { path: "#system", label: "System" },
+    { path: "#industries", label: "Industries" },
+    { path: "#impact", label: "Impact" },
     { path: "/technology", label: "Technology" },
-    { path: "/incentives", label: "Incentives" },
-    { path: "/why-rockwell", label: "About" },
+    { path: "/about", label: "About" },
 ];
 
 export function Navbar() {

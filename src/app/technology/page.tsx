@@ -1,156 +1,147 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { Download } from "lucide-react";
+
 import { Button } from "@/components/ui/Button";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HUDLabel } from "@/components/ui/HUDLabel";
-import { ProductModule } from "@/components/ui/ProductModule";
-import { FadeIn } from "@/components/ui/FadeIn";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { TechSystemMap } from "@/components/technology/TechSystemMap";
 
 export default function TechnologyPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const div1Ref = useRef<HTMLDivElement>(null);
-    const div2Ref = useRef<HTMLDivElement>(null);
-    const div3Ref = useRef<HTMLDivElement>(null);
-    const div4Ref = useRef<HTMLDivElement>(null);
-
     return (
-        <div className="flex flex-col w-full overflow-hidden">
-            {/* HER0 */}
-            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
-                    <FadeIn>
-                        <SectionHeader
-                            subtitle="Modular Infrastructure"
-                            title="The Hardware."
-                            description="Deep dive into the specific modules that make up the PowerPod platform. Scalable, containerized, and built for industry."
-                        />
-                    </FadeIn>
-                </div>
-            </section>
+        <div className="flex flex-col w-full overflow-hidden bg-white">
 
-            {/* PRODUCT MODULES */}
-            <section className="bg-slate-50 border-y border-slate-200 py-20 relative overflow-hidden">
-                <div ref={containerRef} className="container mx-auto px-6 relative z-10">
-                    <div className="grid lg:grid-cols-4 gap-6 mb-20 relative">
-                        {/* Beams connecting the modules */}
-                        <div className="hidden lg:block">
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div1Ref}
-                                toRef={div2Ref}
-                                duration={3}
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div2Ref}
-                                toRef={div3Ref}
-                                duration={3}
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div3Ref}
-                                toRef={div4Ref}
-                                duration={3}
-                            />
+            {/* 1. TECHNICAL HERO */}
+            <section className="relative pt-32 pb-20 overflow-hidden bg-slate-50 border-b border-slate-200">
+                <div className="absolute inset-0 bg-grid-pattern opacity-40" />
+
+                <div className="container mx-auto px-6 relative z-10">
+                    <div className="grid lg:grid-cols-12 gap-16 items-center">
+                        {/* Left: Headline */}
+                        <div className="lg:col-span-7">
+                            <HUDLabel color="emerald" className="mb-6">System Architecture</HUDLabel>
+                            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-slate-950 mb-6 leading-[0.9]">
+                                The Hardware.
+                            </h1>
+                            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mb-10">
+                                A modular, containerized platform designed for rapid deployment and industrial reliability.
+                                Scalable from pilot to gigawatt-scale.
+                            </p>
+                            <div className="flex gap-4">
+                                <Link href="/contact">
+                                    <Button className="h-14 px-8 bg-slate-950 text-white hover:bg-emerald-600 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-xl transition-all">
+                                        Configure System
+                                    </Button>
+                                </Link>
+                                <Button variant="outline" className="h-14 px-8 border-slate-300 text-slate-600 bg-white hover:text-slate-950 text-xs font-bold uppercase tracking-[0.2em] rounded-sm">
+                                    Download Specs
+                                </Button>
+                            </div>
                         </div>
 
-                        <FadeIn delay={0.1}>
-                            <div ref={div1Ref} className="relative z-10 h-full bg-white">
-                                <ProductModule
-                                    name="PowerPack"
-                                    tag="Electrolyzers"
-                                    specs="200kW / 500kW Variants"
-                                    desc="High-efficiency proton exchange membrane (PEM) stacks designed for 24/7 industrial production. Turns water and power into gas."
-                                />
+                        {/* Right: Platform Snapshot Card */}
+                        <div className="lg:col-span-5">
+                            <div className="blueprint-card p-8 bg-white shadow-2xl">
+                                <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+                                    <span className="font-mono text-xs font-bold uppercase tracking-widest text-slate-400">Platform Snapshot</span>
+                                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-slate-600 text-sm font-medium">Daily Capacity</span>
+                                        <span className="font-mono text-sm font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded">200 - 5,000 kg</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-slate-600 text-sm font-medium">Output Pressure</span>
+                                        <span className="font-mono text-sm font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded">350 / 700 bar</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-slate-600 text-sm font-medium">Purity</span>
+                                        <span className="font-mono text-sm font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded">99.999% (SAE J2719)</span>
+                                    </div>
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-slate-600 text-sm font-medium">Footprint</span>
+                                        <span className="font-mono text-sm font-bold text-slate-900 bg-slate-100 px-2 py-1 rounded">Standard ISO High-Cube</span>
+                                    </div>
+                                </div>
                             </div>
-                        </FadeIn>
-                        <FadeIn delay={0.2}>
-                            <div ref={div2Ref} className="relative z-10 h-full bg-white">
-                                <ProductModule
-                                    name="PowerBank"
-                                    tag="H2 Storage"
-                                    specs="300kg+ Capacity"
-                                    desc="Safe, low-pressure containment arrays with multi-stage compression and monitoring. Stores energy indefinitely without degradation."
-                                />
-                            </div>
-                        </FadeIn>
-                        <FadeIn delay={0.3}>
-                            <div ref={div3Ref} className="relative z-10 h-full bg-white">
-                                <ProductModule
-                                    name="PowerOnDemand"
-                                    tag="Fuel Cells"
-                                    specs="60kW / 300kW Output"
-                                    desc="Modular fuel cell units that convert stored hydrogen back to electricity with zero latency. Seamless backup power."
-                                />
-                            </div>
-                        </FadeIn>
-                        <FadeIn delay={0.4}>
-                            <div ref={div4Ref} className="relative z-10 h-full bg-white">
-                                <ProductModule
-                                    name="Fueling Module"
-                                    tag="Dispensing"
-                                    specs="350 / 700 Bar"
-                                    desc="Industrial-grade dispensing systems for onsite heavy-duty fleets and equipment. Fill a forklift in 3 minutes."
-                                />
-                            </div>
-                        </FadeIn>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* SPECS TABLE */}
-            <section id="specs" className="bg-white py-20">
-                <div className="container mx-auto px-6">
-                    <HUDLabel color="slate">System Specification Sheet</HUDLabel>
+            {/* 2. PERFORMANCE STRIP */}
+            <div className="bg-slate-950 py-12 border-b border-slate-800">
+                <div className="container mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="text-center md:text-left">
+                        <div className="text-3xl font-bold text-white mb-1">97%</div>
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">System Availability</div>
+                    </div>
+                    <div className="text-center md:text-left">
+                        <div className="text-3xl font-bold text-white mb-1">&lt;3 min</div>
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Refuel Time</div>
+                    </div>
+                    <div className="text-center md:text-left">
+                        <div className="text-3xl font-bold text-white mb-1">Zero</div>
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Scope 1 Emissions</div>
+                    </div>
+                    <div className="text-center md:text-left">
+                        <div className="text-3xl font-bold text-white mb-1">20 Yr</div>
+                        <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Design Life</div>
+                    </div>
+                </div>
+            </div>
 
-                    <div className="bg-white border border-slate-200 p-8 md:p-12 overflow-x-auto shadow-xl mt-8">
-                        <table className="w-full text-left font-mono text-xs uppercase tracking-widest text-slate-500">
-                            <thead className="border-b-2 border-slate-950 text-slate-950">
+            {/* 3. SYSTEM MAP (Radial) */}
+            <TechSystemMap />
+
+            {/* 4. SPECS TABLE */}
+            <section id="specs" className="bg-white py-24">
+                <div className="container mx-auto px-6 max-w-5xl">
+                    <div className="mb-10 text-center md:text-left">
+                        <h3 className="text-2xl font-bold text-slate-900 mb-2">Technical Specifications.</h3>
+                        <p className="text-slate-500">Detailed baseline performance metrics for the Series-A PowerPod.</p>
+                    </div>
+
+                    <div className="bg-white border-y-2 border-slate-950 overflow-hidden">
+                        <table className="w-full text-left text-sm">
+                            <thead className="bg-slate-50 text-slate-950 font-mono text-[10px] uppercase tracking-widest">
                                 <tr>
-                                    <th className="pb-4 pt-2 pl-4">Metric</th>
-                                    <th className="pb-4 pt-2">Standard Unit</th>
-                                    <th className="pb-4 pt-2">Operational Range</th>
+                                    <th className="py-4 pl-4 md:pl-8">Metric</th>
+                                    <th className="py-4">Value</th>
+                                    <th className="py-4 pr-4 md:pr-8 text-right hidden md:table-cell">Standard</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-100">
-                                <tr className="group hover:bg-slate-50 transition-colors">
-                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">H2 Production</td>
-                                    <td className="py-4 text-emerald-600">90 - 225 kg/day</td>
-                                    <td className="py-4 text-slate-400">Variable Load</td>
+                            <tbody className="divide-y divide-slate-100 font-mono text-xs md:text-sm">
+                                <tr className="group hover:bg-emerald-50/50 transition-colors">
+                                    <td className="py-5 pl-4 md:pl-8 font-bold text-slate-700">Production Rate</td>
+                                    <td className="py-5 font-bold text-slate-900">200 - 500 kg/day</td>
+                                    <td className="py-5 pr-4 md:pr-8 text-right text-slate-400 hidden md:table-cell">ISO Rated</td>
                                 </tr>
-                                <tr className="group hover:bg-slate-50 transition-colors">
-                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Purity</td>
-                                    <td className="py-4 text-emerald-600">99.999%</td>
-                                    <td className="py-4 text-slate-400">ISO 14687-2</td>
+                                <tr className="group hover:bg-emerald-50/50 transition-colors">
+                                    <td className="py-5 pl-4 md:pl-8 font-bold text-slate-700">Water Consumption</td>
+                                    <td className="py-5 font-bold text-slate-900">1.8 gal / kg H2</td>
+                                    <td className="py-5 pr-4 md:pr-8 text-right text-slate-400 hidden md:table-cell">Potable Input</td>
                                 </tr>
-                                <tr className="group hover:bg-slate-50 transition-colors">
-                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Water Input</td>
-                                    <td className="py-4 text-emerald-600">Deionized</td>
-                                    <td className="py-4 text-slate-400">~2 gal/kg H2</td>
+                                <tr className="group hover:bg-emerald-50/50 transition-colors">
+                                    <td className="py-5 pl-4 md:pl-8 font-bold text-slate-700">Stack Efficiency</td>
+                                    <td className="py-5 font-bold text-slate-900">48 kWh / kg</td>
+                                    <td className="py-5 pr-4 md:pr-8 text-right text-slate-400 hidden md:table-cell">System LHV</td>
                                 </tr>
-                                <tr className="group hover:bg-slate-50 transition-colors">
-                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Pressure Output</td>
-                                    <td className="py-4 text-emerald-600">30 Bar</td>
-                                    <td className="py-4 text-slate-400">Compressible to 700 Bar</td>
-                                </tr>
-                                <tr className="group hover:bg-slate-50 transition-colors">
-                                    <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Footprint</td>
-                                    <td className="py-4 text-emerald-600">20' ISO Container</td>
-                                    <td className="py-4 text-slate-400">Modular Stackable</td>
+                                <tr className="group hover:bg-emerald-50/50 transition-colors">
+                                    <td className="py-5 pl-4 md:pl-8 font-bold text-slate-700">Ambient Op. Temp</td>
+                                    <td className="py-5 font-bold text-slate-900">-20°C to +45°C</td>
+                                    <td className="py-5 pr-4 md:pr-8 text-right text-slate-400 hidden md:table-cell">IEC 60068</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div className="mt-12 text-center">
-                        <Link href="/contact">
-                            <Button className="h-14 px-10 bg-slate-950 text-white hover:bg-emerald-600 text-xs font-bold uppercase tracking-[0.2em] rounded-none shadow-xl transition-all">
-                                Request Engineering Drawings
-                            </Button>
-                        </Link>
+                    <div className="mt-12 flex justify-center">
+                        <Button variant="outline" className="gap-2 border-slate-300 text-slate-600 hover:text-slate-950 hover:border-slate-950">
+                            <Download size={16} />
+                            Download Full Engineering Sheet (PDF)
+                        </Button>
                     </div>
                 </div>
             </section>

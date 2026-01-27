@@ -103,28 +103,28 @@
 }
 
 :root {
-  /* INDUSTRIAL PREMIUM PALETTE */
-  /* Technical Brutalism & Blue-Collar Innovation */
+  /* INDUSTRIAL PREMIUM PALETTE - Phase 10 */
+  /* Consolidate to Emerald (Primary) and Slate (Structure) */
 
   --background: #FFFFFF;
-  --foreground: #0f172a;
+  --foreground: #020617;
   /* slate-950 */
 
   /* Primary Brand - Energy Emerald */
-  --primary: #10b981;
-  /* emerald-500 */
+  --primary: #059669;
+  /* emerald-600 - slightly darker for text contrast */
   --primary-foreground: #FFFFFF;
 
-  /* Accent - Blueprint Blue */
-  --accent: #0ea5e9;
-  /* sky-500 */
+  /* Accent - Signal Green (for highlights/beams) */
+  --accent: #10b981;
+  /* emerald-500 */
   --accent-foreground: #FFFFFF;
 
-  /* Secondary - Industrial Slate */
+  /* Secondary - Industrial Steel */
   --secondary: #F8FAFC;
   /* slate-50 */
   --secondary-foreground: #0f172a;
-  /* slate-950 */
+  /* slate-900 */
 
   /* Muted */
   --muted: #F1F5F9;
@@ -132,31 +132,31 @@
   --muted-foreground: #64748B;
   /* slate-500 */
 
-  /* Borders */
+  /* Borders - Technical Hairlines */
   --border: #E2E8F0;
   /* slate-200 */
   --input: #E2E8F0;
-  --ring: #10b981;
+  --ring: #059669;
 
-  /* Border Radius - Standardized */
-  --radius: 0.5rem;
-  /* 8px - tighter than before */
+  /* Border Radius - Engineers use small radii */
+  --radius: 0.25rem;
+  /* 4px - sharp technical look */
 
   /* SHADCN COMPONENT VARIABLES */
   --card: #FFFFFF;
-  --card-foreground: #0f172a;
+  --card-foreground: #020617;
   --popover: #FFFFFF;
-  --popover-foreground: #0f172a;
+  --popover-foreground: #020617;
   --destructive: #ef4444;
   --destructive-foreground: #FFFFFF;
 
-  /* Charts */
-  --chart-1: #10b981;
-  /* Primary */
-  --chart-2: #0ea5e9;
-  /* Accent */
-  --chart-3: #64748B;
-  /* Muted-foreground */
+  /* Charts - Consolidated */
+  --chart-1: #059669;
+  /* Emerald */
+  --chart-2: #334155;
+  /* Slate-700 */
+  --chart-3: #94a3b8;
+  /* Slate-400 */
   --chart-4: #F59E0B;
   /* Amber/Warning */
   --chart-5: #EF4444;
@@ -165,12 +165,12 @@
   /* Sidebar */
   --sidebar-background: #F8FAFC;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #10b981;
+  --sidebar-primary: #059669;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #F1F5F9;
   --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #E2E8F0;
-  --sidebar-ring: #10b981;
+  --sidebar-ring: #059669;
 }
 
 @layer base {
@@ -197,27 +197,57 @@
     text-wrap: balance;
   }
 
-  /* Glassmorphism - Updated for sharper, technical look - Increased Opacity for Contrast */
+  /* TEXTURES - Phase 10 */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  }
+
+  .bg-grid-pattern-dark {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  /* Glassmorphism - Technical */
   .glass-panel {
-    @apply bg-white/90 backdrop-blur-xl border-b border-slate-200/50;
+    @apply bg-white/90 backdrop-blur-xl border border-slate-200 shadow-sm;
+  }
+
+  .glass-panel-dark {
+    @apply bg-slate-950/80 backdrop-blur-xl border border-slate-800 shadow-sm;
   }
 
   /* Components: Technical Brutalism */
   .blueprint-card {
-    @apply bg-white/95 border border-slate-200 shadow-2xl relative;
+    @apply bg-white border border-slate-200 shadow-xl relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-emerald-500/50;
   }
 
-  .blueprint-card-inner {
-    @apply bg-white border border-slate-100;
+  .blueprint-card::after {
+    content: '';
+    @apply absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-emerald-500/20 opacity-0 transition-opacity duration-300;
+  }
+
+  .blueprint-card:hover::after {
+    @apply opacity-100;
   }
 
   .hud-text {
-    @apply font-mono text-[10px] uppercase tracking-[0.3em] font-bold;
+    @apply font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-slate-400;
   }
 
-  /* Text Styles */
+  .hud-chip {
+    @apply inline-flex items-center px-2 py-1 bg-slate-100 text-slate-600 font-mono text-[10px] uppercase font-bold tracking-wider rounded-sm border border-slate-200;
+  }
+
+  /* Typography */
   .heading-xl {
-    @apply text-5xl md:text-7xl font-bold tracking-tighter text-slate-950 leading-[0.9];
+    @apply text-5xl md:text-7xl font-bold tracking-tighter text-slate-950 leading-[0.95];
   }
 
   .heading-lg {
@@ -229,15 +259,19 @@
   }
 
   .text-lead {
-    @apply text-xl md:text-2xl text-slate-500 font-normal leading-relaxed;
+    @apply text-lg md:text-xl text-slate-600 font-normal leading-relaxed;
   }
-}
 
-/* Hero Background - Fluid Waves (Updated to be subtler) */
-.bg-hero-waves {
-  background-color: #ffffff;
-  background-image:
-    radial-gradient(at 0% 0%, hsla(152, 70%, 96%, 0.8) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(210, 80%, 96%, 0.8) 0px, transparent 50%);
-  background-attachment: fixed;
+  /* Accessibility - Phase 9 & 10 */
+  @media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

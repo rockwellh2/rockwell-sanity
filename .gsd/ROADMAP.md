@@ -83,3 +83,33 @@ Transform the site from a "Glade-inspired template" into a **Bespoke Industrial 
 
 ### v2.0 Glade Redesign (Completed)
 - Premium "Glade-like" aesthetic, Framer Motion, refined UI.
+
+---
+
+### Phase 9: Production Hardening
+**Status**: ⬜ Not Started
+**Objective**: Fix broken links, Align IA, SEO, and Accessibility improvements.
+**Requirements**:
+- [ ] Fix Footer links (Privacy, Contact typo) and align with Navbar.
+- [ ] Implement proper SEO (Headings, Metadata, Sitemap, Robots).
+- [ ] Add `prefers-reduced-motion` support.
+- [ ] Functional Contact Form with validation.
+- [ ] Add "Case Study" proof points to key pages.
+- [ ] Fix deep-linking on Solutions page.
+
+---
+
+### Phase 10: Visual Superiority (Industrial Premium)
+**Status**: ⬜ Not Started
+**Objective**: Implement "Technical Brutalism" and high-end visual polish on Home page.
+**Requirements**:
+- [ ] **Global**: Tighten palette (Emerald/Slate), add texture utilities.
+- [ ] **Home Shader**: "Hydrogen Field" effect (ripples + grid), parallax, homepage only.
+- [ ] **Home Narrative**: Reorder: Hero -> System Map -> Industries -> Impact -> Value Chain.
+- [ ] **Home Components**: Enhanced System Map, "Financial Impact" band, "Let's Model" CTA.
+- [ ] **Navbar**: Add section anchors (Overview, System, Industries, Impact).
+- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
+- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
+- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
+- [ ] **Incentives Page**: "Financial Engineering" aesthetic, stack snapshot, ROI modeling, qualification checklist.
+- [ ] **Contact Page**: Engineering Intake layout, 2-column technical form, process timeline, FAQ.
