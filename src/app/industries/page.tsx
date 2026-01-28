@@ -5,35 +5,35 @@ import { Factory, Truck, Database, Globe } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-type IndustryKey = 'Agriculture' | 'Logistics' | 'Critical Facilities' | 'Heavy Transport';
+type IndustryKey = "Food & Agriculture" | "Logistics" | "Critical Infrastructure" | "Ports & Heavy Transport";
 
 export default function IndustriesPage() {
-    const [activeTab, setActiveTab] = useState<IndustryKey>('Agriculture');
+    const [activeTab, setActiveTab] = useState<IndustryKey>("Logistics");
 
     const ind = {
-        'Agriculture': {
+        "Food & Agriculture": {
             icon: Factory,
-            stat: '100%',
-            benefit: 'Diesel replaced by onsite biomass-to-H2.',
-            text: 'Turn winery or crop waste into energy independence. Secure your facility against grid outages with your own fuel supply.'
+            stat: "$3.00/kg",
+            benefit: "IRA credits + onsite renewables.",
+            text: "Convert solar or biogas into fuel for tractors, refrigeration, and processing loads. Replace diesel and stabilize operating costs season to season."
         },
-        'Logistics': {
+        "Logistics": {
             icon: Truck,
-            stat: '< 5 min',
-            benefit: 'Refueling time vs. 8hr battery charging.',
-            text: 'Keep your forklifts and heavy vehicles moving 24/7 with rapid onsite H2 fueling stations. No more battery swapping rooms.'
+            stat: "3 min",
+            benefit: "Refuel time vs. 8hr charging.",
+            text: "Keep forklifts and yard trucks moving with rapid onsite H2 fueling. No battery swap rooms, no performance drop‑off, full shift uptime."
         },
-        'Critical Facilities': {
+        "Critical Infrastructure": {
             icon: Database,
-            stat: '99.98%',
-            benefit: 'Backup power uptime with zero noise.',
-            text: 'Ideal for hospitals and data centers requiring mission-critical power without toxic diesel emissions or loud generators.'
+            stat: "99.99%",
+            benefit: "Redundant backup power.",
+            text: "Hospitals, data centers, and municipal facilities get weeks of silent, emissions‑free backup with long‑duration storage."
         },
-        'Heavy Transport': {
+        "Ports & Heavy Transport": {
             icon: Globe,
-            stat: '400+ mi',
-            benefit: 'Range achieved with high payload capacity.',
-            text: 'Long-haul decarbonization for heavy-duty trucking and public transport municipal agencies. Replaces diesel 1:1.'
+            stat: "400+ mi",
+            benefit: "Range with full payload.",
+            text: "Decarbonize drayage, port equipment, and heavy transport with high‑throughput fueling and scalable onsite production."
         }
     };
 
@@ -44,11 +44,11 @@ export default function IndustriesPage() {
             <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
                 <div className="container mx-auto px-6 relative z-10">
                     <FadeIn>
-                        <SectionHeader
-                            subtitle="Market Verticals"
-                            title="Industrial Fit."
-                            description="We understand the unique operational constraints of your environment."
-                        />
+                            <SectionHeader
+                                subtitle="Market Verticals"
+                                title="Operational Fit."
+                                description="Built for environments where uptime, throughput, and compliance are non‑negotiable."
+                            />
                     </FadeIn>
 
                     <FadeIn delay={0.2}>
@@ -76,7 +76,7 @@ export default function IndustriesPage() {
                                 <h3 className="text-3xl font-bold mb-6 tracking-tight text-slate-950">{activeTab} Focus</h3>
                                 <p className="text-xl text-slate-500 leading-relaxed">{ind[activeTab].text}</p>
                                 <button className="mt-10 px-8 py-3 bg-slate-50 text-slate-950 font-bold uppercase tracking-widest text-[10px] border border-slate-100 hover:bg-slate-100 transition-all">
-                                    Request {activeTab} Whitepaper
+                                    Request {activeTab} Brief
                                 </button>
                             </div>
                         </div>

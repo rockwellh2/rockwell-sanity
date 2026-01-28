@@ -18,6 +18,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { ROICalculator } from "@/components/calculator/ROICalculator";
+import ShaderBackground from "@/components/ShaderBackground";
 
 // ============================================================
 // HOMEPAGE - "The Conversion Machine" Design
@@ -33,7 +34,10 @@ export default function Home() {
           ============================================================ */}
       <header className="relative bg-slate-50 pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         {/* Background Pattern */}
+        {/* Background Pattern */}
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-grid-pattern"></div>
+
+        <ShaderBackground />
 
         {/* Animated Blobs */}
         <div className="blob-orange w-72 h-72 top-10 -right-10 animate-blob"></div>

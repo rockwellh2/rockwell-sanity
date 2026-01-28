@@ -31,16 +31,16 @@ export default function SolutionsPage() {
                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-grid-pattern"></div>
 
                 <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 bg-green-100 border border-green-200 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-                        <Leaf size={12} /> Real-World Applications
+                    <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
+                        <Leaf size={12} /> Operational Deployments
                     </div>
 
                     <h1 className="heading-hero mb-6 max-w-4xl mx-auto">
-                        Hydrogen Solutions for <span className="text-green-600">Your Industry</span>
+                        Hydrogen Solutions for <span className="text-emerald-600">Real Operations</span>
                     </h1>
 
                     <p className="text-body max-w-2xl mx-auto mb-10">
-                        From warehouse fleets to agricultural equipment to backup power, our systems are designed for real operating conditions.
+                        From high‑throughput warehouses to critical backup power, our systems are engineered for uptime, throughput, and compliance.
                     </p>
                 </div>
             </section>
@@ -52,33 +52,33 @@ export default function SolutionsPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 text-blue-600 mb-4">
+                            <div className="inline-flex items-center gap-2 text-emerald-600 mb-4">
                                 <Truck size={20} />
                                 <span className="font-bold uppercase tracking-widest text-xs">Logistics & Warehousing</span>
                             </div>
 
-                            <h2 className="heading-section mb-6">Hydrogen Forklifts</h2>
+                            <h2 className="heading-section mb-6">High‑Throughput Fleet Fueling</h2>
 
                             <p className="text-body mb-8">
-                                Replace lead-acid battery downtime with 3-minute hydrogen refueling. Keep your forklift fleet running 24/7 with zero emissions and constant power output.
+                                Replace lead‑acid downtime with 3‑minute hydrogen refueling. Keep forklift fleets running 24/7 with constant power and no battery rooms.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-4 mb-8">
                                 <BenefitItem icon={<Clock />} text="3-minute refuel time" />
                                 <BenefitItem icon={<Zap />} text="Constant full power" />
-                                <BenefitItem icon={<Shield />} text="No battery room needed" />
-                                <BenefitItem icon={<Leaf />} text="Zero emissions" />
+                                <BenefitItem icon={<Shield />} text="Eliminate battery rooms" />
+                                <BenefitItem icon={<Leaf />} text="Zero point‑of‑use emissions" />
                             </div>
 
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-                                <p className="text-green-800 font-bold mb-2">The Bottom Line</p>
-                                <p className="text-green-700">
-                                    A fleet of 20 hydrogen forklifts can save <strong>$150,000+/year</strong> in labor and battery costs compared to lead-acid.
+                            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-8">
+                                <p className="text-emerald-800 font-bold mb-2">Operational Impact</p>
+                                <p className="text-emerald-700">
+                                    Typical sites recover <strong>1,000+ labor hours/year</strong> by eliminating charging, swap, and battery staging.
                                 </p>
                             </div>
 
                             <Link href="/incentives" className="btn-primary inline-flex items-center gap-2">
-                                Calculate Your Fleet Savings <ArrowRight size={18} />
+                                Model Fleet ROI <ArrowRight size={18} />
                             </Link>
                         </div>
 
@@ -86,14 +86,14 @@ export default function SolutionsPage() {
                             <div className="bg-white p-2 rounded-2xl shadow-xl -rotate-1">
                                 <div className="bg-slate-200 rounded-xl overflow-hidden aspect-[4/3] relative">
                                     <Image
-                                        src="/images/hero/LindeForklift.png"
-                                        alt="Hydrogen forklift refueling"
+                                        src="/images/hero/06_hydro-forklift.png"
+                                        alt="Hydrogen fleet refueling"
                                         fill
                                         className="object-cover"
                                     />
                                 </div>
                             </div>
-                            <div className="blob-blue w-48 h-48 -bottom-10 -right-10 animate-blob"></div>
+                            <div className="blob-green w-48 h-48 -bottom-10 -right-10 animate-blob"></div>
                         </div>
                     </div>
                 </div>
@@ -107,47 +107,49 @@ export default function SolutionsPage() {
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div className="order-2 lg:order-1 relative">
                             <div className="bg-white p-2 rounded-2xl shadow-xl rotate-1">
-                                <div className="bg-slate-200 rounded-xl overflow-hidden aspect-[4/3] relative">
-                                    <Image
-                                        src="https://images.unsplash.com/photo-1592860882379-3c35b757f5c5?q=80&w=800&auto=format&fit=crop"
-                                        alt="Tractor in agricultural field"
-                                        fill
-                                        className="object-cover"
-                                        unoptimized
-                                    />
+                                <div className="bg-slate-950 text-white rounded-xl p-10 aspect-[4/3] flex flex-col justify-between">
+                                    <div className="text-xs font-mono uppercase tracking-widest text-emerald-400">On‑Site Fuel</div>
+                                    <div>
+                                        <div className="text-4xl font-bold">Biogas → H2</div>
+                                        <div className="text-slate-400 mt-3 text-sm">Convert crop waste or digester gas into usable hydrogen for equipment and process heat.</div>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-slate-400">
+                                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                        Closed‑loop energy
+                                    </div>
                                 </div>
                             </div>
                             <div className="blob-green w-48 h-48 -top-10 -left-10 animate-blob animation-delay-2000"></div>
                         </div>
 
                         <div className="order-1 lg:order-2">
-                            <div className="inline-flex items-center gap-2 text-orange-600 mb-4">
+                            <div className="inline-flex items-center gap-2 text-emerald-600 mb-4">
                                 <Tractor size={20} />
-                                <span className="font-bold uppercase tracking-widest text-xs">Agriculture</span>
+                                <span className="font-bold uppercase tracking-widest text-xs">Food & Agriculture</span>
                             </div>
 
-                            <h2 className="heading-section mb-6">Farm Equipment</h2>
+                            <h2 className="heading-section mb-6">Fuel from Your Own Inputs</h2>
 
                             <p className="text-body mb-8">
-                                Eliminate your dependence on diesel with on-site hydrogen production. Turn your solar panels into fuel for tractors, harvesters, and utility vehicles.
+                                Turn onsite solar, biogas, or grid power into fuel for tractors, harvesters, and processing loads. Reduce diesel exposure and stabilize seasonal costs.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                                <BenefitItem icon={<Fuel />} text="Eliminate 40,000+ gal diesel/year" />
-                                <BenefitItem icon={<Leaf />} text="100% renewable fuel" />
-                                <BenefitItem icon={<Shield />} text="On-site fueling independence" />
-                                <BenefitItem icon={<Zap />} text="Non-toxic, safe storage" />
+                                <BenefitItem icon={<Fuel />} text="Replace bulk diesel deliveries" />
+                                <BenefitItem icon={<Leaf />} text="Low‑carbon fuel credits" />
+                                <BenefitItem icon={<Shield />} text="On‑site fueling independence" />
+                                <BenefitItem icon={<Zap />} text="Containerized safety systems" />
                             </div>
 
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 mb-8">
-                                <p className="text-orange-800 font-bold mb-2">The Bottom Line</p>
-                                <p className="text-orange-700">
-                                    A medium farm can save <strong>$200,000/year</strong> in diesel costs while earning <strong>$3/kg</strong> in federal tax credits.
+                            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-8">
+                                <p className="text-emerald-800 font-bold mb-2">Operational Impact</p>
+                                <p className="text-emerald-700">
+                                    Combine federal 45V credits with onsite power to drive <strong>sub‑$3/kg</strong> effective fuel costs.
                                 </p>
                             </div>
 
                             <Link href="/incentives" className="btn-primary inline-flex items-center gap-2">
-                                See Farm ROI Calculator <ArrowRight size={18} />
+                                See Agriculture ROI <ArrowRight size={18} />
                             </Link>
                         </div>
                     </div>
@@ -161,28 +163,28 @@ export default function SolutionsPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 text-green-600 mb-4">
+                            <div className="inline-flex items-center gap-2 text-emerald-600 mb-4">
                                 <BatteryCharging size={20} />
-                                <span className="font-bold uppercase tracking-widest text-xs">Backup & Resilience</span>
+                                <span className="font-bold uppercase tracking-widest text-xs">Critical Backup</span>
                             </div>
 
-                            <h2 className="heading-section mb-6">Reliable Backup Power</h2>
+                            <h2 className="heading-section mb-6">Long‑Duration Resilience</h2>
 
                             <p className="text-body mb-8">
-                                Protect your cold storage, production lines, and critical systems from grid outages. Hydrogen provides weeks of backup capacity with zero degradation.
+                                Protect cold storage, process lines, and critical loads. Hydrogen stores energy for weeks with zero degradation and instant dispatch.
                             </p>
 
                             <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                                <BenefitItem icon={<Shield />} text="Protect cold storage" />
-                                <BenefitItem icon={<Clock />} text="Weeks of capacity" />
-                                <BenefitItem icon={<Zap />} text="Zero degradation over time" />
-                                <BenefitItem icon={<Leaf />} text="Clean backup power" />
+                                <BenefitItem icon={<Shield />} text="Mission‑critical uptime" />
+                                <BenefitItem icon={<Clock />} text="Weeks of stored energy" />
+                                <BenefitItem icon={<Zap />} text="Instant dispatch" />
+                                <BenefitItem icon={<Leaf />} text="Zero‑emission backup" />
                             </div>
 
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-                                <p className="text-green-800 font-bold mb-2">The Bottom Line</p>
-                                <p className="text-green-700">
-                                    Unlike diesel generators, hydrogen fuel cells produce <strong>zero emissions</strong> and store energy for <strong>months</strong> without degradation.
+                            <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-8">
+                                <p className="text-emerald-800 font-bold mb-2">Operational Impact</p>
+                                <p className="text-emerald-700">
+                                    Maintain compliance and uptime without diesel storage, permitting, or noise constraints.
                                 </p>
                             </div>
 
@@ -195,15 +197,14 @@ export default function SolutionsPage() {
                             <div className="bg-white p-2 rounded-2xl shadow-xl -rotate-1">
                                 <div className="bg-slate-200 rounded-xl overflow-hidden aspect-[4/3] relative">
                                     <Image
-                                        src="https://images.unsplash.com/photo-1565514020128-4033cc359648?q=80&w=800&auto=format&fit=crop"
-                                        alt="Industrial facility with backup power"
+                                        src="/images/hero/HydrogenTanks.png"
+                                        alt="Hydrogen storage system"
                                         fill
                                         className="object-cover"
-                                        unoptimized
                                     />
                                 </div>
                             </div>
-                            <div className="blob-orange w-48 h-48 -bottom-10 -right-10 animate-blob animation-delay-4000"></div>
+                            <div className="blob-blue w-48 h-48 -bottom-10 -right-10 animate-blob animation-delay-4000"></div>
                         </div>
                     </div>
                 </div>
@@ -214,9 +215,9 @@ export default function SolutionsPage() {
           ============================================================ */}
             <section className="py-24 bg-slate-50 border-t border-slate-200">
                 <div className="max-w-5xl mx-auto px-6">
-                    <h2 className="heading-section text-center mb-4">Hydrogen vs. The Alternatives</h2>
+                    <h2 className="heading-section text-center mb-4">Hydrogen vs. Alternatives</h2>
                     <p className="text-center text-body mb-12">
-                        See how hydrogen stacks up against batteries and diesel.
+                        Compare real operational performance, not just fuel price.
                     </p>
 
                     <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-lg">
@@ -224,7 +225,7 @@ export default function SolutionsPage() {
                             <thead className="border-b-2 border-slate-900 bg-slate-50">
                                 <tr className="text-xs font-bold uppercase tracking-widest text-slate-500">
                                     <th className="py-4 px-6">Feature</th>
-                                    <th className="py-4 px-4 text-green-600">Hydrogen</th>
+                                    <th className="py-4 px-4 text-emerald-600">Hydrogen</th>
                                     <th className="py-4 px-4">Battery</th>
                                     <th className="py-4 px-4">Diesel</th>
                                 </tr>
@@ -238,13 +239,13 @@ export default function SolutionsPage() {
                                 />
                                 <CompareRow
                                     feature="Storage Duration"
-                                    hydrogen="Months (no loss)"
+                                    hydrogen="Weeks to months"
                                     battery="Days (degrades)"
                                     diesel="Months"
                                 />
                                 <CompareRow
                                     feature="Emissions"
-                                    hydrogen="Zero"
+                                    hydrogen="Zero at point of use"
                                     battery="Zero (on-site)"
                                     diesel="High CO2"
                                 />
@@ -259,6 +260,12 @@ export default function SolutionsPage() {
                                     hydrogen="$3/kg (45V)"
                                     battery="Limited"
                                     diesel="None"
+                                />
+                                <CompareRow
+                                    feature="Downtime Risk"
+                                    hydrogen="Minimal (3‑min refuel)"
+                                    battery="High (swap/charge)"
+                                    diesel="Medium (delivery)"
                                 />
                             </tbody>
                         </table>

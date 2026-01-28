@@ -267,9 +267,37 @@ export default function ContactPage() {
       </section>
 
       {/* ============================================================
+          3.5 FAQ SECTION
+          ============================================================ */}
+      < section className="py-24 bg-slate-50 border-t border-slate-200" >
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="heading-section text-center mb-12">Common Questions</h2>
+
+          <div className="space-y-6">
+            <div className="bg-white border border-slate-200 rounded-lg p-6">
+              <h3 className="font-bold text-slate-900 mb-2">Will I get a sales pitch?</h3>
+              <p className="text-slate-600">No. You will talk to an engineer who will look at your site constraints and power availability to see if the project is actually viable.</p>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-lg p-6">
+              <h3 className="font-bold text-slate-900 mb-2">How is my data handled?</h3>
+              <p className="text-slate-600">We use your operational data solely for feasibility modeling. We do not sell data or add you to aggressive marketing lists.</p>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-lg p-6">
+              <h3 className="font-bold text-slate-900 mb-2">Is the assessment really free?</h3>
+              <p className="text-slate-600">Yes. We invest upfront engineering time because qualified hydrogen projects are rare and valuable. We want to find the ones that work.</p>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-lg p-6">
+              <h3 className="font-bold text-slate-900 mb-2">What if I'm not ready to buy?</h3>
+              <p className="text-slate-600">That's fine. We help many operators build 2-3 year roadmaps for eventual fleet transition.</p>
+            </div>
+          </div>
+        </div>
+      </section >
+
+      {/* ============================================================
           4. ALTERNATIVE CONTACT
           ============================================================ */}
-      <section className="py-16 bg-slate-900 text-white">
+      < section className="py-16 bg-slate-900 text-white" >
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 items-center">
             <div>
@@ -292,9 +320,9 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
-    </div>
+    </div >
   );
 }
 

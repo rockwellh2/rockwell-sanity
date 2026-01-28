@@ -1,7 +1,7 @@
 # ROADMAP.md
 
-> **Current Milestone**: v4.0 — "The Conversion Machine"
-> **Current Phase**: Phase 1 (Not Started)
+> **Current Milestone**: v5.0 — "Content Engineering"
+> **Current Phase**: Completed
 
 ## Milestone Goal
 Complete website rebuild with warm, approachable aesthetic, multi-page structure, working ROI calculator, and A+++++ conversion optimization. Transform from "Industrial Premium" to "Sales Machine" that converts visitors into leads.
@@ -145,6 +145,70 @@ Complete website rebuild with warm, approachable aesthetic, multi-page structure
 - [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge) - manual
 - [ ] Mobile responsiveness audit (iPhone, Android) - manual
 - [ ] Performance check (LCP < 2.5s, CLS < 0.1) - manual
+
+---
+
+## Milestone v5.0: Content Engineering
+
+### Phase 10: Solutions Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: "Hydrogen Solutions for Real Operations"
+**Requirements**:
+- [ ] Hero: "Real Operations" narrative
+- [ ] 3 Solution Blocks (Logistics, Ag, Backup) with Operational Impact Cards
+- [ ] Comparison Table: Operational downtime risk
+- [ ] CTA: "Model Your ROI"
+
+### Phase 11: Platform Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: "Complete PowerPod Platform"
+**Requirements**:
+- [ ] Modules Grid: 4 core modules
+- [ ] Flow Diagram: Systems diagram style
+- [ ] Technical Specs: Output, Pressure, Interfaces
+- [ ] CTA: "Size a system for your site"
+
+### Phase 12: Technology Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: Deep technical reference
+**Requirements**:
+- [ ] Platform Snapshot: Deployment time, Safety
+- [ ] System Map: "PowerPod Core" center
+- [ ] Deep Specs Table
+- [ ] CTA: "Request engineering drawings"
+
+### Phase 13: Incentives Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: "Financial Engineering"
+**Requirements**:
+- [ ] ROI Snapshot: Payback, 45V, ITC, Uptime
+- [ ] Financial Model Panel: Diesel vs H2 cost
+- [ ] Example Scenario: 200kg/day system
+- [ ] CTA: "Request ROI calculator"
+
+### Phase 14: Industries Page Overhaul
+**Status**: ⬜ Not Started
+**Objective**: Tabbed interface for specific verticals
+**Requirements**:
+- [ ] Tabs: Logistics, Ag, Infra, Ports
+- [ ] Content per tab: Key metric, Outcome, Bullets, Brief CTA
+
+### Phase 15: About Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: "Engineers, Not Salespeople"
+**Requirements**:
+- [ ] Differentiators: 30 years, Turnkey
+- [ ] Team Cards: Technical focus
+- [ ] Compliance Section
+
+### Phase 16: Contact Page Refinement
+**Status**: ⬜ Not Started
+**Objective**: "Let's design your system"
+**Requirements**:
+- [ ] Intake Snapshot Card
+- [ ] Full Engineering Intake Form (H2 demand, Power avail)
+- [ ] Process Steps (3)
+- [ ] FAQ (No sales pressure)
 
 ---
 

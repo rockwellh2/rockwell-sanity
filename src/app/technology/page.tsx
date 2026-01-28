@@ -69,8 +69,8 @@ export default function TechnologyPage() {
                       <div className="text-3xl font-bold text-slate-950">300kg+</div>
                     </div>
                     <div>
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mb-2">Compression</div>
-                      <div className="text-3xl font-bold text-slate-950">30-700 Bar</div>
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mb-2">Deployment</div>
+                      <div className="text-3xl font-bold text-slate-950">12-16 Weeks</div>
                     </div>
                     <div>
                       <div className="font-mono text-[10px] uppercase tracking-widest text-slate-400 mb-2">Footprint</div>
@@ -84,11 +84,11 @@ export default function TechnologyPage() {
               </FadeIn>
             </div>
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
 
       {/* PERFORMANCE STRIP */}
-      <section className="bg-slate-950 text-white py-10">
+      < section className="bg-slate-950 text-white py-10" >
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <div className="border border-white/10 p-6">
@@ -109,10 +109,10 @@ export default function TechnologyPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* SYSTEM MAP */}
-      <section id="system" className="bg-slate-50 border-y border-slate-200 py-24 relative overflow-hidden">
+      < section id="system" className="bg-slate-50 border-y border-slate-200 py-24 relative overflow-hidden" >
         <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] bg-[length:32px_32px]" />
         <div ref={containerRef} className="container mx-auto px-6 relative z-10">
           <div className="mb-12">
@@ -200,10 +200,10 @@ export default function TechnologyPage() {
             </FadeIn>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* SPECS TABLE */}
-      <section id="specs" className="bg-white py-24">
+      < section id="specs" className="bg-white py-24" >
         <div className="container mx-auto px-6">
           <HUDLabel color="slate">System Specification Sheet</HUDLabel>
 
@@ -254,7 +254,7 @@ export default function TechnologyPage() {
             </Link>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 }

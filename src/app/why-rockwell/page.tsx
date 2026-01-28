@@ -1,18 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import {
-    Users,
-    Shield,
-    History,
-    CheckCircle,
-    ArrowRight,
-    Phone,
-    Award,
-    Wrench,
-    Building2
-} from "lucide-react";
+import { Users, Shield, History, ArrowRight, Phone, Award, Wrench } from "lucide-react";
 
 // ============================================================
 // ABOUT / WHY ROCKWELL PAGE - "The Conversion Machine" Design
@@ -31,21 +20,21 @@ export default function WhyRockwellPage() {
 
                 <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="max-w-4xl">
-                        <div className="inline-flex items-center gap-2 bg-slate-200 border border-slate-300 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-                            <History size={12} /> Est. 1994
-                        </div>
+                    <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
+                        <History size={12} /> Family-Owned Since 1994
+                    </div>
 
-                        <h1 className="heading-hero mb-6">
-                            Engineers, <span className="text-green-600">Not Salespeople.</span>
-                        </h1>
+                    <h1 className="heading-hero mb-6">
+                        Built by <span className="text-green-600">Industrial Engineers.</span>
+                    </h1>
 
-                        <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl">
-                            We're not a startup selling a render. Rockwell H2 is a family-owned engineering firm with 30 years of industrial deployment experience. We build things that work.
-                        </p>
+                    <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl">
+                        Rockwell H2 is a family-owned engineering firm with 30 years of industrial deployment experience. We build systems that run, get serviced, and scale with your operation.
+                    </p>
 
-                        <Link href="/contact" className="btn-cta inline-flex items-center gap-2">
-                            Talk to Brad or Nick <ArrowRight size={18} />
-                        </Link>
+                    <Link href="/contact" className="btn-cta inline-flex items-center gap-2">
+                        Talk to the Engineering Team <ArrowRight size={18} />
+                    </Link>
                     </div>
                 </div>
             </section>
@@ -57,24 +46,24 @@ export default function WhyRockwellPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <h2 className="heading-section text-center mb-4">Why Rockwell?</h2>
                     <p className="text-center text-body mb-16 max-w-2xl mx-auto">
-                        Three decades of industrial experience. Zero safety incidents. Systems that actually get deployed.
+                        Built for real uptime: field-serviceable hardware, audit-ready compliance, and long-term support.
                     </p>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         <DifferentiatorCard
                             icon={<History className="text-blue-600" />}
                             title="30 Years Experience"
-                            description="We've been building industrial systems since 1994. When others were still drawing concepts, we were welding pipe."
+                            description="Industrial systems since 1994, from controls to field deployments. Built for harsh environments and real duty cycles."
                         />
                         <DifferentiatorCard
                             icon={<Shield className="text-green-600" />}
                             title="Zero Safety Incidents"
-                            description="Hydrogen is safe when handled properly. Our safety record proves we handle it properly."
+                            description="Safety-first design with redundant containment, monitoring, and audit trails across every deployment."
                         />
                         <DifferentiatorCard
                             icon={<Wrench className="text-orange-500" />}
                             title="Turnkey Installation"
-                            description="We don't hand you a box and wish you luck. We install it, commission it, and train your team."
+                            description="We install, commission, and train. No hand-offs, no gaps, and no guessing at go-live."
                         />
                     </div>
                 </div>
@@ -87,34 +76,34 @@ export default function WhyRockwellPage() {
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="heading-section text-center mb-4">Our Lineage</h2>
                     <p className="text-center text-body mb-16 max-w-2xl mx-auto">
-                        We watched the "Green Energy" boom bring a lot of promises and very little hardware. So we built Rockwell H2 to be different.
+                        We watched the market flood with promises and little hardware. We built Rockwell H2 to deploy systems that operate for decades.
                     </p>
 
                     <div className="space-y-8">
                         <TimelineItem
                             year="1994"
                             title="Rockwell Engineering Founded"
-                            description="Brad Rockwell starts the company focused on industrial control systems and renewable energy integration."
+                            description="Rockwell Engineering launches with a focus on industrial controls and power integration."
                         />
                         <TimelineItem
                             year="2010"
                             title="First Hydrogen Projects"
-                            description="Early exploration of hydrogen production and storage for industrial applications."
+                            description="First hydrogen pilots for industrial storage and fueling applications."
                         />
                         <TimelineItem
                             year="2018"
                             title="PowerPod Concept"
-                            description="Development of containerized, modular hydrogen production and storage systems."
+                            description="Prototype of containerized production, compression, and storage modules."
                         />
                         <TimelineItem
                             year="2022"
                             title="IRA Changes the Game"
-                            description="The Inflation Reduction Act makes hydrogen economics viable. We scale up to meet demand."
+                            description="IRA incentives accelerate demand. We expand manufacturing and deployment capacity."
                         />
                         <TimelineItem
                             year="2024"
                             title="Rockwell H2 Launches"
-                            description="Dedicated hydrogen division with full turnkey solutions for logistics, agriculture, and backup power."
+                            description="Dedicated hydrogen division launches with turnkey deployments and service programs."
                         />
                     </div>
                 </div>
@@ -135,13 +124,13 @@ export default function WhyRockwellPage() {
                             name="Brad Rockwell"
                             role="Principal Engineer"
                             phone="(714) 305-3300"
-                            bio="30+ years in industrial systems. Brad designed and deployed power systems before hydrogen was cool."
+                            bio="30+ years in industrial systems. Brad designs and deploys infrastructure built for high uptime."
                         />
                         <TeamCard
                             name="Nick Rockwell"
                             role="Operations Director"
                             phone="(510) 960-0261"
-                            bio="Oversees project deployment and client operations. Nick ensures every system runs at peak performance."
+                            bio="Oversees deployment and service. Nick ensures every system runs at peak performance in the field."
                         />
                     </div>
 
@@ -168,9 +157,9 @@ export default function WhyRockwellPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">
                         <div>
-                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Compliance is Verification.</h2>
+                            <h2 className="text-3xl lg:text-4xl font-bold mb-6">Compliance is Engineering.</h2>
                             <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                                Hydrogen systems require rigorous adherence to safety codes. We don't cut corners on compliance. We define the standard.
+                                Hydrogen systems demand rigorous adherence to safety codes. We design for compliance from day one with audit-ready documentation.
                             </p>
 
                             <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-400 font-bold px-4 py-2 rounded-lg">
@@ -197,7 +186,7 @@ export default function WhyRockwellPage() {
                         Ready to talk to an engineer?
                     </h2>
                     <p className="text-slate-600 text-lg mb-10">
-                        No sales pitch. Just a straightforward conversation about whether hydrogen makes sense for your operation.
+                        No sales pitch. Just a straight conversation about whether hydrogen fits your operation.
                     </p>
                     <Link href="/contact" className="btn-cta inline-flex items-center gap-2 text-lg">
                         Schedule a Call <ArrowRight size={20} />

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import {
     Zap,
     Battery,
@@ -13,8 +12,7 @@ import {
 } from "lucide-react";
 
 // ============================================================
-// PRODUCTS PAGE - "The Conversion Machine" Design
-// Showcase PowerPod systems with warm, approachable styling
+// PLATFORM PAGE - Modular System Overview
 // ============================================================
 
 export default function PlatformPage() {
@@ -28,21 +26,21 @@ export default function PlatformPage() {
                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-grid-pattern"></div>
 
                 <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-                        <Box size={12} /> Modular Systems
+                    <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
+                        <Box size={12} /> PowerPod Platform
                     </div>
 
                     <h1 className="heading-hero mb-6 max-w-4xl mx-auto">
-                        Everything You Need to <span className="text-green-600">Produce, Store & Dispense</span> Hydrogen
+                        A Complete System to <span className="text-emerald-600">Produce, Store & Dispatch</span> Hydrogen
                     </h1>
 
                     <p className="text-body max-w-2xl mx-auto mb-10">
-                        Our PowerPod platform is a complete, turnkey system. Each module is containerized, pre-tested, and designed to work together seamlessly.
+                        PowerPod is a modular, containerized platform that scales from pilot deployments to multi‑megawatt sites. Each block is pre‑tested and serviceable in the field.
                     </p>
 
                     <div className="flex flex-wrap gap-4 justify-center">
                         <Link href="/contact" className="btn-cta inline-flex items-center gap-2">
-                            Request a Quote <ArrowRight size={18} />
+                            Request Platform Quote <ArrowRight size={18} />
                         </Link>
                         <Link href="#specs" className="btn-secondary">
                             View Specifications
@@ -56,9 +54,9 @@ export default function PlatformPage() {
           ============================================================ */}
             <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-6">
-                    <h2 className="heading-section text-center mb-4">The PowerPod System</h2>
+                    <h2 className="heading-section text-center mb-4">Core System Modules</h2>
                     <p className="text-center text-body mb-16 max-w-2xl mx-auto">
-                        Four integrated modules that handle everything from electricity to fuel.
+                        Four integrated blocks turn electricity into hydrogen and back into usable energy.
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-8">
@@ -67,11 +65,11 @@ export default function PlatformPage() {
                             tagline="Electrolyzers"
                             icon={<Zap className="text-orange-500" />}
                             specs="200kW / 500kW Variants"
-                            description="High-efficiency PEM stacks designed for 24/7 industrial production. Turns water + electricity into pure hydrogen gas."
+                            description="High‑efficiency PEM stacks designed for 24/7 production. Converts water and power into ultra‑pure hydrogen."
                             features={[
                                 "90-225 kg/day production",
                                 "99.999% purity output",
-                                "Variable load operation"
+                                "Dynamic load following"
                             ]}
                             color="orange"
                         />
@@ -80,11 +78,11 @@ export default function PlatformPage() {
                             tagline="H2 Storage"
                             icon={<Battery className="text-blue-500" />}
                             specs="300kg+ Capacity"
-                            description="Safe, low-pressure containment arrays with multi-stage compression and monitoring. Stores energy indefinitely."
+                            description="Low‑pressure containment arrays with multi‑stage compression and monitoring. Stores energy indefinitely."
                             features={[
-                                "Zero degradation over time",
-                                "Multi-stage compression",
-                                "24/7 monitoring system"
+                                "Zero storage degradation",
+                                "Multi‑stage compression",
+                                "Continuous monitoring"
                             ]}
                             color="blue"
                         />
@@ -93,11 +91,11 @@ export default function PlatformPage() {
                             tagline="Fuel Cells"
                             icon={<Factory className="text-green-600" />}
                             specs="60kW / 300kW Output"
-                            description="Modular fuel cell units that convert stored hydrogen back to electricity with zero latency. Seamless backup power."
+                            description="Fuel cell units that convert stored hydrogen back to electricity instantly. Ideal for backup or grid services."
                             features={[
-                                "Instant power on demand",
+                                "Instant dispatch",
                                 "Zero emissions",
-                                "Grid-independent operation"
+                                "Grid‑independent mode"
                             ]}
                             color="green"
                         />
@@ -106,10 +104,10 @@ export default function PlatformPage() {
                             tagline="Dispensing"
                             icon={<Fuel className="text-slate-700" />}
                             specs="350 / 700 Bar"
-                            description="Industrial-grade dispensing systems for onsite heavy-duty fleets and equipment. Fill a forklift in 3 minutes."
+                            description="Industrial‑grade dispensing for onsite fleets and equipment. A forklift refuels in 3 minutes."
                             features={[
-                                "3-minute refuel time",
-                                "Compatible with H2 forklifts",
+                                "3‑minute refuel",
+                                "Fleet‑ready interfaces",
                                 "NFPA 2 compliant"
                             ]}
                             color="slate"
@@ -125,7 +123,7 @@ export default function PlatformPage() {
                 <div className="max-w-5xl mx-auto px-6">
                     <h2 className="heading-section text-center mb-4">Technical Specifications</h2>
                     <p className="text-center text-body mb-12">
-                        All systems are containerized in standard 20' ISO units for easy transport and installation.
+                        All modules ship in standard 20' ISO containers for rapid delivery and installation.
                     </p>
 
                     <div className="bg-white border border-slate-200 rounded-xl p-8 shadow-lg overflow-x-auto">
@@ -141,9 +139,9 @@ export default function PlatformPage() {
                                 <SpecRow metric="H2 Production" value="90 - 225 kg/day" notes="Variable load" />
                                 <SpecRow metric="Purity" value="99.999%" notes="ISO 14687-2" />
                                 <SpecRow metric="Water Input" value="~2 gal/kg H2" notes="Deionized" />
-                                <SpecRow metric="Temp Range" value="-20°C to +50°C" notes="All climate" />
+                                <SpecRow metric="Temp Range" value="-20°C to +50°C" notes="All climates" />
                                 <SpecRow metric="Footprint" value="20' ISO Container" notes="Modular, stackable" />
-                                <SpecRow metric="Installation" value="Days, not months" notes="Turnkey delivery" />
+                                <SpecRow metric="Installation" value="Days, not months" notes="Turnkey deployment" />
                             </tbody>
                         </table>
                     </div>
@@ -161,9 +159,9 @@ export default function PlatformPage() {
           ============================================================ */}
             <section className="py-24 bg-white">
                 <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="heading-section text-center mb-4">How It All Works Together</h2>
+                    <h2 className="heading-section text-center mb-4">Closed‑Loop Operation</h2>
                     <p className="text-center text-body mb-16 max-w-2xl mx-auto">
-                        A complete closed-loop system from renewable energy to fuel in the tank.
+                        A full system loop from renewable input to fuel in the tank or power on demand.
                     </p>
 
                     <div className="relative">
@@ -171,30 +169,30 @@ export default function PlatformPage() {
                         <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
-                            <FlowStep
-                                step="1"
-                                title="Energy In"
-                                description="Solar, wind, or grid power flows into the PowerPack"
-                                color="orange"
-                            />
-                            <FlowStep
-                                step="2"
-                                title="Electrolysis"
-                                description="Water is split into hydrogen and oxygen"
-                                color="blue"
-                            />
-                            <FlowStep
-                                step="3"
-                                title="Storage"
-                                description="Compressed H2 sits safely in the PowerBank"
-                                color="green"
-                            />
-                            <FlowStep
-                                step="4"
-                                title="Dispense"
-                                description="Fuel your fleet or generate backup power"
-                                color="slate"
-                            />
+                                <FlowStep
+                                    step="1"
+                                    title="Energy In"
+                                    description="Solar, wind, or grid power feeds PowerPack"
+                                    color="orange"
+                                />
+                                <FlowStep
+                                    step="2"
+                                    title="Electrolysis"
+                                    description="Water splits into hydrogen and oxygen"
+                                    color="blue"
+                                />
+                                <FlowStep
+                                    step="3"
+                                    title="Storage"
+                                    description="Compressed H2 stores in PowerBank"
+                                    color="green"
+                                />
+                                <FlowStep
+                                    step="4"
+                                    title="Dispatch"
+                                    description="Fuel fleets or generate backup power"
+                                    color="slate"
+                                />
                         </div>
                     </div>
                 </div>
@@ -206,10 +204,10 @@ export default function PlatformPage() {
             <section className="py-20 bg-slate-900">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-                        Ready to see the system specs for your site?
+                        Ready to size a system for your site?
                     </h2>
                     <p className="text-slate-400 text-lg mb-10">
-                        We'll run a preliminary analysis and show you exactly how the PowerPod would fit your operation.
+                        We will run a preliminary analysis and show how PowerPod integrates with your load profile.
                     </p>
                     <Link href="/contact" className="btn-cta inline-flex items-center gap-2 text-lg">
                         Request Free Feasibility Review <ArrowRight size={20} />
