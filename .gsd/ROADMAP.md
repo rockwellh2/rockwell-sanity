@@ -110,11 +110,11 @@ Complete website rebuild with warm, approachable aesthetic, multi-page structure
 ---
 
 ### Phase 7: About & Contact Pages
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete (About Page)
 **Objective**: Build trust with team profiles and working contact form.
 **Requirements**:
-- [ ] **About Page**: Company story, "Engineers Not Salespeople"
-- [ ] **Team Section**: Brad & Nick with real credentials and headshots
+- [x] **About Page**: Company story, "Engineers Not Salespeople"
+- [x] **Team Section**: Brad & Nick with real credentials and phone numbers
 - [ ] **Contact Page**: Dark hero, dual phone numbers, simple form
 - [ ] Form validation (name, email, application type)
 - [ ] Form submission handling (Formspree or similar)
