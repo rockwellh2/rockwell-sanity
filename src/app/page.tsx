@@ -17,6 +17,7 @@ import {
   Calculator,
   ArrowRight
 } from "lucide-react";
+import { ROICalculator } from "@/components/calculator/ROICalculator";
 
 // ============================================================
 // HOMEPAGE - "The Conversion Machine" Design
@@ -207,6 +208,15 @@ export default function Home() {
       </section>
 
       {/* ============================================================
+          4.5. ROI CALCULATOR
+          ============================================================ */}
+      <section id="calculator" className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <ROICalculator variant="embedded" />
+        </div>
+      </section>
+
+      {/* ============================================================
           5. USE CASES
           ============================================================ */}
       <section id="applications" className="py-24 bg-white">
@@ -350,8 +360,8 @@ interface ProcessStepProps {
 function ProcessStep({ number, icon, title, desc, highlight = false }: ProcessStepProps) {
   return (
     <div className={`flex flex-col items-center text-center p-6 rounded-xl border transition-all ${highlight
-        ? 'bg-green-50 border-green-200 shadow-md transform scale-105'
-        : 'bg-white border-slate-100 hover:border-green-200 card-hover'
+      ? 'bg-green-50 border-green-200 shadow-md transform scale-105'
+      : 'bg-white border-slate-100 hover:border-green-200 card-hover'
       }`}>
       <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold text-sm mb-4">
         {number}
