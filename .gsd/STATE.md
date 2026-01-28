@@ -5,11 +5,11 @@
 
 ### Current Phase
 - **Milestone:** v4.0 — "The Conversion Machine"
-- **Phase:** Phase 1: Foundation & Design System ✅ Complete
-- **Status:** **Ready for Phase 2**
+- **Phase:** Phase 2: Homepage Build ✅ Complete
+- **Status:** **Ready for Phase 3**
 - **Next Actions:**
-  - [ ] Run `/plan 2` or `/execute 2` to build homepage
-  - [ ] Preview site with new design system
+  - [ ] Build ROI Calculator (Phase 3)
+  - [ ] Preview homepage with `npm run dev`
 
 ## Recent Accomplishments
 - [x] **v1.0, v2.0, v3.0, v3.1 Complete**: All previous milestones archived
