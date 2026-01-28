@@ -1,34 +1,36 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, JetBrains_Mono } from "next/font/google"; // Changed font imports
+import { Sora, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { BackgroundController } from "@/components/effects/BackgroundController";
 
-// Body font - Clean, readable
-const inter = Inter({
+// Heading font - Bold, industrial, trustworthy
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-heading",
   display: 'swap',
+  weight: ['500', '600', '700', '800'],
 });
 
-// Heading font - Premium, geometric
-const outfit = Outfit({
+// Body font - Modern, warm, readable
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-sans",
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 });
 
-// Tech font - HUD, Data, Specs
-const jetbrainsMono = JetBrains_Mono({
+// Data font - Technical precision
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: 'swap',
+  weight: ['400', '600'],
 });
 
 export const metadata: Metadata = {
-  title: "Rockwell H2 | Industrial Hydrogen Infrastructure",
-  description: "Modular, on-site hydrogen production and storage systems for industrial resilience.",
+  title: "Rockwell H2 | Green Hydrogen Systems for Farms & Warehouses",
+  description: "Turn your renewable energy into reliable hydrogen fuel. Earn $3/kg in federal tax credits with our turnkey hydrogen production systems.",
 };
 
 export default function RootLayout({
@@ -39,11 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased flex flex-col min-h-screen bg-background text-foreground`}
+        className={`${sora.variable} ${plusJakarta.variable} ${ibmPlexMono.variable} font-sans antialiased flex flex-col min-h-screen bg-white text-slate-700`}
       >
-        <BackgroundController />
-        {/* Contrast Overlay - Subtle tint to ensure text readability */}
-        <div className="fixed inset-0 bg-slate-50/60 -z-10 pointer-events-none mix-blend-multiply" />
         <Navbar />
         <main className="flex-1 w-full flex flex-col">
           {children}
