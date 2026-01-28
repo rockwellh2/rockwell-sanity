@@ -1,125 +1,166 @@
 # ROADMAP.md
 
-> **Current Milestone**: v3.0 - Industrial Premium Polish ("The Juice")
+> **Current Milestone**: v4.0 — "The Conversion Machine"
 > **Current Phase**: Phase 1 (Not Started)
 
 ## Milestone Goal
-Transform the site from a "Glade-inspired template" into a **Bespoke Industrial Experience** that feels like a proprietary engineering dashboard, not a marketing landing page.
+Complete website rebuild with warm, approachable aesthetic, multi-page structure, working ROI calculator, and A+++++ conversion optimization. Transform from "Industrial Premium" to "Sales Machine" that converts visitors into leads.
 
 ## Must-Haves
-- [ ] **Motion/Juice**: GSAP or Framer Motion scroll-triggered animations, micro-interactions on all interactive elements.
-- [ ] **Broken Grid Layout**: Asymmetric compositions, full-bleed imagery, overflow elements.
-- [ ] **Technical Brutalism**: HUD aesthetic with data-dense UI, monospaced labels, vector flourishes.
-- [ ] **Texture & Depth**: Glassmorphism, film grain/noise overlay, backdrop blur effects.
+- [ ] **New Design System** — Green/Orange/Blue palette, Sora + Plus Jakarta Sans typography
+- [ ] **Multi-Page Structure** — Home, Products, Applications, Incentives, About, Contact
+- [ ] **Working ROI Calculator** — Interactive sliders with real-time math and effects
+- [ ] **Hero with Real Assets** — Use existing images (HydrogenTanks, LindeForklift)
+- [ ] **5-Step Process Flow** — Animated "How It Works" section
+- [ ] **Federal Incentives Section** — $3/kg hook with qualification details
+- [ ] **Use Cases** — Forklifts, Farm Equipment, Backup Power
+- [ ] **About Section** — Brad & Nick profiles with credentials
+- [ ] **Contact Form** — Working form with validation
+- [ ] **Mobile-First Responsive** — Touch-optimized, click-to-call
 
 ## Nice-to-Haves
-- [ ] Parallax background layers for depth.
-- [ ] Sequential "assembly" animations for hardware renders.
-- [ ] Coordinate crosshairs and technical ornaments.
+- [ ] Live System Dashboard Widget
+- [ ] Multi-Step ROI Assessment with PDF generation
+- [ ] Installation Map (US map with deployment dots)
+- [ ] Video Embeds (testimonials, walkthroughs)
+- [ ] Exit-Intent Popup (lead magnet)
+- [ ] Hydrogen 101 Explainer (interactive)
+- [ ] Comparison Table (H2 vs Diesel vs Battery)
+- [ ] Blog/Resources Section
+- [ ] Live Chat Widget placeholder
+- [ ] Calendly Integration
 
 ---
 
 ## Phases
 
-### Phase 1: Motion & Micro-Interactions ("The Juice")
+### Phase 1: Foundation & Design System
 **Status**: ⬜ Not Started
-**Objective**: Make the site feel alive with scroll-triggered animations and hover effects.
+**Objective**: Establish new visual identity and base components.
 **Requirements**:
-- [ ] Implement GSAP ScrollTrigger or enhance Framer Motion usage.
-- [ ] Add sequential reveal animations (stagger, cascade).
-- [ ] Add micro-interactions: hover scale, "scan" light effects on modules.
-- [ ] Implement parallax layers on blueprint/hero backgrounds.
+- [ ] Update `globals.css` with new color tokens (Hydrogen Blue, Agricultural Green, Energy Gold, Steel Gray)
+- [ ] Add new typography (Sora for headings, Plus Jakarta Sans for body, IBM Plex Mono for data)
+- [ ] Create base animation utilities (fadeInUp, blob, shimmer)
+- [ ] Update Tailwind config with custom color palette
+- [ ] Create new layout wrapper component
 
 ---
 
-### Phase 2: Breaking the Grid (Asymmetric Layouts)
+### Phase 2: Homepage Build
 **Status**: ⬜ Not Started
-**Objective**: Break out of the 12-column template feel.
+**Objective**: Build the new homepage with all core sections.
 **Requirements**:
-- [ ] Implement full-bleed hero images/sections.
-- [ ] Create overlapping elements (images bleeding into adjacent sections).
-- [ ] Use z-index layering for 3D "pop" effect on hardware renders.
-- [ ] Asymmetric text/image compositions.
+- [ ] **Hero Section** — Badge, headline, CTAs, image with stats overlay
+- [ ] **Problem Section** — 4 pain points grid (diesel costs, wasted solar, downtime, grid)
+- [ ] **How It Works** — 5-step animated process flow
+- [ ] **Incentives Preview** — Big $3/kg hook with 3 benefit cards
+- [ ] **Footer** — Company info, quick links, legal
 
 ---
 
-### Phase 3: Technical Brutalism Aesthetic
+### Phase 3: ROI Calculator
 **Status**: ⬜ Not Started
-**Objective**: Add visual density with HUD-style elements.
+**Objective**: Build interactive calculator with real math and visual effects.
 **Requirements**:
-- [ ] Add monospaced labels/data points (e.g., `MODEL_REF: RP-400`).
-- [ ] Implement corner brackets, coordinate crosshairs on containers.
-- [ ] Create "vector flourish" line-work connecting modules.
-- [ ] Add subtle blueprint grid overlays where appropriate.
+- [ ] Dual-slider inputs (diesel spend, fleet size)
+- [ ] Real-time calculation logic (fuel savings + tax credits)
+- [ ] Animated number counter effect
+- [ ] Results card with breakdown
+- [ ] "Get Full Analysis" CTA integration
 
 ---
 
-### Phase 4: Texture & Materiality
+### Phase 4: Products Page
 **Status**: ⬜ Not Started
-**Objective**: Kill the "shiny plastic" feel with real texture.
+**Objective**: Showcase the PowerPod systems and modules.
 **Requirements**:
-- [ ] Enhance glassmorphism on info-cards (backdrop-filter blur).
-- [ ] Add subtle film grain/noise texture overlay to site.
-- [ ] Implement soft shadows and layered depth.
-- [ ] Review and refine color palette for "industrial premium" feel.
+- [ ] Product hero with key value prop
+- [ ] PowerPod Series grid (Series-P, Series-S, Fueling Modules)
+- [ ] Technical specs tables
+- [ ] "How They Work Together" system diagram
+- [ ] Product CTA section
 
 ---
 
-### Phase 5: Final Polish & Verification
+### Phase 5: Applications Page
 **Status**: ⬜ Not Started
-**Objective**: Quality assurance and performance validation.
+**Objective**: Showcase use cases with compelling visuals.
 **Requirements**:
-- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge).
-- [ ] Mobile responsiveness audit.
-- [ ] Performance optimization (ensure animations don't tank CWV).
-- [ ] Final visual review against "Bespoke Industrial Experience" goal.
+- [ ] **Hydrogen Forklifts** — Refuel in 3 mins, no battery room
+- [ ] **Farm Equipment** — Eliminate diesel, on-site fueling
+- [ ] **Backup Power** — Protect cold storage, months of capacity
+- [ ] Image cards with benefit bullet points
+- [ ] Links to calculator and contact
+
+---
+
+### Phase 6: Incentives Page
+**Status**: ⬜ Not Started
+**Objective**: Deep dive on federal tax benefits and qualification.
+**Requirements**:
+- [ ] IRA Section 45V breakdown ($3/kg production credit)
+- [ ] Investment Tax Credit (30%) explanation
+- [ ] LCFS Credits (California) section
+- [ ] Qualification checklist with checkmarks
+- [ ] "What You'll Earn" example calculation
+- [ ] CTA to contact for custom analysis
+
+---
+
+### Phase 7: About & Contact Pages
+**Status**: ⬜ Not Started
+**Objective**: Build trust with team profiles and working contact form.
+**Requirements**:
+- [ ] **About Page**: Company story, "Engineers Not Salespeople"
+- [ ] **Team Section**: Brad & Nick with real credentials and headshots
+- [ ] **Contact Page**: Dark hero, dual phone numbers, simple form
+- [ ] Form validation (name, email, application type)
+- [ ] Form submission handling (Formspree or similar)
+
+---
+
+### Phase 8: Polish & A+++++ Features
+**Status**: ⬜ Not Started
+**Objective**: Add animations, micro-interactions, and conversion features.
+**Requirements**:
+- [ ] Page load stagger animations
+- [ ] Scroll-triggered section reveals
+- [ ] Stat counter animations (count up on view)
+- [ ] Hover states for cards and buttons
+- [ ] Sticky mobile call button
+- [ ] Trust signals strip (certifications)
+- [ ] Accessibility audit (WCAG AA minimum)
+
+---
+
+### Phase 9: Verification & Deployment
+**Status**: ⬜ Not Started
+**Objective**: Final QA and push to production.
+**Requirements**:
+- [ ] Production build test (`npm run build`)
+- [ ] Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- [ ] Mobile responsiveness audit (iPhone, Android)
+- [ ] Performance check (LCP < 2.5s, CLS < 0.1)
+- [ ] SEO meta tags on all pages
+- [ ] Git commit and push to production
 
 ---
 
 ## Previous Milestones (Archived)
 
-### v1.0 Launch (Completed)
-- Foundation, Platform, Solutions, Company pages.
+### v3.1 Content Deepening (Completed)
+- Phase 10: Visual Superiority (Industrial Premium)
+- Phase 11: Content Deepening & Distinct Identities
+- Solutions, About, and Homepage enhancements
+
+### v3.0 Industrial Premium Polish (Completed)
+- Motion & Micro-Interactions
+- Breaking the Grid layouts
+- Technical Brutalism aesthetic
+- Texture & Materiality
 
 ### v2.0 Glade Redesign (Completed)
-- Premium "Glade-like" aesthetic, Framer Motion, refined UI.
+- Premium "Glade-like" aesthetic, Framer Motion, refined UI
 
----
-
-### Phase 9: Production Hardening
-**Status**: ⬜ Not Started
-**Objective**: Fix broken links, Align IA, SEO, and Accessibility improvements.
-**Requirements**:
-- [ ] Fix Footer links (Privacy, Contact typo) and align with Navbar.
-- [ ] Implement proper SEO (Headings, Metadata, Sitemap, Robots).
-- [ ] Add `prefers-reduced-motion` support.
-- [ ] Functional Contact Form with validation.
-- [ ] Add "Case Study" proof points to key pages.
-- [ ] Fix deep-linking on Solutions page.
-
----
-
-### Phase 10: Visual Superiority (Industrial Premium)
-**Status**: ⬜ Not Started
-**Objective**: Implement "Technical Brutalism" and high-end visual polish on Home page.
-**Requirements**:
-- [ ] **Global**: Tighten palette (Emerald/Slate), add texture utilities.
-- [ ] **Home Shader**: "Hydrogen Field" effect (ripples + grid), parallax, homepage only.
-- [ ] **Home Narrative**: Reorder: Hero -> System Map -> Industries -> Impact -> Value Chain.
-- [ ] **Home Components**: Enhanced System Map, "Financial Impact" band, "Let's Model" CTA.
-- [ ] **Navbar**: Add section anchors (Overview, System, Industries, Impact).
-- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
-- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
-- [ ] **Technology Page**: Schematic layout, Blueprint cards, rigid piping.
-- [ ] **Incentives Page**: "Financial Engineering" aesthetic, stack snapshot, ROI modeling, qualification checklist.
-- [ ] **Contact Page**: Engineering Intake layout, 2-column technical form, process timeline, FAQ.
-
----
-
-### Phase 11: Content Deepening & Distinct Identities
-**Status**: ⬜ Not Started
-**Objective**: Give each page a unique "theme" and increase information density.
-**Requirements**:
-- [ ] **Solutions Page**: "Operational Command" Theme. Logistics Tab (Simulator), Industrial Tab (Load Viz).
-- [ ] **About Page**: "Industrial Heritage" Theme. Visual Timeline, Certification Matrix, Engineer Profiles.
-- [ ] **Homepage**: "Fleshing Out". Safety Strip, Deployment Map.
+### v1.0 Launch (Completed)
+- Foundation, Platform, Solutions, Company pages
