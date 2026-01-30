@@ -1,112 +1,146 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import Image from "next/image";
-import Logo from "@/app/RockwellH2_logo.png";
-import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
-import { ShinyButton } from "@/components/magicui/shiny-button";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { Menu } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Logo from '@/app/RockwellH2_logo.png';
+import {
+    Sheet,
+    SheetContent,
+    SheetTrigger,
+    SheetClose,
+} from '@/components/ui/sheet';
 
 const navLinks = [
-    { path: "#overview", label: "Overview" },
-    { path: "#system", label: "System" },
-    { path: "#industries", label: "Industries" },
-    { path: "#impact", label: "Impact" },
-    { path: "/technology", label: "Technology" },
-    { path: "/about", label: "About" },
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Platform', href: '/platform' },
+    { name: 'Technology', href: '/technology' },
+    { name: 'Incentives', href: '/incentives' },
+    { name: 'Why Rockwell', href: '/why-rockwell' },
+    { name: 'Contact', href: '/contact' },
 ];
 
 export function Navbar() {
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
-    const [mobileOpen, setMobileOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const isActive = (path: string) => pathname === path;
 
     return (
-        <header className="fixed top-0 left-0 right-0 h-20 z-50 transition-all duration-300">
-            <div className="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm" />
-
-            <div className="max-w-7xl mx-auto h-full px-4 lg:px-8 flex items-center justify-between relative z-10">
-                <Link href="/" className="flex items-center gap-2">
-                    <Image
-                        src={Logo}
-                        alt="Rockwell H2 Logo"
-                        width={260}
-                        height={64}
-                        className="h-16 w-auto object-contain"
-                        priority
-                    />
-                </Link>
-
-                <nav className="hidden lg:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.path}
-                            href={link.path}
-                            className={`text-sm font-medium transition-all duration-150 relative ${pathname === link.path
-                                ? "text-primary"
-                                : "text-muted-foreground hover:text-primary"
-                                }`}
-                        >
-                            {link.label}
-                            {pathname === link.path && (
-                                <motion.span
-                                    layoutId="nav-underline"
-                                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                                />
-                            )}
-                        </Link>
-                    ))}
-                </nav>
-
-
-                <div className="hidden lg:block">
-                    <Link href="/contact">
-                        <ShinyButton className="bg-primary hover:bg-primary/90">
-                            Request Evaluation
-                        </ShinyButton>
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                ? 'bg-white shadow-md'
+                : 'bg-white/95 backdrop-blur-sm'
+                }`}
+        >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 lg:h-20">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src={Logo}
+                            alt="Rockwell H2"
+                            width={200}
+                            height={50}
+                            className="h-10 w-auto object-contain"
+                            priority
+                        />
                     </Link>
-                </div>
 
-                <button
-                    className="lg:hidden p-2 text-muted-foreground hover:text-primary"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-            </div>
-
-            {mobileOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="lg:hidden absolute top-20 left-0 right-0 bg-white border-b border-neutral-200 p-4 shadow-lg rounded-b-2xl"
-                >
-                    <nav className="flex flex-col gap-4">
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center gap-1">
                         {navLinks.map((link) => (
                             <Link
-                                key={link.path}
-                                href={link.path}
-                                onClick={() => setMobileOpen(false)}
-                                className={`text-base font-medium py-3 px-4 rounded-lg transition-colors ${pathname === link.path
-                                    ? "bg-primary/5 text-primary"
-                                    : "text-muted-foreground hover:bg-neutral-50"
+                                key={link.name}
+                                href={link.href}
+                                className={`px-4 py-2 text-sm font-medium transition-colors relative group ${isActive(link.href)
+                                    ? 'text-slate-950'
+                                    : 'text-slate-500 hover:text-slate-950'
                                     }`}
                             >
-                                {link.label}
+                                {link.name}
+                                <span
+                                    className={`absolute bottom-0 left-4 right-4 h-0.5 bg-emerald-500 transition-transform origin-left ${isActive(link.href)
+                                        ? 'scale-x-100'
+                                        : 'scale-x-0 group-hover:scale-x-100'
+                                        }`}
+                                />
                             </Link>
                         ))}
-                        <Link
-                            href="/contact"
-                            onClick={() => setMobileOpen(false)}
-                            className="w-full h-12 rounded-xl bg-primary text-primary-foreground font-medium flex items-center justify-center mt-2"
-                        >
-                            Request Evaluation
-                        </Link>
                     </nav>
-                </motion.div>
-            )}
+
+                    {/* CTA Button */}
+                    <div className="hidden lg:block">
+                        <Link href="/contact">
+                            <Button
+                                className="bg-slate-950 hover:bg-emerald-600 text-white px-6 rounded-sm text-xs font-bold uppercase tracking-widest"
+                            >
+                                Request Quote
+                            </Button>
+                        </Link>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    <Sheet>
+                        <SheetTrigger asChild className="lg:hidden">
+                            <Button variant="ghost" size="icon">
+                                <Menu className="h-6 w-6" />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                            <div className="flex flex-col gap-6 mt-8">
+                                <Link href="/" className="flex items-center mb-4">
+                                    <Image
+                                        src={Logo}
+                                        alt="Rockwell H2"
+                                        width={180}
+                                        height={45}
+                                        className="h-10 w-auto object-contain"
+                                        priority
+                                    />
+                                </Link>
+
+                                <nav className="flex flex-col gap-2">
+                                    {navLinks.map((link) => (
+                                        <SheetClose asChild key={link.name}>
+                                            <Link
+                                                href={link.href}
+                                                className={`px-4 py-3 text-base font-medium rounded-lg transition-colors ${isActive(link.href)
+                                                    ? 'bg-slate-100 text-slate-950'
+                                                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-950'
+                                                    }`}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </SheetClose>
+                                    ))}
+                                </nav>
+
+                                <SheetClose asChild>
+                                    <Link href="/contact">
+                                        <Button
+                                            className="w-full bg-slate-950 hover:bg-emerald-600 text-white mt-4 rounded-sm text-xs font-bold uppercase tracking-widest"
+                                        >
+                                            Request Quote
+                                        </Button>
+                                    </Link>
+                                </SheetClose>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
+            </div>
         </header>
     );
 }

@@ -8,7 +8,7 @@ export function EngineerProfile({ name, role, id, phone }: { name: string, role:
             {/* ID Badge Photo Placeholder */}
             <div className="w-24 h-32 bg-slate-100 border border-slate-200 shrink-0 flex items-center justify-center relative overflow-hidden">
                 <User className="text-slate-300" size={40} />
-                <div className="absolute top-0 left-0 w-full h-1 bg-emerald-500" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500" />
                 <div className="absolute bottom-2 right-2 font-mono text-[8px] text-slate-400 rotate-0">NO PHOTO</div>
             </div>
 
@@ -18,12 +18,12 @@ export function EngineerProfile({ name, role, id, phone }: { name: string, role:
                         <span className="font-mono text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                             ID: {id}
                         </span>
-                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                        <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full animate-pulse" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900 uppercase tracking-tight">
                         {name}
                     </h3>
-                    <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 mb-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-cyan-600 mb-4">
                         {role}
                     </p>
                 </div>

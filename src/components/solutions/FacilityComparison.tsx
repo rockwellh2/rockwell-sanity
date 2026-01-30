@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function FacilityComparison() {
     return (
         <div className="w-full bg-white border border-slate-200 p-8 lg:p-12 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-emerald-500" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-cyan-500" />
 
             <div className="grid lg:grid-cols-2 gap-12">
                 {/* Text Context */}
@@ -30,9 +30,9 @@ export function FacilityComparison() {
                             <span className="font-bold text-slate-900">Battery Room (50 trucks)</span>
                             <span className="font-mono font-bold text-red-500">~2,500 sq ft</span>
                         </div>
-                        <div className="flex items-center justify-between p-4 bg-emerald-50 border border-emerald-100">
+                        <div className="flex items-center justify-between p-4 bg-cyan-50 border border-cyan-100">
                             <span className="font-bold text-slate-900">H2 Dispensing Pad</span>
-                            <span className="font-mono font-bold text-emerald-600">~200 sq ft</span>
+                            <span className="font-mono font-bold text-cyan-600">~200 sq ft</span>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ export function FacilityComparison() {
                             whileInView={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
                             viewport={{ once: true }}
-                            className="absolute bottom-4 right-4 w-16 h-16 bg-emerald-500 border-2 border-emerald-600 shadow-xl flex items-center justify-center z-10"
+                            className="absolute bottom-4 right-4 w-16 h-16 bg-cyan-500 border-2 border-cyan-600 shadow-xl flex items-center justify-center z-10"
                         >
                             <span className="text-[10px] font-bold text-white text-center leading-tight">H2<br />Pad</span>
                         </motion.div>

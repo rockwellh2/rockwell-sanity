@@ -1,86 +1,224 @@
 "use client";
 
-import { useState } from "react";
-import { Factory, Truck, Database, Globe } from "lucide-react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { FadeIn } from "@/components/ui/FadeIn";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import {
+    ArrowRight,
+    Factory,
+    Tractor,
+    Building2,
+    Truck,
+    Check,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-type IndustryKey = "Food & Agriculture" | "Logistics" | "Critical Infrastructure" | "Ports & Heavy Transport";
+const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5 },
+};
 
-export default function IndustriesPage() {
-    const [activeTab, setActiveTab] = useState<IndustryKey>("Logistics");
-
-    const ind = {
-        "Food & Agriculture": {
-            icon: Factory,
-            stat: "$3.00/kg",
-            benefit: "IRA credits + onsite renewables.",
-            text: "Convert solar or biogas into fuel for tractors, refrigeration, and processing loads. Replace diesel and stabilize operating costs season to season."
+const staggerContainer = {
+    animate: {
+        transition: {
+            staggerChildren: 0.1,
         },
-        "Logistics": {
-            icon: Truck,
-            stat: "3 min",
-            benefit: "Refuel time vs. 8hr charging.",
-            text: "Keep forklifts and yard trucks moving with rapid onsite H2 fueling. No battery swap rooms, no performance drop‑off, full shift uptime."
-        },
-        "Critical Infrastructure": {
-            icon: Database,
-            stat: "99.99%",
-            benefit: "Redundant backup power.",
-            text: "Hospitals, data centers, and municipal facilities get weeks of silent, emissions‑free backup with long‑duration storage."
-        },
-        "Ports & Heavy Transport": {
-            icon: Globe,
-            stat: "400+ mi",
-            benefit: "Range with full payload.",
-            text: "Decarbonize drayage, port equipment, and heavy transport with high‑throughput fueling and scalable onsite production."
-        }
-    };
+    },
+};
 
-    const ActiveIcon = ind[activeTab].icon;
+const useCases = [
+    {
+        icon: Factory,
+        title: 'Industrial Decarbonization',
+        description: 'Manufacturing facilities are reducing their carbon footprint by replacing fossil fuel-based processes with clean hydrogen power.',
+        benefits: [
+            'Reduce Scope 1 and 2 emissions',
+            'Meet sustainability targets',
+            'Lower energy costs',
+            'Improve brand reputation',
+        ],
+        image: '/case-study-1.jpg',
+    },
+    {
+        icon: Tractor,
+        title: 'Agriculture & Food Processing',
+        description: 'Farms and food processing plants use hydrogen to power equipment and generate clean energy for operations.',
+        benefits: [
+            'Power irrigation systems',
+            'Fuel farm vehicles',
+            'Reduce operational costs',
+            'Sustainable food production',
+        ],
+        image: '/hero-solutions.jpg',
+    },
+    {
+        icon: Building2,
+        title: 'Municipal & Government',
+        description: 'Cities and government facilities are adopting hydrogen for reliable, clean power and emergency backup systems.',
+        benefits: [
+            'Reliable backup power',
+            'Reduce municipal emissions',
+            'Energy independence',
+            'Public safety enhancement',
+        ],
+        image: '/solution-storage.jpg',
+    },
+    {
+        icon: Truck,
+        title: 'Fleet & Logistics',
+        description: 'Fleet operators are transitioning to hydrogen fuel cell vehicles for longer range and faster refueling than electric.',
+        benefits: [
+            'Fast refueling (3-5 minutes)',
+            'Extended vehicle range',
+            'Lower fuel costs',
+            'Zero tailpipe emissions',
+        ],
+        image: '/case-study-2.jpg',
+    },
+];
 
+const stats = [
+    { value: '100+', label: 'Successful Installations' },
+    { value: '50M+', label: 'kg H₂ Produced Annually' },
+    { value: '30%', label: 'Average Cost Reduction' },
+    { value: '99.9%', label: 'System Uptime' },
+];
+
+export default function Industries() {
     return (
-        <div className="flex flex-col w-full overflow-hidden">
-            <section className="relative pt-32 pb-20 md:pb-32 overflow-hidden">
-                <div className="container mx-auto px-6 relative z-10">
-                    <FadeIn>
-                            <SectionHeader
-                                subtitle="Market Verticals"
-                                title="Operational Fit."
-                                description="Built for environments where uptime, throughput, and compliance are non‑negotiable."
-                            />
-                    </FadeIn>
+        <div className="min-h-screen pt-16 lg:pt-20">
+            {/* Hero Section */}
+            <section className="relative py-12 lg:py-20 overflow-hidden bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center max-w-3xl mx-auto"
+                    >
+                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] leading-tight mb-4 text-balance">
+                            Industries & Use Cases
+                        </h1>
+                        <p className="text-lg text-gray-600">
+                            Discover how industries are transforming their operations with Rockwell H2 Systems' green hydrogen solutions.
+                        </p>
+                    </motion.div>
+                </div>
+            </section>
 
-                    <FadeIn delay={0.2}>
-                        <div className="flex flex-wrap gap-2 mb-12">
-                            {Object.keys(ind).map((t) => (
-                                <button
-                                    key={t}
-                                    onClick={() => setActiveTab(t as IndustryKey)}
-                                    className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest border transition-all ${activeTab === t ? 'bg-slate-950 text-white border-slate-950' : 'bg-white text-slate-400 border-slate-100 hover:border-slate-300'}`}
-                                >
-                                    {t}
-                                </button>
-                            ))}
-                        </div>
-
-                        <div className="bg-white border border-slate-200 p-12 shadow-xl flex flex-col md:flex-row gap-16 items-center">
-                            <div className="md:w-1/3">
-                                <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mb-8">
-                                    <ActiveIcon size={40} strokeWidth={1} />
+            {/* Stats */}
+            <section className="py-12 lg:py-16 bg-[#1E3A5F]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        variants={staggerContainer}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true }}
+                        className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+                    >
+                        {stats.map((stat, index) => (
+                            <motion.div
+                                key={index}
+                                variants={fadeInUp}
+                                className="text-center"
+                            >
+                                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
+                                    {stat.value}
                                 </div>
-                                <div className="text-5xl font-black tracking-tighter text-slate-950 mb-2">{ind[activeTab].stat}</div>
-                                <div className="text-xs font-bold uppercase tracking-widest text-emerald-600">{ind[activeTab].benefit}</div>
-                            </div>
-                            <div className="md:w-2/3">
-                                <h3 className="text-3xl font-bold mb-6 tracking-tight text-slate-950">{activeTab} Focus</h3>
-                                <p className="text-xl text-slate-500 leading-relaxed">{ind[activeTab].text}</p>
-                                <button className="mt-10 px-8 py-3 bg-slate-50 text-slate-950 font-bold uppercase tracking-widest text-[10px] border border-slate-100 hover:bg-slate-100 transition-all">
-                                    Request {activeTab} Brief
-                                </button>
-                            </div>
-                        </div>
-                    </FadeIn>
+                                <div className="text-white/70 text-sm">{stat.label}</div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Use Cases */}
+            <section className="py-12 lg:py-16 bg-[#F5F7FA]">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="space-y-16">
+                        {useCases.map((useCase, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
+                                className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                                    }`}
+                            >
+                                {/* Image */}
+                                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                                    <div className="relative rounded-xl overflow-hidden shadow-xl">
+                                        <img
+                                            src={useCase.image}
+                                            alt={useCase.title}
+                                            className="w-full h-[300px] lg:h-[350px] object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/40 to-transparent"></div>
+                                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                                            <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                                <useCase.icon className="w-6 h-6 text-white" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-[#1E3A5F] mb-4">
+                                        {useCase.title}
+                                    </h2>
+                                    <p className="text-gray-600 mb-6">{useCase.description}</p>
+                                    <ul className="space-y-3 mb-6">
+                                        {useCase.benefits.map((benefit, i) => (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <div className="w-5 h-5 rounded-full bg-[#2E7D32]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                    <Check className="w-3 h-3 text-[#2E7D32]" />
+                                                </div>
+                                                <span className="text-gray-700">{benefit}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Link href="/contact">
+                                        <Button
+                                            variant="outline"
+                                            className="border-[#1E3A5F] text-[#1E3A5F] hover:bg-[#1E3A5F] hover:text-white"
+                                        >
+                                            Learn More
+                                            <ArrowRight className="ml-2 w-4 h-4" />
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA */}
+            <section className="py-12 lg:py-16 bg-white">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-2xl lg:text-3xl font-bold text-[#1E3A5F] mb-4">
+                            See How Hydrogen Can Work for You
+                        </h2>
+                        <p className="text-gray-600 mb-8">
+                            Contact our team to discuss your specific use case and get a customized solution.
+                        </p>
+                        <Link href="/contact">
+                            <Button
+                                size="lg"
+                                className="bg-[#2E7D32] hover:bg-[#246b27] text-white px-8"
+                            >
+                                Contact Us
+                                <ArrowRight className="ml-2 w-4 h-4" />
+                            </Button>
+                        </Link>
+                    </motion.div>
                 </div>
             </section>
         </div>

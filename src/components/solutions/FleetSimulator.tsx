@@ -21,14 +21,14 @@ export function FleetSimulator() {
     return (
         <div className="w-full bg-slate-950 border border-slate-800 p-8 rounded-sm relative overflow-hidden group">
             {/* Background Tech Effects */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl group-hover:bg-emerald-500/10 transition-all duration-700" />
-            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-900 to-transparent" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl group-hover:bg-cyan-500/10 transition-all duration-700" />
+            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-900 to-transparent" />
 
             <div className="relative z-10 grid lg:grid-cols-2 gap-12">
                 {/* Controls */}
                 <div className="space-y-8">
                     <div>
-                        <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-2">
+                        <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-cyan-500 mb-2">
                             Fleet Parameters
                         </h4>
                         <h3 className="text-2xl font-bold text-white mb-6">
@@ -68,7 +68,7 @@ export function FleetSimulator() {
 
                     <div className="p-4 bg-white/5 border border-white/10 rounded-sm">
                         <div className="flex items-start gap-4">
-                            <Fuel className="text-emerald-500 mt-1 shrink-0" size={20} />
+                            <Fuel className="text-cyan-500 mt-1 shrink-0" size={20} />
                             <div>
                                 <p className="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">
                                     Fueling Logic
@@ -85,7 +85,7 @@ export function FleetSimulator() {
                 <div className="bg-slate-900/50 border border-slate-800 p-6 flex flex-col justify-center space-y-8">
                     <div>
                         <div className="flex items-center gap-3 mb-2">
-                            <Clock className="text-emerald-500" size={18} />
+                            <Clock className="text-cyan-500" size={18} />
                             <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
                                 Annual Production Time Recovered
                             </span>
@@ -99,12 +99,12 @@ export function FleetSimulator() {
 
                     <div>
                         <div className="flex items-center gap-3 mb-2">
-                            <DollarSign className="text-emerald-500" size={18} />
+                            <DollarSign className="text-cyan-500" size={18} />
                             <span className="text-xs font-bold uppercase tracking-widest text-slate-500">
                                 Est. Operational Savings
                             </span>
                         </div>
-                        <div className="text-5xl font-bold text-emerald-400 tracking-tighter">
+                        <div className="text-5xl font-bold text-cyan-400 tracking-tighter">
                             ${annualSavings.toLocaleString()}
                         </div>
                         <p className="text-xs text-slate-500 mt-2">

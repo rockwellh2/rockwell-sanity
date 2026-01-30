@@ -1,68 +1,132 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "../ui/Button";
-import Logo from "@/app/RockwellH2_logo.png";
+"use client";
+
+import Link from 'next/link';
+import { Zap, Phone, Mail, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+
+const quickLinks = [
+    { name: 'Solutions', href: '/solutions' },
+    { name: 'Products', href: '/products' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Use Cases', href: '/industries' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Contact', href: '/contact' },
+];
 
 export function Footer() {
     return (
-        <footer className="bg-neutral-900 text-white border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-4 lg:px-8 py-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                    <div>
-                        <Link href="/" className="inline-block mb-6">
-                            <Image
-                                src={Logo}
-                                alt="Rockwell H2"
-                                width={180}
-                                height={40}
-                                className="h-8 w-auto object-contain brightness-0 invert opacity-80"
-                            />
-                        </Link>
-                        <p className="text-neutral-400 text-sm leading-relaxed max-w-xs">
-                            Industrial-grade hydrogen infrastructure for a sustainable, resilient future. Proudly family-owned with 30+ years of engineering excellence.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-primary">Navigation</h4>
-                        <nav className="flex flex-col gap-3">
-                            <Link href="/" className="text-neutral-400 hover:text-white text-sm transition-colors">Home</Link>
-                            <Link href="/platform" className="text-neutral-400 hover:text-white text-sm transition-colors">Platform Overview</Link>
-                            <Link href="/solutions" className="text-neutral-400 hover:text-white text-sm transition-colors">Solutions</Link>
-                            <Link href="/industries" className="text-neutral-400 hover:text-white text-sm transition-colors">Industries</Link>
-                        </nav>
-                    </div>
-
-                    <div>
-                        <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-primary">Company</h4>
-                        <nav className="flex flex-col gap-3">
-                            <Link href="/why-rockwell" className="text-neutral-400 hover:text-white text-sm transition-colors">Why Rockwell</Link>
-                            <Link href="/contact" className="text-neutral-400 hover:text-white text-sm transition-colors">Contact Us</Link>
-                            <Link href="/privacy" className="text-neutral-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-                        </nav>
-                    </div>
-
-                    <div>
-                        <h4 className="text-sm font-bold uppercase tracking-wider mb-6 text-primary">Get in Touch</h4>
-                        <div className="text-neutral-400 text-sm space-y-4">
-                            <p>
-                                <strong className="text-white block mb-1">Sales & Support</strong>
-                                <a href="mailto:info@rockwellh2.com" className="hover:text-primary transition-colors">info@rockwellh2.com</a>
-                            </p>
-                            <div className="pt-2">
-                                <Link href="/contact">
-                                    <Button variant="outline" className="border-white/20 text-white hover:bg-white hover:text-neutral-900 h-10 px-6 rounded-full">
-                                        Contract Us
-                                    </Button>
-                                </Link>
+        <footer className="bg-[#1E3A5F] text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    {/* Company Info */}
+                    <div className="lg:col-span-1">
+                        <Link href="/" className="flex items-center gap-2 mb-4">
+                            <div className="relative w-10 h-10 flex items-center justify-center">
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/10 rounded-lg"></div>
+                                <Zap className="w-6 h-6 text-white relative z-10" />
                             </div>
+                            <div className="flex flex-col">
+                                <span className="text-lg font-bold text-white leading-tight">
+                                    Rockwell H2
+                                </span>
+                                <span className="text-[10px] text-white/60 leading-tight">
+                                    SYSTEMS
+                                </span>
+                            </div>
+                        </Link>
+                        <p className="text-white/70 text-sm mb-4">
+                            Family-owned provider of modular, on-site green hydrogen production and energy systems for over 30 years.
+                        </p>
+                        <div className="flex items-center gap-2 text-white/70 text-sm">
+                            <MapPin className="w-4 h-4 flex-shrink-0" />
+                            <span>118, C-300, 25K, 2620<br />ElectroIndustrial Park, CA</span>
                         </div>
+                    </div>
+
+                    {/* Contact Info */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+                        <div className="space-y-3">
+                            <a
+                                href="tel:+1-800-555-2600"
+                                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+                            >
+                                <Phone className="w-4 h-4" />
+                                <span>1-800-555-2600</span>
+                            </a>
+                            <a
+                                href="mailto:info@rockwellh2.com"
+                                className="flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm"
+                            >
+                                <Mail className="w-4 h-4" />
+                                <span>info@rockwellh2.com</span>
+                            </a>
+                            <p className="text-white/50 text-xs mt-4">
+                                Speak with Brad or Nick directly
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                        <nav className="space-y-2">
+                            {quickLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="block text-white/70 hover:text-white transition-colors text-sm"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Social & CTA */}
+                    <div>
+                        <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+                        <div className="flex gap-3 mb-6">
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                            >
+                                <Linkedin className="w-5 h-5" />
+                            </a>
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                            >
+                                <Twitter className="w-5 h-5" />
+                            </a>
+                            <a
+                                href="#"
+                                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                            >
+                                <Facebook className="w-5 h-5" />
+                            </a>
+                        </div>
+                        <Link
+                            href="/contact"
+                            className="inline-block bg-[#2E7D32] hover:bg-[#246b27] text-white px-6 py-3 rounded-lg font-medium transition-colors text-sm"
+                        >
+                            Request a Quote
+                        </Link>
                     </div>
                 </div>
 
-                <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-neutral-500 text-sm">
-                    <p>© {new Date().getFullYear()} Rockwell Engineering and Equipment.</p>
-                    <p>Designed for Resilience.</p>
+                {/* Bottom Bar */}
+                <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-white/50 text-sm">
+                        © {new Date().getFullYear()} Rockwell H2 Systems. All rights reserved.
+                    </p>
+                    <div className="flex gap-6">
+                        <Link href="#" className="text-white/50 hover:text-white text-sm transition-colors">
+                            Privacy Policy
+                        </Link>
+                        <Link href="#" className="text-white/50 hover:text-white text-sm transition-colors">
+                            Terms of Service
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>

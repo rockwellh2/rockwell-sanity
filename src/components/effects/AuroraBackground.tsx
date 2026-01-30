@@ -37,7 +37,7 @@ export function AuroraBackground() {
                         repeatType: "mirror",
                         ease: "easeInOut",
                     }}
-                    className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-emerald-600 rounded-full mix-blend-screen"
+                    className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] bg-cyan-600 rounded-full mix-blend-screen"
                 />
 
                 {/* Azure Blob (Secondary) */}
@@ -68,7 +68,7 @@ export function AuroraBackground() {
                         damping: 50,
                         stiffness: 100,
                     }}
-                    className="absolute top-[20%] left-[20%] w-[30vw] h-[30vw] bg-emerald-400 opacity-30 rounded-full mix-blend-overlay"
+                    className="absolute top-[20%] left-[20%] w-[30vw] h-[30vw] bg-cyan-400 opacity-30 rounded-full mix-blend-overlay"
                 />
             </div>
 

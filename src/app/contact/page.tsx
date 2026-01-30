@@ -1,381 +1,348 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
+  MapPin,
   Phone,
   Mail,
-  MapPin,
   Clock,
-  CheckCircle,
-  ArrowRight,
   Send,
-  Shield
-} from "lucide-react";
+  Linkedin,
+  Twitter,
+  Facebook,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
-// ============================================================
-// CONTACT PAGE - "The Conversion Machine" Design
-// Dark hero, dual phone numbers, working form
-// ============================================================
-
-export default function ContactPage() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+export default function Contact() {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          phone: formData.phone || '',
+          industry: 'General Inquiry',
+          system: formData.message,
+        }),
+      });
 
-    // Simulate form submission (replace with actual Formspree or backend)
-    await new Promise(resolve => setTimeout(resolve, 1000));
+      const data = await response.json();
 
-    setFormSubmitted(true);
-    setIsSubmitting(false);
+      if (response.ok) {
+        toast({
+          title: 'Request Received!',
+          description: `Reference: ${data.reference}. We'll respond within 1-2 business days.`,
+        });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+        });
+      } else {
+        toast({
+          title: 'Submission Failed',
+          description: data.error || 'Please check your information and try again.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Network Error',
+        description: 'Unable to submit. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-white">
-
-      {/* ============================================================
-          1. HERO SECTION (DARK)
-          ============================================================ */}
-      <section className="relative bg-slate-900 text-white pt-24 pb-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/30 text-green-400 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-              <Phone size={12} /> Direct Line to Engineering
-            </div>
-
-            <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight mb-6">
-              Talk to an Engineer.<br />
-              <span className="text-green-400">Not a Salesperson.</span>
+    <div className="min-h-screen pt-16 lg:pt-20">
+      {/* Hero Section */}
+      <section className="relative py-12 lg:py-20 overflow-hidden bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1E3A5F] leading-tight mb-4 text-balance">
+              Contact Us
             </h1>
-
-            <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-              Call us directly or fill out the form. We respond within 1-2 business days with a preliminary feasibility assessment.
+            <p className="text-lg text-gray-600">
+              Ready to transform your energy strategy? Get in touch with our team to discuss your hydrogen energy needs.
             </p>
-
-            {/* Phone Numbers - Prominent */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              <PhoneCard
-                name="Brad Rockwell"
-                role="Principal Engineer"
-                phone="(714) 305-3300"
-              />
-              <PhoneCard
-                name="Nick Rockwell"
-                role="Operations Director"
-                phone="(510) 960-0261"
-              />
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ============================================================
-          2. CONTACT FORM
-          ============================================================ */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="heading-section text-center mb-4">Request an Assessment</h2>
-          <p className="text-center text-body mb-12">
-            Tell us about your operation and we'll provide a preliminary feasibility snapshot.
-          </p>
-
-          {formSubmitted ? (
-            <div className="bg-green-50 border border-green-200 rounded-xl p-12 text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="text-green-600" size={32} />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Request Received!</h3>
-              <p className="text-slate-600 mb-8">
-                We'll review your information and respond within 1-2 business days with a preliminary assessment.
+      {/* Contact Section */}
+      <section className="py-12 lg:py-16 bg-[#F5F7FA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl font-bold text-[#1E3A5F] mb-6">
+                Get in Touch
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Speak directly with our principals, Brad or Nick, to discuss your project requirements and learn how Rockwell H2 Systems can help you achieve energy independence.
               </p>
-              <Link href="/" className="btn-primary inline-flex items-center gap-2">
-                Back to Home <ArrowRight size={18} />
-              </Link>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="bg-white border border-slate-200 rounded-xl p-8 md:p-12 shadow-lg">
-              <div className="grid md:grid-cols-2 gap-6">
 
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
-                    Your Name *
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
-                    placeholder="John Smith"
-                  />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#2E7D32]/20 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-[#2E7D32]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1E3A5F] mb-1">Address</h3>
+                    <p className="text-gray-600">
+                      118, C-300, 25K, 2620<br />
+                      ElectroIndustrial Park, CA 90210
+                    </p>
+                  </div>
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
-                    placeholder="john@company.com"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#2E7D32]/20 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-[#2E7D32]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1E3A5F] mb-1">Phone</h3>
+                    <a
+                      href="tel:+1-800-555-2600"
+                      className="text-gray-600 hover:text-[#2E7D32] transition-colors"
+                    >
+                      1-800-555-2600
+                    </a>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Speak with Brad or Nick directly
+                    </p>
+                  </div>
                 </div>
 
-                {/* Company */}
-                <div>
-                  <label htmlFor="company" className="block text-sm font-bold text-slate-700 mb-2">
-                    Company / Organization *
-                  </label>
-                  <input
-                    id="company"
-                    name="company"
-                    type="text"
-                    required
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
-                    placeholder="Acme Logistics"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#2E7D32]/20 flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-[#2E7D32]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1E3A5F] mb-1">Email</h3>
+                    <a
+                      href="mailto:info@rockwellh2.com"
+                      className="text-gray-600 hover:text-[#2E7D32] transition-colors"
+                    >
+                      info@rockwellh2.com
+                    </a>
+                  </div>
                 </div>
 
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-bold text-slate-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
-                    placeholder="(555) 123-4567"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#2E7D32]/20 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-[#2E7D32]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1E3A5F] mb-1">Business Hours</h3>
+                    <p className="text-gray-600">
+                      Monday - Friday: 8:00 AM - 5:00 PM PST
+                    </p>
+                  </div>
                 </div>
+              </div>
 
-                {/* Application Type */}
-                <div>
-                  <label htmlFor="application" className="block text-sm font-bold text-slate-700 mb-2">
-                    Application Type *
-                  </label>
-                  <select
-                    id="application"
-                    name="application"
-                    required
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all bg-white"
+              {/* Social Links */}
+              <div className="mt-10">
+                <h3 className="font-semibold text-[#1E3A5F] mb-4">Follow Us</h3>
+                <div className="flex gap-3">
+                  <a
+                    href="#"
+                    className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center hover:bg-[#2E7D32] transition-colors"
                   >
-                    <option value="">Select application...</option>
-                    <option value="forklifts">Hydrogen Forklifts</option>
-                    <option value="farm">Farm Equipment</option>
-                    <option value="backup">Backup Power</option>
-                    <option value="fleet">Fleet Vehicles</option>
-                    <option value="other">Other Industrial</option>
-                  </select>
+                    <Linkedin className="w-5 h-5 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center hover:bg-[#2E7D32] transition-colors"
+                  >
+                    <Twitter className="w-5 h-5 text-white" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 rounded-full bg-[#1E3A5F] flex items-center justify-center hover:bg-[#2E7D32] transition-colors"
+                  >
+                    <Facebook className="w-5 h-5 text-white" />
+                  </a>
                 </div>
-
-                {/* Location */}
-                <div>
-                  <label htmlFor="location" className="block text-sm font-bold text-slate-700 mb-2">
-                    Site Location
-                  </label>
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
-                    placeholder="City, State"
-                  />
-                </div>
-
-                {/* Message */}
-                <div className="md:col-span-2">
-                  <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-2">
-                    Tell Us About Your Operation
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all resize-none"
-                    placeholder="Describe your fuel needs, fleet size, current energy costs, or any specific questions..."
-                  ></textarea>
-                </div>
-
               </div>
+            </motion.div>
 
-              {/* Submit Button */}
-              <div className="mt-8">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-cta py-4 text-lg flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>Sending...</>
-                  ) : (
-                    <>
-                      <Send size={18} /> Submit Request
-                    </>
-                  )}
-                </button>
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-[#1E3A5F] mb-6">
+                  Send Us a Message
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-gray-700">
+                        Full Name *
+                      </Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => handleChange('name', e.target.value)}
+                        required
+                        className="h-12"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-gray-700">
+                        Email Address *
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        required
+                        className="h-12"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-gray-700">
+                        Phone Number
+                      </Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+1 (555) 123-4567"
+                        value={formData.phone}
+                        onChange={(e) => handleChange('phone', e.target.value)}
+                        className="h-12"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="company" className="text-gray-700">
+                        Company Name
+                      </Label>
+                      <Input
+                        id="company"
+                        type="text"
+                        placeholder="Your Company"
+                        value={formData.company}
+                        onChange={(e) => handleChange('company', e.target.value)}
+                        className="h-12"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-gray-700">
+                      Message *
+                    </Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell us about your project and energy needs..."
+                      value={formData.message}
+                      onChange={(e) => handleChange('message', e.target.value)}
+                      required
+                      rows={5}
+                      className="resize-none"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    size="lg"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#2E7D32] hover:bg-[#246b27] text-white h-12 disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                    ) : (
+                      <Send className="mr-2 w-5 h-5" />
+                    )}
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </form>
               </div>
-
-              <p className="text-center text-sm text-slate-500 mt-6">
-                <Shield size={14} className="inline mr-1" />
-                We never share your information. Response within 1-2 business days.
-              </p>
-            </form>
-          )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ============================================================
-          3. WHAT TO EXPECT
-          ============================================================ */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="heading-section text-center mb-12">What Happens Next</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <ProcessStep
-              step="1"
-              title="Intake Review"
-              description="We review your submission within 24-48 hours and assess basic feasibility."
-              timeframe="24-48 hours"
+      {/* Map Section */}
+      <section className="py-12 lg:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative rounded-xl overflow-hidden shadow-xl h-[400px]"
+          >
+            <img
+              src="/hero-contact.jpg"
+              alt="Rockwell H2 Systems facility"
+              className="w-full h-full object-cover"
             />
-            <ProcessStep
-              step="2"
-              title="Technical Fit"
-              description="We model your ROI, incentive eligibility, and system sizing requirements."
-              timeframe="2-3 days"
-            />
-            <ProcessStep
-              step="3"
-              title="Site Call"
-              description="We schedule a call to discuss findings and answer your questions directly."
-              timeframe="Within 1 week"
-            />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1E3A5F]/60 to-transparent flex items-end">
+              <div className="p-6 lg:p-8 text-white">
+                <h3 className="text-2xl font-bold mb-2">
+                  Visit Our Facility
+                </h3>
+                <p className="text-white/80">
+                  Schedule a tour to see our hydrogen systems in action.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* ============================================================
-          3.5 FAQ SECTION
-          ============================================================ */}
-      < section className="py-24 bg-slate-50 border-t border-slate-200" >
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="heading-section text-center mb-12">Common Questions</h2>
-
-          <div className="space-y-6">
-            <div className="bg-white border border-slate-200 rounded-lg p-6">
-              <h3 className="font-bold text-slate-900 mb-2">Will I get a sales pitch?</h3>
-              <p className="text-slate-600">No. You will talk to an engineer who will look at your site constraints and power availability to see if the project is actually viable.</p>
-            </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-6">
-              <h3 className="font-bold text-slate-900 mb-2">How is my data handled?</h3>
-              <p className="text-slate-600">We use your operational data solely for feasibility modeling. We do not sell data or add you to aggressive marketing lists.</p>
-            </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-6">
-              <h3 className="font-bold text-slate-900 mb-2">Is the assessment really free?</h3>
-              <p className="text-slate-600">Yes. We invest upfront engineering time because qualified hydrogen projects are rare and valuable. We want to find the ones that work.</p>
-            </div>
-            <div className="bg-white border border-slate-200 rounded-lg p-6">
-              <h3 className="font-bold text-slate-900 mb-2">What if I'm not ready to buy?</h3>
-              <p className="text-slate-600">That's fine. We help many operators build 2-3 year roadmaps for eventual fleet transition.</p>
-            </div>
-          </div>
-        </div>
-      </section >
-
-      {/* ============================================================
-          4. ALTERNATIVE CONTACT
-          ============================================================ */}
-      < section className="py-16 bg-slate-900 text-white" >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 items-center">
-            <div>
-              <div className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">Email</div>
-              <a href="mailto:info@rockwellh2.com" className="text-xl font-bold hover:text-green-400 transition-colors">
-                info@rockwellh2.com
-              </a>
-            </div>
-            <div>
-              <div className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">Brad (Principal Engineer)</div>
-              <a href="tel:714-305-3300" className="text-xl font-bold hover:text-green-400 transition-colors">
-                (714) 305-3300
-              </a>
-            </div>
-            <div>
-              <div className="text-green-400 font-bold text-xs uppercase tracking-widest mb-2">Nick (Operations)</div>
-              <a href="tel:510-960-0261" className="text-xl font-bold hover:text-green-400 transition-colors">
-                (510) 960-0261
-              </a>
-            </div>
-          </div>
-        </div>
-      </section >
-
-    </div >
-  );
-}
-
-// ============================================================
-// SUB-COMPONENTS
-// ============================================================
-
-interface PhoneCardProps {
-  name: string;
-  role: string;
-  phone: string;
-}
-
-function PhoneCard({ name, role, phone }: PhoneCardProps) {
-  return (
-    <a
-      href={`tel:${phone.replace(/\D/g, '')}`}
-      className="bg-white/10 border border-white/20 p-6 rounded-lg hover:bg-white/20 transition-colors group"
-    >
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-          <Phone className="text-green-400" size={20} />
-        </div>
-        <div>
-          <p className="font-bold text-white">{name}</p>
-          <p className="text-sm text-slate-400">{role}</p>
-        </div>
-      </div>
-      <p className="text-2xl font-bold text-green-400 mt-4 group-hover:text-green-300 transition-colors">
-        {phone}
-      </p>
-    </a>
-  );
-}
-
-interface ProcessStepProps {
-  step: string;
-  title: string;
-  description: string;
-  timeframe: string;
-}
-
-function ProcessStep({ step, title, description, timeframe }: ProcessStepProps) {
-  return (
-    <div className="text-center">
-      <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4">
-        {step}
-      </div>
-      <h3 className="font-bold text-slate-900 text-lg mb-2">{title}</h3>
-      <p className="text-slate-600 text-sm mb-4">{description}</p>
-      <div className="inline-flex items-center gap-1 text-xs font-bold text-green-600">
-        <Clock size={12} /> {timeframe}
-      </div>
     </div>
   );
 }

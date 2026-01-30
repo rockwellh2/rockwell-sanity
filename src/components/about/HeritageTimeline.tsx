@@ -36,7 +36,7 @@ export function HeritageTimeline() {
 
                     <FadeIn delay={i * 0.1}>
                         <div className="flex flex-col md:flex-row gap-4 md:items-baseline">
-                            <span className="font-mono text-3xl font-bold text-emerald-600 tracking-tighter">
+                            <span className="font-mono text-3xl font-bold text-cyan-600 tracking-tighter">
                                 {event.year}
                             </span>
                             <h4 className="text-xl font-bold text-slate-900 border-b border-slate-100 pb-2 md:pb-0 md:border-0">

@@ -1,434 +1,231 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
+import { useRef } from "react";
 import {
-  Sun,
-  Droplets,
-  Wallet,
-  Truck,
+  ArrowRight,
+  Factory,
+  ShieldCheck,
+  TrendingUp,
   Zap,
-  CheckCircle,
-  Leaf,
-  BarChart3,
-  BatteryCharging,
-  Phone,
-  Calculator,
-  ArrowRight
+  Database,
+  Droplets,
+  ChevronRight,
+  Boxes
 } from "lucide-react";
-import { ROICalculator } from "@/components/calculator/ROICalculator";
+import { Button } from "@/components/ui/button";
+import { HUDLabel } from "@/components/ui/HUDLabel";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FadeIn, StaggerChildren, FadeInItem } from "@/components/ui/FadeIn";
 import ShaderBackground from "@/components/ShaderBackground";
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
 
-// ============================================================
-// HOMEPAGE - "The Conversion Machine" Design
-// Warm, approachable, conversion-focused
-// ============================================================
+export default function HomePage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const coreRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLDivElement>(null);
+  const outputRef = useRef<HTMLDivElement>(null);
 
-export default function Home() {
   return (
-    <div className="flex flex-col w-full overflow-hidden bg-white selection:bg-green-100 selection:text-green-900">
+    <div className="flex flex-col w-full overflow-hidden bg-white">
 
-      {/* ============================================================
-          1. HERO SECTION
-          ============================================================ */}
-      <header className="relative bg-slate-50 pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
-        {/* Background Pattern */}
-        {/* Background Pattern */}
-        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-grid-pattern"></div>
-
+      {/* ========== HERO SECTION ========== */}
+      <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-slate-950">
         <ShaderBackground />
 
-        {/* Animated Blobs */}
-        <div className="blob-orange w-72 h-72 top-10 -right-10 animate-blob"></div>
-        <div className="blob-blue w-72 h-72 -bottom-10 -left-10 animate-blob animation-delay-2000"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl">
+            <FadeIn direction="up">
+              <HUDLabel color="blue" className="mb-8">Energy Infrastructure for the Decarbonized Age</HUDLabel>
+            </FadeIn>
 
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-          <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-green-100 border border-green-200 text-green-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-              <Leaf size={12} /> Family-Owned Engineering
-            </div>
+            <FadeIn direction="up" delay={0.2}>
+              <h1 className="text-6xl md:text-8xl font-bold text-white leading-[0.9] tracking-tighter mb-8">
+                The Engineering <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Sales Machine.</span>
+              </h1>
+            </FadeIn>
 
-            {/* Headline */}
-            <h1 className="heading-hero mb-6">
-              Turn Your Renewable Energy Into <span className="text-green-600">Reliable Hydrogen Fuel</span>
-            </h1>
+            <FadeIn direction="up" delay={0.4}>
+              <p className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed mb-12">
+                Modular hydrogen production, storage, and power systems. Scalable, containerized infrastructure designed for the toughest industrial operations.
+              </p>
+            </FadeIn>
 
-            {/* Subheadline */}
-            <p className="text-body mb-8">
-              Rockwell H2 helps farms and warehouses cut fuel costs, earn federal tax credits up to <strong className="text-slate-900">$3/kg</strong>, and achieve energy independence with modular green hydrogen solutions.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/incentives" className="btn-primary flex items-center justify-center gap-2 text-lg">
-                <Calculator size={20} /> Calculate Savings
-              </Link>
-              <Link href="#how-it-works" className="btn-secondary flex items-center justify-center gap-2 text-lg">
-                See How It Works
-              </Link>
-            </div>
-
-            {/* Trust Signals */}
-            <div className="mt-8 flex items-center gap-6 text-sm text-slate-500 font-medium">
-              <span className="flex items-center gap-1"><CheckCircle size={16} className="text-green-500" /> Turnkey Installation</span>
-              <span className="flex items-center gap-1"><CheckCircle size={16} className="text-green-500" /> IRA Qualified</span>
-            </div>
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="bg-white p-2 rounded-2xl shadow-2xl rotate-1">
-              <div className="bg-slate-200 rounded-xl overflow-hidden aspect-[4/3] relative">
-                <Image
-                  src="/images/hero/HydrogenTanks.png"
-                  alt="Rockwell H2 hydrogen storage tanks"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                {/* Stats Overlay */}
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-lg p-4 shadow-lg border-l-4 border-green-500">
-                  <div className="flex justify-between items-end">
-                    <div>
-                      <p className="text-xs font-bold text-slate-400 uppercase">System Output</p>
-                      <p className="text-lg font-bold text-slate-900">225 kg H2 / Day</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">+ $675/day Tax Credit</p>
-                    </div>
-                  </div>
-                </div>
+            <FadeIn direction="up" delay={0.6}>
+              <div className="flex flex-wrap gap-6">
+                <Link href="/contact">
+                  <Button size="lg" className="h-14 px-10 bg-white text-slate-950 hover:bg-emerald-500 hover:text-white text-xs font-bold uppercase tracking-[0.2em] rounded-sm transition-all shadow-2xl">
+                    Request Assessment
+                  </Button>
+                </Link>
+                <Link href="/platform">
+                  <Button size="lg" variant="outline" className="h-14 px-10 border-white/20 text-white hover:bg-white/10 text-xs font-bold uppercase tracking-[0.2em] rounded-sm backdrop-blur-sm">
+                    View Platform
+                  </Button>
+                </Link>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
-      </header>
 
-      {/* ============================================================
-          2. THE PROBLEM
-          ============================================================ */}
-      <section className="py-16 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-slate-500 font-bold uppercase tracking-widest mb-12 text-sm">Why businesses are making the switch</p>
-          <div className="grid md:grid-cols-4 gap-8">
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50">
+          <span className="font-mono text-[10px] text-white uppercase tracking-[0.4em]">Initialize Deep Dive</span>
+          <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
+        </div>
+      </section>
+
+      {/* ========== STATS STRIP ========== */}
+      <section className="bg-slate-900 border-y border-white/10 py-16">
+        <div className="container mx-auto px-6">
+          <StaggerChildren className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
-              { title: "Rising Diesel Costs", desc: "Fuel prices are volatile. Hydrogen stabilizes your operating costs permanently." },
-              { title: "Wasted Solar Power", desc: "Stop selling power back to the grid for pennies. Store it as high-value fuel." },
-              { title: "Equipment Downtime", desc: "Battery EVs take hours to charge. Hydrogen refuels in minutes." },
-              { title: "Grid Reliability", desc: "Protect your cold storage or production lines from rolling blackouts." }
-            ].map((item, i) => (
-              <div key={i} className="bg-slate-50 p-6 rounded-xl border border-slate-100 card-hover">
-                <div className="w-2 h-2 bg-orange-400 rounded-full mb-4"></div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
-              </div>
+              { label: "Uptime Requirement", value: "99.9%" },
+              { label: "Deployment Speed", value: "12-16 Wks" },
+              { label: "Tax Credit Value", value: "$3.00/kg" },
+              { label: "Efficiency (LHV)", value: "82%+" },
+            ].map((stat, i) => (
+              <FadeInItem key={i}>
+                <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-400 mb-2">{stat.label}</div>
+                <div className="text-4xl font-bold text-white tracking-tighter">{stat.value}</div>
+              </FadeInItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
-      {/* ============================================================
-          3. HOW IT WORKS
-          ============================================================ */}
-      <section id="how-it-works" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="heading-section mb-4">How the Rockwell System Works</h2>
-            <p className="text-body">We install a simple, closed-loop system that connects to your existing renewable energy.</p>
-          </div>
+      {/* ========== THE PROCESS FLOW ========== */}
+      <section className="bg-slate-50 py-32 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] bg-[length:32px_32px]" />
 
-          <div className="relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 -translate-y-1/2"></div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-              <ProcessStep
-                number="1"
-                icon={<Sun className="text-orange-500" />}
-                title="Energy Input"
-                desc="Connect to your existing solar, wind, or grid power."
+        <div ref={containerRef} className="container mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-5">
+              <SectionHeader
+                subtitle="The Architecture"
+                title="A Closed-Loop Energy System."
+                description="Our PowerPod platform modularizes the entire hydrogen lifecycle into containerized blocks that connect and scale seamlessly."
               />
-              <ProcessStep
-                number="2"
-                icon={<Droplets className="text-blue-500" />}
-                title="Electrolyzer"
-                desc="We convert water + electricity into pure hydrogen (90-225 kg/day)."
-              />
-              <ProcessStep
-                number="3"
-                icon={<BatteryCharging className="text-green-600" />}
-                title="Safe Storage"
-                desc="Store energy safely for weeks with zero loss."
-              />
-              <ProcessStep
-                number="4"
-                icon={<Truck className="text-slate-700" />}
-                title="Flexible Output"
-                desc="Power your forklift fleet or backup your facility."
-              />
-              <ProcessStep
-                number="5"
-                icon={<Wallet className="text-green-600" />}
-                title="Financial Benefit"
-                desc="Earn $3/kg tax credits while saving on diesel."
-                highlight={true}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ============================================================
-          4. FEDERAL INCENTIVES
-          ============================================================ */}
-      <section id="incentives" className="py-20 bg-green-900 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-
-        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-block bg-orange-500 text-white font-bold px-4 py-1 rounded-full text-sm mb-6 animate-pulse">
-            Inflation Reduction Act (IRA)
-          </div>
-          <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-            Get Paid up to <span className="text-green-400">$3.00 per kg</span> to produce your own fuel.
-          </h2>
-          <p className="text-xl text-green-100 mb-10 max-w-3xl mx-auto">
-            The federal government essentially pays for your fuel production. Combined with the 30% Investment Tax Credit on equipment, the system can pay for itself in record time.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-            <BenefitCard icon={<Wallet />} title="Production Credit" val="$3/kg" desc="Paid directly to you for 10 years." />
-            <BenefitCard icon={<BarChart3 />} title="Equipment Credit" val="30%" desc="Immediate tax credit on installation." />
-            <BenefitCard icon={<Zap />} title="Fuel Savings" val="100%" desc="Eliminate your diesel or propane bill." />
-          </div>
-
-          <div className="mt-12">
-            <Link href="/incentives" className="btn-cta inline-flex items-center gap-2 text-lg">
-              See Full Incentive Breakdown <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-          4.5. ROI CALCULATOR
-          ============================================================ */}
-      <section id="calculator" className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <ROICalculator variant="embedded" />
-        </div>
-      </section>
-
-      {/* ============================================================
-          5. USE CASES
-          ============================================================ */}
-      <section id="applications" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="heading-section text-center mb-16">Built for Real-World Operations</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <UseCaseCard
-              title="Hydrogen Forklifts"
-              image="/images/hero/LindeForklift.png"
-              points={[
-                "Refuel in 3 minutes vs. hours of charging",
-                "No battery room required",
-                "Constant power output until empty"
-              ]}
-            />
-            <UseCaseCard
-              title="Farm Equipment"
-              image="https://images.unsplash.com/photo-1592860882379-3c35b757f5c5?q=80&w=800&auto=format&fit=crop"
-              points={[
-                "Eliminate 40,000+ gallons of diesel",
-                "On-site fueling independence",
-                "Non-toxic, safe storage"
-              ]}
-            />
-            <UseCaseCard
-              title="Reliable Backup Power"
-              image="https://images.unsplash.com/photo-1565514020128-4033cc359648?q=80&w=800&auto=format&fit=crop"
-              points={[
-                "Protect cold storage during outages",
-                "Months of storage capacity",
-                "Zero degradation over time"
-              ]}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-          6. CERTIFICATIONS STRIP
-          ============================================================ */}
-      <section className="py-12 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs text-slate-400 uppercase tracking-widest mb-8">
-            Certified & Trusted
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 text-slate-300 font-bold text-lg">
-            <span>ASME Certified</span>
-            <span>UL Listed</span>
-            <span>DOE Partner</span>
-            <span>NFPA 2 Compliant</span>
-            <span>ISO 9001</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================
-          7. FINAL CTA
-          ============================================================ */}
-      <section id="contact" className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="bg-slate-900 rounded-3xl p-8 lg:p-16 overflow-hidden relative shadow-2xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-green-600 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
-
-            <div className="grid lg:grid-cols-2 gap-16 relative z-10">
-              <div className="text-white">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to explore hydrogen?</h2>
-                <p className="text-slate-300 text-lg mb-8">
-                  We'll review your energy bills and fleet needs to give you a clear, honest feasibility assessment. No pressure, just numbers.
-                </p>
-
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-slate-400 text-sm uppercase tracking-widest font-bold mb-2">Call the founders directly</p>
-                    <div className="flex flex-col gap-2">
-                      <a href="tel:7143053300" className="flex items-center gap-3 text-xl font-bold hover:text-green-400 transition-colors">
-                        <Phone className="text-green-500" /> (714) 305-3300 <span className="text-sm font-normal text-slate-500">(Brad)</span>
-                      </a>
-                      <a href="tel:5109600261" className="flex items-center gap-3 text-xl font-bold hover:text-green-400 transition-colors">
-                        <Phone className="text-green-500" /> (510) 960-0261 <span className="text-sm font-normal text-slate-500">(Nick)</span>
-                      </a>
+              <div className="space-y-8 mt-12">
+                {[
+                  { icon: Factory, title: "Production", desc: "PEM Electrolyzers convert water and renewable power to H2." },
+                  { icon: Database, title: "Storage", desc: "PowerBank arrays store 300kg+ at high pressure indefinitely." },
+                  { icon: Zap, title: "Dispatch", desc: "Modular Fuel Cells deliver zero-latency backup power." }
+                ].map((item, i) => (
+                  <FadeIn key={i} direction="right" delay={i * 0.1}>
+                    <div className="flex gap-6 group">
+                      <div className="w-12 h-12 shrink-0 bg-white border border-slate-200 flex items-center justify-center text-slate-950 group-hover:bg-slate-950 group-hover:text-white transition-all shadow-sm">
+                        <item.icon size={20} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-950 uppercase tracking-widest text-sm mb-2">{item.title}</h4>
+                        <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                      </div>
                     </div>
-                  </div>
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
 
-                  <div className="pt-6 border-t border-slate-800">
-                    <p className="text-sm text-slate-400 italic">
-                      "We promise to never sell you a system that doesn't pay for itself."
-                    </p>
-                  </div>
+            <div className="lg:col-span-7 relative flex justify-center py-20">
+              {/* Process Flow Visualization */}
+              <div className="grid grid-cols-3 gap-12 items-center w-full max-w-lg">
+                <div ref={inputRef} className="bg-white border border-slate-200 p-6 shadow-xl relative z-20">
+                  <Droplets className="text-cyan-500 mb-4" size={32} />
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-slate-400">Input</div>
+                  <div className="font-bold text-slate-950 text-xs">H2O + POWER</div>
+                </div>
+
+                <div ref={coreRef} className="bg-slate-950 p-8 shadow-2xl relative z-20 scale-125">
+                  <Boxes className="text-emerald-400 mb-4" size={40} />
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-emerald-500">PowerPod</div>
+                  <div className="font-bold text-white text-xs">ORCHESTRATOR</div>
+                </div>
+
+                <div ref={outputRef} className="bg-white border border-slate-200 p-6 shadow-xl relative z-20">
+                  <Zap className="text-amber-500 mb-4" size={32} />
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-slate-400">Output</div>
+                  <div className="font-bold text-slate-950 text-xs">ON-DEMAND H2</div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-8 shadow-lg">
-                <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1">Name</label>
-                    <input type="text" className="w-full border border-slate-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="John Smith" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1">Email</label>
-                    <input type="email" className="w-full border border-slate-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500 focus:outline-none" placeholder="john@company.com" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-1">Application Type</label>
-                    <select className="w-full border border-slate-300 rounded-md px-4 py-3 focus:ring-2 focus:ring-green-500 focus:outline-none text-slate-600">
-                      <option>Agricultural / Farm Fleet</option>
-                      <option>Warehouse Forklifts</option>
-                      <option>Backup Power</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <button type="submit" className="w-full btn-cta text-lg py-4 mt-2">
-                    Request Free Consultation
-                  </button>
-                  <p className="text-xs text-center text-slate-500 mt-4">
-                    We respect your privacy. No spam, ever.
-                  </p>
-                </form>
+              <div className="absolute inset-0 z-10">
+                <AnimatedBeam containerRef={containerRef} fromRef={inputRef} toRef={coreRef} duration={3} />
+                <AnimatedBeam containerRef={containerRef} fromRef={coreRef} toRef={outputRef} duration={3} />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-    </div>
-  );
-}
+      {/* ========== CONVERSION TEASER ========== */}
+      <section className="bg-white py-32">
+        <div className="container mx-auto px-6">
+          <div className="bg-slate-50 border border-slate-200 p-12 md:p-20 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 blur-[120px] -translate-y-1/2 translate-x-1/2" />
 
-// ============================================================
-// SUB-COMPONENTS
-// ============================================================
+            <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+              <div>
+                <HUDLabel color="emerald">The Economic Engine</HUDLabel>
+                <h3 className="text-5xl md:text-6xl font-bold text-slate-950 tracking-tighter leading-none mb-8">
+                  Get Paid $3/kg <br />
+                  To Power Your Fleet.
+                </h3>
+                <p className="text-lg text-slate-600 mb-10 max-w-xl">
+                  The Inflation Reduction Act (45V) incentivizes clean hydrogen production with substantial credits. Combined with our PowerPod platform, the payback period averages less than 3 years.
+                </p>
+                <Link href="/incentives">
+                  <Button variant="outline" className="h-12 border-slate-950 text-slate-950 hover:bg-slate-950 hover:text-white uppercase text-[10px] font-bold tracking-widest px-8">
+                    View ROI Model <ArrowRight className="ml-2" size={14} />
+                  </Button>
+                </Link>
+              </div>
 
-interface ProcessStepProps {
-  number: string;
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-  highlight?: boolean;
-}
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: "IRA 45V", value: "$3.00", unit: "/kg" },
+                  { label: "Equip. ITC", value: "30-50%", unit: "" },
+                  { label: "LCFS (CA)", value: "Stackable", unit: "" },
+                  { label: "Diesel ROI", value: "24-36", unit: "Mos" },
+                ].map((box, i) => (
+                  <div key={i} className="bg-white p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-4">{box.label}</div>
+                    <div className="text-3xl font-bold text-slate-950 tracking-tighter">
+                      {box.value}<span className="text-sm font-normal text-slate-400">{box.unit}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-function ProcessStep({ number, icon, title, desc, highlight = false }: ProcessStepProps) {
-  return (
-    <div className={`flex flex-col items-center text-center p-6 rounded-xl border transition-all ${highlight
-      ? 'bg-green-50 border-green-200 shadow-md transform scale-105'
-      : 'bg-white border-slate-100 hover:border-green-200 card-hover'
-      }`}>
-      <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold text-sm mb-4">
-        {number}
-      </div>
-      <div className={`mb-4 p-4 rounded-full ${highlight ? 'bg-green-100' : 'bg-slate-50'}`}>
-        {icon}
-      </div>
-      <h3 className="font-bold text-slate-900 mb-2">{title}</h3>
-      <p className="text-sm text-slate-600">{desc}</p>
-    </div>
-  );
-}
+      {/* ========== FINAL CALL TO ACTION ========== */}
+      <section className="bg-slate-950 py-32 text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_#10b981_1px,_transparent_1px)] bg-[length:40px_40px]" />
 
-interface BenefitCardProps {
-  icon: React.ReactNode;
-  title: string;
-  val: string;
-  desc: string;
-}
+        <div className="container mx-auto px-6 relative z-10">
+          <FadeIn direction="up">
+            <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[0.9] mb-8 max-w-4xl mx-auto">
+              Ready to Decarbonize <br />Your Operations?
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+              Our engineering team handles the design, permitting, and installation. You focus on energy independence.
+            </p>
+            <div className="flex flex-center gap-6 justify-center">
+              <Link href="/contact">
+                <Button size="lg" className="h-14 px-12 bg-emerald-500 text-white hover:bg-emerald-600 text-[10px] font-bold uppercase tracking-[0.3em] rounded-sm">
+                  Start Engineering Assessment
+                </Button>
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
 
-function BenefitCard({ icon, title, val, desc }: BenefitCardProps) {
-  return (
-    <div className="bg-white/10 backdrop-blur border border-white/20 p-6 rounded-xl">
-      <div className="flex items-center gap-3 mb-2">
-        <div className="text-orange-400">{icon}</div>
-        <span className="text-green-100 font-medium">{title}</span>
-      </div>
-      <p className="text-4xl font-bold text-white mb-2">{val}</p>
-      <p className="text-sm text-green-100 opacity-80">{desc}</p>
-    </div>
-  );
-}
-
-interface UseCaseCardProps {
-  title: string;
-  image: string;
-  points: string[];
-}
-
-function UseCaseCard({ title, image, points }: UseCaseCardProps) {
-  const isExternal = image.startsWith('http');
-
-  return (
-    <div className="group rounded-xl overflow-hidden border border-slate-200 shadow-sm card-hover">
-      <div className="h-48 overflow-hidden relative">
-        {isExternal ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        ) : (
-          <Image src={image} alt={title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-        )}
-      </div>
-      <div className="p-6">
-        <h3 className="font-bold text-xl text-slate-900 mb-4">{title}</h3>
-        <ul className="space-y-3">
-          {points.map((p, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
-              <CheckCircle size={16} className="text-green-500 shrink-0 mt-0.5" />
-              <span>{p}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }

@@ -166,9 +166,9 @@ export function ValueChain() {
                         <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 text-center mb-4">Inputs</h4>
 
                         {/* Renewable Energy Node */}
-                        <div ref={inputRERef} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-4 hover:border-emerald-500 transition-colors w-full group">
-                            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-emerald-500 transition-colors">
-                                <Sun size={20} className="text-emerald-600 group-hover:text-white" />
+                        <div ref={inputRERef} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-4 hover:border-cyan-500 transition-colors w-full group">
+                            <div className="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-cyan-500 transition-colors">
+                                <Sun size={20} className="text-cyan-600 group-hover:text-white" />
                             </div>
                             <div>
                                 <div className="font-bold text-slate-900">Renewables</div>
@@ -192,10 +192,10 @@ export function ValueChain() {
                     <div className="flex flex-col justify-center items-center h-full relative z-10">
                         <div ref={systemRef} className="relative w-full aspect-square max-w-[280px] bg-slate-950 rounded-full flex items-col justify-center items-center shadow-2xl border-4 border-slate-800 p-8 text-center group">
                             {/* Glowing Pulse Ring */}
-                            <div className="absolute inset-0 rounded-full border border-emerald-500/30 animate-ping opacity-20" />
+                            <div className="absolute inset-0 rounded-full border border-cyan-500/30 animate-ping opacity-20" />
 
                             <div className="relative z-10">
-                                <Factory size={48} className="text-emerald-500 mx-auto mb-4" />
+                                <Factory size={48} className="text-cyan-500 mx-auto mb-4" />
                                 <h3 className="text-2xl font-bold text-white mb-2">PowerPod</h3>
                                 <p className="text-xs text-slate-400 uppercase tracking-widest font-mono">Core Engine</p>
                             </div>
@@ -207,8 +207,8 @@ export function ValueChain() {
                         <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-400 text-center mb-4">Financial Outputs</h4>
 
                         {/* H2 Fuel Node */}
-                        <div ref={outputFuelRef} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-4 hover:border-emerald-500 transition-colors w-full group">
-                            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-emerald-500 transition-colors">
+                        <div ref={outputFuelRef} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex items-center gap-4 hover:border-cyan-500 transition-colors w-full group">
+                            <div className="w-10 h-10 bg-cyan-50 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-cyan-500 transition-colors">
                                 <FuelIcon />
                             </div>
                             <div>
@@ -218,13 +218,13 @@ export function ValueChain() {
                         </div>
 
                         {/* Tax Credits Node */}
-                        <div ref={outputCreditRef} className="p-4 bg-white border-2 border-emerald-100 rounded-xl shadow-md flex items-center gap-4 hover:border-emerald-500 transition-colors w-full group transform scale-105">
-                            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-emerald-600 transition-colors">
-                                <CircleDollarSign size={20} className="text-emerald-700 group-hover:text-white" />
+                        <div ref={outputCreditRef} className="p-4 bg-white border-2 border-cyan-100 rounded-xl shadow-md flex items-center gap-4 hover:border-cyan-500 transition-colors w-full group transform scale-105">
+                            <div className="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-cyan-600 transition-colors">
+                                <CircleDollarSign size={20} className="text-cyan-700 group-hover:text-white" />
                             </div>
                             <div>
                                 <div className="font-bold text-slate-900">Tax Credits (IRA)</div>
-                                <div className="text-xs text-emerald-600 font-bold">$3.00/kg (PTC)</div>
+                                <div className="text-xs text-cyan-600 font-bold">$3.00/kg (PTC)</div>
                             </div>
                         </div>
 
@@ -249,6 +249,6 @@ export function ValueChain() {
 
 function FuelIcon() {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 group-hover:text-white"><path d="M3 22v-8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8" /><path d="M5 12V7a2 2 0 0 1 2-2h1" /><path d="M22 22H2" /><path d="M10 2h4" /><path d="M12 2v5" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-600 group-hover:text-white"><path d="M3 22v-8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8" /><path d="M5 12V7a2 2 0 0 1 2-2h1" /><path d="M22 22H2" /><path d="M10 2h4" /><path d="M12 2v5" /></svg>
     )
 }

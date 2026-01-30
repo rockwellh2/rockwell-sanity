@@ -1,0 +1,18 @@
+/* NOHEMI Font - Self-hosted from CDN Fonts */
+@font-face {
+    font-family: 'Nohemi';
+    src: url('https://db.onlinewebfonts.com/t/1f1bb1f46f48e8c4808e06ed1e9041ae.woff2') format('woff2'),
+        url('https://db.onlinewebfonts.com/t/1f1bb1f46f48e8c4808e06ed1e9041ae.woff') format('woff');
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+}
+
+/* Nohemi specific weights for fallback */
+@font-face {
+    font-family: 'Nohemi';
+    src: url('https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMBBSSJLm2E.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import {
     Zap,
     Battery,
@@ -25,18 +26,13 @@ export default function PlatformPage() {
             <section className="relative bg-slate-50 pt-24 pb-20 overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-10 pointer-events-none bg-grid-pattern"></div>
 
-                <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-                    <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-6">
-                        <Box size={12} /> PowerPod Platform
-                    </div>
-
-                    <h1 className="heading-hero mb-6 max-w-4xl mx-auto">
-                        A Complete System to <span className="text-emerald-600">Produce, Store & Dispatch</span> Hydrogen
-                    </h1>
-
-                    <p className="text-body max-w-2xl mx-auto mb-10">
-                        PowerPod is a modular, containerized platform that scales from pilot deployments to multi‑megawatt sites. Each block is pre‑tested and serviceable in the field.
-                    </p>
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
+                    <SectionHeader
+                        subtitle="Modular Infrastructure"
+                        title="Produce, Store & Dispatch Hydrogen."
+                        description="PowerPod is a modular, containerized platform that scales from pilot deployments to multi‑megawatt sites. Each block is pre‑tested and serviceable in the field."
+                        className="mx-auto text-center items-center flex flex-col"
+                    />
 
                     <div className="flex flex-wrap gap-4 justify-center">
                         <Link href="/contact" className="btn-cta inline-flex items-center gap-2">
@@ -169,30 +165,142 @@ export default function PlatformPage() {
                         <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-1/2 z-0"></div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative z-10">
-                                <FlowStep
-                                    step="1"
-                                    title="Energy In"
-                                    description="Solar, wind, or grid power feeds PowerPack"
-                                    color="orange"
-                                />
-                                <FlowStep
-                                    step="2"
-                                    title="Electrolysis"
-                                    description="Water splits into hydrogen and oxygen"
-                                    color="blue"
-                                />
-                                <FlowStep
-                                    step="3"
-                                    title="Storage"
-                                    description="Compressed H2 stores in PowerBank"
-                                    color="green"
-                                />
-                                <FlowStep
-                                    step="4"
-                                    title="Dispatch"
-                                    description="Fuel fleets or generate backup power"
-                                    color="slate"
-                                />
+                            <FlowStep
+                                step="1"
+                                title="Energy In"
+                                description="Solar, wind, or grid power feeds PowerPack"
+                                color="orange"
+                            />
+                            <FlowStep
+                                step="2"
+                                title="Electrolysis"
+                                description="Water splits into hydrogen and oxygen"
+                                color="blue"
+                            />
+                            <FlowStep
+                                step="3"
+                                title="Storage"
+                                description="Compressed H2 stores in PowerBank"
+                                color="green"
+                            />
+                            <FlowStep
+                                step="4"
+                                title="Dispatch"
+                                description="Fuel fleets or generate backup power"
+                                color="slate"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ============================================================
+          4.5 SCALABILITY
+          ============================================================ */}
+            <section className="py-24 bg-slate-50 border-y border-slate-200">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="heading-section text-center mb-4">Modular Scalability</h2>
+                    <p className="text-center text-body mb-16 max-w-2xl mx-auto">
+                        Start with a single PowerPod, expand to MW-class installations. Each container is self-contained and field-serviceable.
+                    </p>
+
+                    <div className="grid md:grid-cols-3 gap-8 mb-12">
+                        <div className="bg-white p-8 rounded-xl border border-slate-200 text-center card-hover">
+                            <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">Pilot</div>
+                            <div className="text-4xl font-bold text-cyan-600 mb-2">1 Pod</div>
+                            <p className="text-sm text-slate-600 mb-4">30 kg H₂/day</p>
+                            <div className="bg-slate-50 rounded-lg p-3 font-mono text-xs text-slate-500">
+                                ~20 forklifts/shift
+                            </div>
+                        </div>
+
+                        <div className="bg-cyan-900 text-white p-8 rounded-xl text-center card-hover">
+                            <div className="text-xs font-mono uppercase tracking-widest text-emerald-300 mb-2">Commercial</div>
+                            <div className="text-4xl font-bold mb-2">3–5 Pods</div>
+                            <p className="text-sm text-emerald-200 mb-4">90–150 kg H₂/day</p>
+                            <div className="bg-emerald-800 rounded-lg p-3 font-mono text-xs text-emerald-300">
+                                Full fleet + backup power
+                            </div>
+                        </div>
+
+                        <div className="bg-white p-8 rounded-xl border border-slate-200 text-center card-hover">
+                            <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">Industrial</div>
+                            <div className="text-4xl font-bold text-slate-900 mb-2">MW-Class</div>
+                            <p className="text-sm text-slate-600 mb-4">500+ kg H₂/day</p>
+                            <div className="bg-slate-50 rounded-lg p-3 font-mono text-xs text-slate-500">
+                                Multi-site deployments
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white border border-slate-200 rounded-xl p-8">
+                        <div className="grid md:grid-cols-4 gap-8 text-center">
+                            <div>
+                                <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Install Time</p>
+                                <p className="text-2xl font-bold text-cyan-600">12–16 Weeks</p>
+                            </div>
+                            <div>
+                                <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Field Service</p>
+                                <p className="text-2xl font-bold text-cyan-600">24/7 Remote</p>
+                            </div>
+                            <div>
+                                <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Warranty</p>
+                                <p className="text-2xl font-bold text-cyan-600">5-Year Standard</p>
+                            </div>
+                            <div>
+                                <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Lifecycle</p>
+                                <p className="text-2xl font-bold text-cyan-600">20+ Years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ============================================================
+          4.7 SYSTEMS INTEGRATION
+          ============================================================ */}
+            <section className="py-24 bg-white">
+                <div className="max-w-7xl mx-auto px-6">
+                    <h2 className="heading-section text-center mb-4">Control & Integration</h2>
+                    <p className="text-center text-body mb-16 max-w-2xl mx-auto">
+                        Industrial-grade PLCs and SCADA monitoring ensure safe, autonomous operation. Integrate with your existing BMS and EMS.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-slate-900 text-white p-8 rounded-xl">
+                            <h3 className="text-xl font-bold mb-6">Control System</h3>
+                            <ul className="space-y-4">
+                                {[
+                                    "Industrial PLC (Allen-Bradley / Siemens)",
+                                    "SCADA touchscreen HMI",
+                                    "Remote monitoring via cellular/ethernet",
+                                    "Automated safety interlocks",
+                                    "OPC-UA and Modbus protocols"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-slate-300">
+                                        <CheckCircle size={16} className="text-cyan-400" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                            <h3 className="text-xl font-bold text-slate-900 mb-6">Grid & Utility Integration</h3>
+                            <ul className="space-y-4">
+                                {[
+                                    "480V 3-phase interconnection",
+                                    "Automatic transfer switching (ATS)",
+                                    "Demand response ready",
+                                    "Net metering compatible",
+                                    "UL 1741 / IEEE 1547 compliant"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-slate-700">
+                                        <CheckCircle size={16} className="text-cyan-600" />
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     </div>
                 </div>

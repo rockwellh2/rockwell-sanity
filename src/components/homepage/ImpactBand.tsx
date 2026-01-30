@@ -15,7 +15,7 @@ export function ImpactBand() {
             prefix: "$",
             suffix: "/kg",
             desc: "Inflation Reduction Act (45V)",
-            color: "text-emerald-400"
+            color: "text-cyan-400"
         },
         {
             label: "CapEx Investment",
@@ -23,7 +23,7 @@ export function ImpactBand() {
             prefix: "",
             suffix: "%",
             desc: "Investment Tax Credit (ITC)",
-            color: "text-emerald-400"
+            color: "text-cyan-400"
         },
         {
             label: "Typical Payback",
@@ -46,12 +46,12 @@ export function ImpactBand() {
     return (
         <section ref={ref} className="w-full bg-slate-950 py-20 border-y border-slate-800 relative overflow-hidden">
             {/* Background Gradients */}
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950 pointer-events-none" />
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-cyan-900/20 via-slate-950 to-slate-950 pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div>
-                        <span className="font-mono text-emerald-500 text-xs font-bold uppercase tracking-widest mb-2 block">Financial Impact</span>
+                        <span className="font-mono text-cyan-500 text-xs font-bold uppercase tracking-widest mb-2 block">Financial Impact</span>
                         <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
                             Profitability by Design.
                         </h2>
@@ -63,8 +63,8 @@ export function ImpactBand() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {metrics.map((m, i) => (
-                        <div key={i} className="group p-6 rounded-lg border border-slate-800 bg-slate-900/50 hover:bg-slate-900 hover:border-emerald-500/30 transition-all duration-300">
-                            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-4 group-hover:text-emerald-500 transition-colors">
+                        <div key={i} className="group p-6 rounded-lg border border-slate-800 bg-slate-900/50 hover:bg-slate-900 hover:border-cyan-500/30 transition-all duration-300">
+                            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-500 mb-4 group-hover:text-cyan-500 transition-colors">
                                 {m.label}
                             </div>
                             <div className={`text-5xl font-bold tracking-tighter mb-2 ${m.color}`}>
@@ -76,7 +76,7 @@ export function ImpactBand() {
                                 )}
                                 <span className="text-2xl ml-1 opacity-60 font-medium">{m.suffix}</span>
                             </div>
-                            <div className="text-xs text-slate-400 font-medium border-t border-slate-800 pt-4 mt-4 group-hover:border-emerald-500/20 transition-colors">
+                            <div className="text-xs text-slate-400 font-medium border-t border-slate-800 pt-4 mt-4 group-hover:border-cyan-500/20 transition-colors">
                                 {m.desc}
                             </div>
                         </div>

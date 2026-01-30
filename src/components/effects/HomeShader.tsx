@@ -88,7 +88,7 @@ export function HomeShader() {
             }
 
             // Add subtle "interference" particles
-            ctx.fillStyle = "rgba(5, 150, 105, 0.2)"; // Emerald-600
+            ctx.fillStyle = "rgba(5, 150, 105, 0.2)"; // cyan-600
             for (let k = 0; k < 20; k++) {
                 const x = (width * 0.5) + Math.cos(time * 0.2 + k) * (width * 0.4);
                 const y = (height * 0.5) + Math.sin(time * 0.3 + k) * (height * 0.4);

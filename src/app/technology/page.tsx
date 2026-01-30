@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HUDLabel } from "@/components/ui/HUDLabel";
 import { ProductModule } from "@/components/ui/ProductModule";
@@ -21,7 +21,7 @@ export default function TechnologyPage() {
     <div className="flex flex-col w-full overflow-hidden bg-white">
       {/* HERO */}
       <section className="relative pt-32 pb-24 md:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/70 via-white to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-50/70 via-white to-white" />
         <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_1px_1px,rgba(15,23,42,0.12)_1px,transparent_0)] bg-[length:28px_28px]" />
         <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white via-white/80 to-transparent" />
 
@@ -39,7 +39,7 @@ export default function TechnologyPage() {
               <FadeIn delay={0.2}>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link href="#system">
-                    <Button className="h-12 px-8 bg-slate-950 text-white hover:bg-emerald-600 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-xl">
+                    <Button className="h-12 px-8 bg-slate-950 text-white hover:bg-cyan-600 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-xl">
                       View System Map
                     </Button>
                   </Link>
@@ -92,19 +92,19 @@ export default function TechnologyPage() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <div className="border border-white/10 p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-400">Uptime</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-400">Uptime</div>
               <div className="text-3xl font-bold mt-3">99.5%</div>
             </div>
             <div className="border border-white/10 p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-400">Refuel</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-400">Refuel</div>
               <div className="text-3xl font-bold mt-3">3 Min</div>
             </div>
             <div className="border border-white/10 p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-400">Modularity</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-400">Modularity</div>
               <div className="text-3xl font-bold mt-3">4 Core Blocks</div>
             </div>
             <div className="border border-white/10 p-6">
-              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-400">Compliance</div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-400">Compliance</div>
               <div className="text-3xl font-bold mt-3">ASME + UL</div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function TechnologyPage() {
             <div className="lg:col-span-4">
               <FadeIn delay={0.2}>
                 <div ref={coreRef} className="bg-slate-950 text-white border border-slate-800 p-8 md:p-10 shadow-2xl relative">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 blur-3xl" />
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 blur-3xl" />
                   <HUDLabel color="emerald">PowerPod Core</HUDLabel>
                   <h3 className="text-3xl font-bold tracking-tight mt-4">Energy Orchestration</h3>
                   <p className="text-sm text-slate-300 mt-4">
@@ -200,7 +200,254 @@ export default function TechnologyPage() {
             </FadeIn>
           </div>
         </div>
-      </section >
+      </section>
+
+      {/* ============================================================
+          TECHNOLOGY DEEP DIVES
+          ============================================================ */}
+
+      {/* BIOMASS GASIFICATION */}
+      <section className="bg-white py-24 border-b border-slate-200">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <HUDLabel color="slate">Biomass Gasification</HUDLabel>
+              <h3 className="text-3xl font-bold text-slate-950 mt-4 mb-6">Waste to Synthesis Gas</h3>
+              <p className="text-slate-600 mb-6">
+                Optional gasifier module converts agricultural waste, wood chips, or anaerobic digester biogas into synthesis gas (CO + H₂). The biochar byproduct is a carbon-negative soil amendment.
+              </p>
+              <div className="bg-orange-50 border border-orange-200 rounded-lg p-6 font-mono text-sm mb-6">
+                <p className="text-orange-800 font-bold mb-2">Process Chemistry</p>
+                <p className="text-orange-700">Biomass + Heat → CO + H₂ + CO₂ + Biochar</p>
+              </div>
+              <ul className="space-y-3 text-sm text-slate-600">
+                <li className="flex gap-3">• Feedstock: Manure, woodchips, pomace, corn stover</li>
+                <li className="flex gap-3">• Output: Syngas for H₂ production or direct combustion</li>
+                <li className="flex gap-3">• Byproduct: Biochar → soil carbon sequestration</li>
+              </ul>
+            </div>
+            <div className="bg-slate-950 text-white rounded-xl p-10">
+              <div className="text-xs font-mono uppercase tracking-widest text-orange-400 mb-4">Gasifier Module</div>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Temp Range</p>
+                  <p className="text-2xl font-bold">700-900°C</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Throughput</p>
+                  <p className="text-2xl font-bold">500 kg/day</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Efficiency</p>
+                  <p className="text-2xl font-bold">75-85%</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Biochar Yield</p>
+                  <p className="text-2xl font-bold">15-20%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ELECTROLYSIS */}
+      <section className="bg-slate-50 py-24 border-b border-slate-200">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-blue-900 text-white rounded-xl p-10">
+                <div className="text-xs font-mono uppercase tracking-widest text-blue-300 mb-4">PEM Electrolyzer</div>
+                <div className="text-center py-8">
+                  <p className="text-4xl font-bold font-mono">2H₂O(l) → 2H₂(g) + O₂(g)</p>
+                  <p className="text-blue-300 text-sm mt-4">Proton Exchange Membrane Electrolysis</p>
+                </div>
+                <div className="grid grid-cols-2 gap-6 mt-6">
+                  <div>
+                    <p className="text-blue-300 text-xs font-mono">Output</p>
+                    <p className="text-xl font-bold">30-225 kg/day</p>
+                  </div>
+                  <div>
+                    <p className="text-blue-300 text-xs font-mono">Purity</p>
+                    <p className="text-xl font-bold">99.999%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <HUDLabel color="emerald">Water Electrolysis</HUDLabel>
+              <h3 className="text-3xl font-bold text-slate-950 mt-4 mb-6">Electricity to Hydrogen</h3>
+              <p className="text-slate-600 mb-6">
+                High-efficiency PEM electrolyzers split purified water into hydrogen and oxygen using renewable electricity. Dynamic load-following enables integration with intermittent solar and wind.
+              </p>
+              <ul className="space-y-3 text-sm text-slate-600">
+                <li className="flex gap-3">• Load following: 10-100% capacity in seconds</li>
+                <li className="flex gap-3">• Water consumption: ~9 L per kg H₂</li>
+                <li className="flex gap-3">• Power input: 50-55 kWh per kg H₂</li>
+                <li className="flex gap-3">• Oxygen byproduct: Available for industrial use</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COMPRESSION & STORAGE */}
+      <section className="bg-white py-24 border-b border-slate-200">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <HUDLabel color="slate">Compression & Storage</HUDLabel>
+              <h3 className="text-3xl font-bold text-slate-950 mt-4 mb-6">Long-Duration Energy Storage</h3>
+              <p className="text-slate-600 mb-6">
+                Multi-stage compressors boost hydrogen from electrolyzer output (30 bar) to storage pressure (350-700 bar). Unlike batteries, stored hydrogen maintains capacity indefinitely with zero degradation.
+              </p>
+              <div className="bg-slate-100 border border-slate-200 rounded-lg p-6 font-mono text-sm mb-6">
+                <p className="text-slate-700 font-bold mb-2">Storage Advantage</p>
+                <p className="text-slate-600">0% degradation over time vs. 2-3%/year for Li-ion</p>
+              </div>
+              <ul className="space-y-3 text-sm text-slate-600">
+                <li className="flex gap-3">• Compression: 30 bar → 350/700 bar</li>
+                <li className="flex gap-3">• Tank materials: Carbon fiber composite (Type IV)</li>
+                <li className="flex gap-3">• Monitoring: Real-time pressure, temp, leak detection</li>
+              </ul>
+            </div>
+            <div className="bg-slate-900 text-white rounded-xl p-10">
+              <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-4">PowerBank Storage</div>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Capacity</p>
+                  <p className="text-2xl font-bold">300+ kg H₂</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Pressure</p>
+                  <p className="text-2xl font-bold">350-700 bar</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Equivalent</p>
+                  <p className="text-2xl font-bold">~5 MWh</p>
+                </div>
+                <div>
+                  <p className="text-slate-400 text-xs font-mono">Degradation</p>
+                  <p className="text-2xl font-bold text-cyan-400">0%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FUEL CELLS */}
+      <section className="bg-cyan-900 text-white py-24">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="bg-white/10 backdrop-blur rounded-xl p-10 border border-white/20">
+                <div className="text-xs font-mono uppercase tracking-widest text-emerald-300 mb-4">Fuel Cell Reaction</div>
+                <div className="text-center py-8">
+                  <p className="text-3xl font-bold font-mono">2H₂ + O₂ → 2H₂O + Electricity</p>
+                  <p className="text-emerald-200 text-sm mt-4">PEM Fuel Cell — 50-60% Electrical Efficiency</p>
+                </div>
+                <div className="grid grid-cols-2 gap-6 mt-6">
+                  <div>
+                    <p className="text-emerald-300 text-xs font-mono">Output</p>
+                    <p className="text-xl font-bold">60-300 kW</p>
+                  </div>
+                  <div>
+                    <p className="text-emerald-300 text-xs font-mono">Byproduct</p>
+                    <p className="text-xl font-bold">Pure H₂O</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <HUDLabel color="emerald">Fuel Cell Power</HUDLabel>
+              <h3 className="text-3xl font-bold mt-4 mb-6">Hydrogen to Electricity</h3>
+              <p className="text-cyan-100 mb-6">
+                PEM fuel cells convert stored hydrogen back to electricity on demand. Instant dispatch for backup power, peak shaving, or grid services. Only byproduct is pure water.
+              </p>
+              <ul className="space-y-3 text-sm text-emerald-200">
+                <li className="flex gap-3">• Dispatch time: Milliseconds</li>
+                <li className="flex gap-3">• Runtime: Limited only by H₂ supply</li>
+                <li className="flex gap-3">• Emissions: Zero (water vapor only)</li>
+                <li className="flex gap-3">• Combined heat+power efficiency: 80%+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* DISPENSING */}
+      <section className="bg-slate-50 py-24 border-b border-slate-200">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <HUDLabel color="slate">Dispensing</HUDLabel>
+              <h3 className="text-3xl font-bold text-slate-950 mt-4 mb-6">Fast-Fill Refueling</h3>
+              <p className="text-slate-600 mb-6">
+                Industrial-grade dispensers deliver hydrogen to vehicles and equipment at 350 or 700 bar. SAE J2601 compliant for temperature-compensated fast fills.
+              </p>
+              <ul className="space-y-3 text-sm text-slate-600">
+                <li className="flex gap-3">• Forklift refuel: 3 minutes</li>
+                <li className="flex gap-3">• Heavy-duty vehicle: 5-10 minutes</li>
+                <li className="flex gap-3">• Protocol: SAE J2601 / ISO 19880-1</li>
+                <li className="flex gap-3">• Safety: Breakaway couplings, leak detection</li>
+              </ul>
+            </div>
+            <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white border border-slate-200 rounded-xl p-6 text-center">
+                <p className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2">Low Pressure</p>
+                <p className="text-3xl font-bold text-slate-900">350 bar</p>
+                <p className="text-xs text-slate-500 mt-2">Forklifts, light duty</p>
+              </div>
+              <div className="bg-slate-900 text-white rounded-xl p-6 text-center">
+                <p className="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-2">High Pressure</p>
+                <p className="text-3xl font-bold">700 bar</p>
+                <p className="text-xs text-slate-400 mt-2">Trucks, buses, cars</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTROL & INTEGRATION */}
+      <section className="bg-slate-950 text-white py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <HUDLabel color="emerald">Control & Integration</HUDLabel>
+            <h3 className="text-3xl font-bold mt-4">Industrial-Grade Automation</h3>
+            <p className="text-slate-400 max-w-2xl mx-auto mt-4">
+              Every PowerPod ships with enterprise-grade controls for safe, autonomous, and remotely-monitored operation.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+              <h4 className="font-bold text-lg mb-4">PLC & HMI</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li>• Allen-Bradley / Siemens PLCs</li>
+                <li>• Touchscreen HMI panels</li>
+                <li>• Automated sequencing</li>
+              </ul>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+              <h4 className="font-bold text-lg mb-4">Remote SCADA</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li>• 24/7 cloud monitoring</li>
+                <li>• Cellular + Ethernet</li>
+                <li>• OPC-UA / Modbus TCP</li>
+              </ul>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8">
+              <h4 className="font-bold text-lg mb-4">Safety Systems</h4>
+              <ul className="space-y-2 text-sm text-slate-400">
+                <li>• Redundant interlocks</li>
+                <li>• H₂ leak detection</li>
+                <li>• Emergency shutdown (ESD)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* SPECS TABLE */}
       < section id="specs" className="bg-white py-24" >
@@ -218,28 +465,28 @@ export default function TechnologyPage() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 <tr className="group hover:bg-slate-50 transition-colors">
-                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">H2 Production</td>
-                  <td className="py-4 text-emerald-600">90 - 225 kg/day</td>
+                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">H2 Production</td>
+                  <td className="py-4 text-cyan-600">90 - 225 kg/day</td>
                   <td className="py-4 text-slate-400">Variable Load</td>
                 </tr>
                 <tr className="group hover:bg-slate-50 transition-colors">
-                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Purity</td>
-                  <td className="py-4 text-emerald-600">99.999%</td>
+                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">Purity</td>
+                  <td className="py-4 text-cyan-600">99.999%</td>
                   <td className="py-4 text-slate-400">ISO 14687-2</td>
                 </tr>
                 <tr className="group hover:bg-slate-50 transition-colors">
-                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Water Input</td>
-                  <td className="py-4 text-emerald-600">Deionized</td>
+                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">Water Input</td>
+                  <td className="py-4 text-cyan-600">Deionized</td>
                   <td className="py-4 text-slate-400">~2 gal/kg H2</td>
                 </tr>
                 <tr className="group hover:bg-slate-50 transition-colors">
-                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Pressure Output</td>
-                  <td className="py-4 text-emerald-600">30 Bar</td>
+                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">Pressure Output</td>
+                  <td className="py-4 text-cyan-600">30 Bar</td>
                   <td className="py-4 text-slate-400">Compressible to 700 Bar</td>
                 </tr>
                 <tr className="group hover:bg-slate-50 transition-colors">
-                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">Footprint</td>
-                  <td className="py-4 text-emerald-600">20' ISO Container</td>
+                  <td className="py-4 pl-4 font-bold text-slate-900 group-hover:text-cyan-600 transition-colors">Footprint</td>
+                  <td className="py-4 text-cyan-600">20' ISO Container</td>
                   <td className="py-4 text-slate-400">Modular Stackable</td>
                 </tr>
               </tbody>
@@ -248,7 +495,7 @@ export default function TechnologyPage() {
 
           <div className="mt-12 text-center">
             <Link href="/contact">
-              <Button className="h-14 px-10 bg-slate-950 text-white hover:bg-emerald-600 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-xl transition-all">
+              <Button className="h-14 px-10 bg-slate-950 text-white hover:bg-cyan-600 text-xs font-bold uppercase tracking-[0.2em] rounded-sm shadow-xl transition-all">
                 Request Engineering Drawings
               </Button>
             </Link>
